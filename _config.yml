@@ -1,12 +1,12 @@
 title: Siddhartha Gairola
-description: Stuff that I come across and find interesting.
+description: Work.
 author: Siddhartha Gairola
 email: siddhartha.gairola@research.iiit.ac.in
 phone: +91 9000240581
 github: https://github.com/sidgairo18
-about: I am a Software Engineer at <a href="https://www.build.com" target="_blank">Build.com</a> and a freelance developer. I love working on backend and frontend technologies.
-disqus_shortname: programming
-google_analytics: UA-31048387-6
+about: I am a computer science undergrad studying at <a href="https://iiit.ac.in" target ="_blank">IIIT-Hyderabad</a> and wish to use technology to make the world a better and simpler place to live in. My current work is in Computer Vision and Machine Learning. I have started to get the hang of training Deep Neural Networks to solve complex tasks. Working for my MS at CVIT, IIIT Hyderabad. My hobbies are playing the piano and guitar. I am also passionate about football.
+#disqus_shortname: programming
+#google_analytics: UA-31048387-6
 avatar_url: /static/img/me.jpg
 
 enableTags: true
@@ -19,18 +19,18 @@ collections:
 
 social:
     - icon: fa-facebook
-      link: "https://www.facebook.com/tjamadar"
+      link: "https://www.facebook.com/siddhartha.gairola"
     - icon: fa-twitter
-      link: "https://twitter.com/tmjam3011"
+      link: "https://twitter.com/sidgairo18"
     - icon: fa-linkedin
-      link: "https://www.linkedin.com/in/tauseef-jamadar-5b577913/"
+      link: "https://in.linkedin.com/in/siddhartha-gairola-21a18499"
     # - icon: fa-stack-exchange
     #   link: "#"
     - icon: fa-github
       link: "https://github.com/sidgairo18"
 
 share:
-  twitter_username: tmjam3011
+  twitter_username: sidgairo18
   # fb_appid: 1749788565247320
 
 urls:
