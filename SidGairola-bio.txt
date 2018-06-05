@@ -1,0 +1,2 @@
+Siddhartha Gairola is a Researcher at the Center for Visual Information Technology, IIIT-Hyderabad. He has completed his B.Tech with Honours from IIIT-Hyderabad and is currently in his first year of MS at IIIT-Hyderabad under the advisorship of Prof. P.J. Narayanan. His research interests include Computer Vision, Image Processing, Artificial Intelligence and Machine Learning.
+Siddhartha also works as a open source software developer and has participated in Google Summer of Code as a developer for 2 years running 2017 and 2018 for the organization Scilab.
