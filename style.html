@@ -56,18 +56,6 @@ BODY {
 <p></p>
 
 
-<p>
-
-<table width="100%" border="0" cellspacing="0" cellpadding="10" >
-	<tr>
-		<td width="50%" class="full">
-			<img src="images/treepond.gif" style="width:100%;" align="middle">
-		</td >
-		<td width="50%" class="full">
-			<img src="images/ocean.gif" style="width:100%;" align="middle">
-		</td>
-	</tr>
-</table>
 
 <h2 align="center">Abstract</h2>
 
@@ -92,7 +80,17 @@ BODY {
 <h2>Code </h2> <p><a href='https://github.com/NVLabs/SPADE'> PyTorch </a></p>
 
 <h1 align='center'> Brief Description of the Method and Motivation</h1>
-<center><img src="images/method.png" width="1000"></center>
+<center></center>
+<table width="100%" border="0" cellspacing="0" cellpadding="10" >
+	<tr>
+		<td width="50%" class="full">
+			<img src="style_images/network_feats.png" style="width:100%;" align="middle">
+		</td >
+		<td width="50%" class="full">
+			<img src="style_images/clustering.png" style="width:100%;" align="middle">
+		</td>
+	</tr>
+</table>
 <br>
 <p align="justify">One of the key motivations of this paper is to investigate the quality of understanding of style that can be achieved by an unsupervised approach which does not rely on categorical labels of style. To this effect, we evaluate state-of-the-art representations and their variants for style-based retrieval. We further propose a protocol for unsupervised learning of style representation by leveraging a proxy measure that provides a loose grouping of images. Our proxy measure is based on Gram matrix features popularized by style transfer methods. These features capture the <em>look and feel</em> of an image by measuring the correlation among feature maps produced by different convolutional layers of a CNN and hence are a good choice for discerning different visual styles. We train a Siamese CNN for learning a style embedding that is relevant for style based search and retrieval. However, instead of leveraging the style class labels specified for a dataset, we do this in an unsupervised fashion for many datasets. We first divide a dataset into <em>K</em> clusters using Gram matrix features and then use the cluster labels for learning the embedding by (i) directly minimizing a cross-entropy loss for cluster label classification, and (ii) minimizing a triplet loss for maximizing the distances between stylistically (look and feel wise) similar and dissimilar samples. The training with a triplet loss further reinforces the stylistic similarity which is depicted in Figure below. This is of large interest as the unsupervised protocol can be used on unlabelled (no supervision) data for learning stylistically useful representations and help understand a highly subjective concept like style (look and feel) better.
 </p>
