@@ -53,7 +53,7 @@ BODY {
 <center><h2><strong><a href="https://">Paper</a> | <a href="https://">Code</a>  </strong> </h2></center> 
 <center>
 <a href="style_images/style_meanings.png">
-<img src="style_images/style_meanings.png" width="97%">
+<img src="style_images/style_meanings.png" width="80%">
 </a>
 </center>
 <p></p>
@@ -88,11 +88,11 @@ BODY {
 	<tr>
 		<td width="50%" class="full">
 			<img src="style_images/network_feats.png" style="width:100%;" align="middle">
-            <p>Different feature layers of VGG-19 based CNN used for our experiments.</p>
+            <p align="middle">Different feature layers of VGG-19 based CNN used for our experiments.</p>
 		</td >
 		<td width="50%" class="full">
 			<img src="style_images/clustering.png" style="width:100%;" align="middle">
-            <p>Triplet construction and selection process.</p>
+            <p align="middle">Triplet construction and selection process.</p>
 		</td>
 	</tr>
 </table>
@@ -102,25 +102,18 @@ BODY {
 
 
 <br>
-<h1 align='center'> Comparison to Existing Methods </h1>
-<center><img src="images/coco_comparison.jpg" width="1000"></center>
-<p align="justify">SPADE outperforms existing methods on the <a href="https://github.com/nightrome/cocostuff"><span style="font-weight:normal">COCO-Stuff dataset</span></a>, which is more challenging than <a href="https://www.cityscapes-dataset.com/"><span style="font-weight:normal">the Cityscapes dataset</span></a> due to more diverse scenes and labels. The images above are the ones authors liked. 
-</p>
-<br>
+<h1 align='center'> Qualitative Results on Different Datasets </h1>
+<p align="justify">Figures below show results of nearest neighbor retrieval for example queries from each dataset with triplet loss based representation <em>B-Tri</em> (refer paper for more details). Since style labels are often contextual and convey a limited meaning of style, a low precision score does not necessarily imply poor quality of visual similarity. The retrieved results that are highlighted by a black bounding box don't have the same style label as the query, despite obvious visual similarity.</p>
 
 <br>
-<h1 align='center'> Applying on Flickr Images </h1>
-<center><img src="images/flickr.jpg" width="1000"></center>
-<p align="justify"> Since SPADE works on diverse labels, it can be trained with <a href="https://github.com/kazuto1011/deeplab-pytorch"><span style="font-weight:normal">an existing semantic segmentation network</span></a> to learn the reverse mapping from semantic maps to photos. These images were generated from SPADE trained on 40k images scraped from <a href="https://www.flickr.com/"><span style="font-weight:normal">Flickr</span></a>.
+<h1 align='center'> BAM (Behance Artistic Media) Dataset Images </h1>
+<center><img src="images/bam.png" width="1000"></center>
+<p align="justify">Nearest Neighbour retrieval results for select queries from BAM subset test split. Notice that for rows 1 and 2, the queries and neighbours are very similar looking but the labels do not match. This indicates the lower mAP scores for retrieval using unsupervised methods. 'Oil Paint' and 'Water Colour' are hard to differentiate, similarly 'Gloomy' and 'Peaceful'.
 </p>
 <br>
 
 <h1 align='center'> Code and Trained Models</h1>
 	<p align="justify"> Please visit our <a href="https://github.com/NVlabs/SPADE">github repo</a>.  </p>
-
-<br>
-<h1 align='center'> Online Demo</h1>
-	<p align="justify"> We released an online demo of GauGAN, our interactive app that generates realistic landscape images from the layout users draw. The model was trained on landscape images scraped from Flickr.com. We released an online demo that has the same features. Please visit <a href="https://www.nvidia.com/en-us/research/ai-playground/">our online demo page</a>.  </p>
 
 <br>
 
