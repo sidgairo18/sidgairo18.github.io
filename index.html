@@ -13,6 +13,36 @@
   <meta name=viewport content=“width=800”>
   <meta name="generator" content="HTML Tidy for Linux/x86 (vers 11 February 2007), see www.w3.org">
   <style type="text/css">
+
+	
+	/* Reference: https://www.w3schools.com/howto/howto_js_topnav.asp */
+	/* Add a black background color to the top navigation */
+	.topnav {
+	  background-color: #333;
+	  overflow: hidden;
+	}
+
+	/* Style the links inside the navigation bar */
+	.topnav a {
+	  float: left;
+	  color: #f2f2f2;
+	  text-align: center;
+	  padding: 14px 16px;
+	  text-decoration: none;
+	  font-size: 17px;
+	}
+
+	/* Change the color of links on hover */
+	.topnav a:hover {
+	  background-color: #ddd;
+	  color: black;
+	}
+
+	/* Add a color to the active/current link */
+	.topnav a.active {
+	  background-color: #04AA6D;
+	  color: white;
+	}
     /* Color scheme stolen from Sergey Karayev */
     a {
     color: #1772d0;
@@ -73,15 +103,24 @@
   <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   </head>
   <body>
-  <table width="800" border="0" align="center" cellspacing="0" cellpadding="0">
+    <div class="topnav">
+      <p class="name">Siddhartha Gairola</p>
+      <a class="active" href="#home" style="text-align:right">Home</a>
+      <a href="#research" style="text-align:right">Research</a>
+      <a href="#experience" style="text-align:right">Experience</a>
+      <a href="#education" style="text-align:right">Education</a>
+    </div>
+  <table width="800" border="0" align="center" cellspacing="0" cellpadding="0" id="home">
     <tr>
     <td>
       <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
       <tr>
         <td width="67%" valign="middle">
+        <!--
         <p align="center">
           <name>Siddhartha Gairola</name>
         </p>
+        -->
         <p style="text-align:justify">I am a Research Fellow at <a href="https://www.microsoft.com/en-us/research/lab/microsoft-research-india/">Microsoft Research</a> in the Technology for Emerging Markets group, where I work on applications of Computer Vision and Machine Learning in developing low-cost diagnostic solutions for healthcare. Previously, I worked as a Research Intern at <a href="https://www.adobe.com/in/">Adobe Inc.</a> in the Media and Data Science Research Group. I also work as an open source software developer and have participated in Google Summer of Code program for 2 years running now (2017 and 2018). As a part of GSoC I worked for the organization <a href="https://www.scilab.org/">SCILAB</a>.
         </p>
         <p style="text-align:justify">
@@ -104,7 +143,7 @@
         </td>
       </tr>
       </table>
-      <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+      <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20" id="research">
       <tr>
         <td width="100%" valign="middle">
           <heading>Research</heading>
@@ -311,14 +350,14 @@
     </tr>	
       </table>
 
-      <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+      <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20" id="experience">
       <tr>
         <td>
         <heading>Work Experience</heading>
         </td>
       </tr>
       </table>
-      <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+      <table width="100%" align="center" border="0" cellspacing="0" cellpadding="5">
       <tr>
         <!--
         <tr>
@@ -425,10 +464,10 @@
       </tr>
       </table>
 
-      <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+      <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20" id="education">
       <tr>
         <td>
-        <heading>Timeline</heading>
+        <heading>Education</heading>
         </td>
       </tr>
       </table>
