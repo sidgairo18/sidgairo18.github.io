@@ -39,7 +39,6 @@
     font-family: 'Lato', Verdana, Helvetica, sans-serif;
     font-size: 18px;
     color: green;
-    text-align: right;
     }
     papertitle {
     font-family: 'Lato', Verdana, Helvetica, sans-serif;
@@ -154,90 +153,15 @@
 
   <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
       
-      <tr>
+    <tr>
         <td width="25%">
         </td>
         <td width="75%">
-            <subheading>Applied ML, Vision, HCI for Healthcare</subheading>
+            <p style="text-align:right;"><subheading>Computer Vision, Image Processing and Machine Learning</subheading></p>
         </td>
-      </tr>
-      <br>
-
-      <!-- IMWUT 2021 paper -->
-      <tr onmouseout="style_stop()" onmouseover="style_start()" >
-      <td width="25%">
-        <div class="one">
-        <div class="two" id = 'topographer_image'><img src='./images/corneal_topographer.png' style='width:161px;height:168px;'></div>
-        <img src='./images/corneal_topographer.png' style='width:161px;height:168px;'>
-        </div>
-        <script type="text/javascript">
-        function style_start() {
-        document.getElementById('topographer_image').style.opacity = "1";
-        }
-        function style_stop() {
-        document.getElementById('topographer_image').style.opacity = "0";
-        }
-        style_stop()
-        </script>
-      </td>
-      <td valign="top" width="75%">
-	  <a href="https://">
-            <papertitle>Smartphone based Corneal Topographer</papertitle>
-	  </a>
-	  <br>
-					<strong>Siddhartha Gairola</strong>,
-					<a href="https://www.microsoft.com/en-us/research/people/nkwatra/">Nipun Kwatra</a> and 
-					<a href="https://mohitjaindr.github.io/">Mohit Jain</a> <br>
-                    <em>Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies (IMWUT), Volume 5, Issue 4, </em> 2021. <br>
-        <a href="https://www.microsoft.com/en-us/research/project/smartkc-a-smartphone-based-corneal-topographer/">project_page</a>
-        /
-        <a href="smartkc.pdf">pdf</a>
-        /
-        <a href="https://www.youtube.com/watch?v=rp4uyzf6e2Q">demo_video</a>
-        <p></p>
-        <p>SmartKC is a low-cost smartphone-based corneal topographer. It provides a low-cost solution for the mass screening of keratoconus at scale.</p>
-      </td>
     </tr>
+    <br>
     
-    <!-- EMBC 2021 paper -->
-    <tr onmouseout="style_stop()" onmouseover="style_start()" >
-      <td width="25%">
-        <div class="one">
-        <div class="two" id = 'respirenet_image'><img src='./images/respirenet.png' style='width:161px;height:108px;'></div>
-        <img src='./images/respirenet.png' style='width:161px;height:108px;'>
-        </div>
-        <script type="text/javascript">
-        function style_start() {
-        document.getElementById('respirenet_image').style.opacity = "1";
-        }
-        function style_stop() {
-        document.getElementById('respirenet_image').style.opacity = "0";
-        }
-        style_stop()
-        </script>
-      </td>
-      <td valign="top" width="75%">
-	  <a href="https://">
-            <papertitle>RespireNet: A Deep Neural Network for Accurately Detecting Abnormal Lung Sounds in Limited Data Setting</papertitle>
-	  </a>
-	  <br>
-					<strong>Siddhartha Gairola</strong>,
-					<a href="">Francis Tom</a>,
-					<a href="https://www.microsoft.com/en-us/research/people/nkwatra/">Nipun Kwatra</a> and 
-					<a href="https://mohitjaindr.github.io/">Mohit Jain</a> <br>
-                    <em>IEEE Engineering in Medicine & Biology Society (EMBC),</em> 2021.<br>
-        <a href="https://github.com/microsoft/RespireNet">code</a>
-        /
-        <a href="https://arxiv.org/abs/2011.00196">arXiv</a>
-        /
-        <a href="respirenet.pdf">pdf</a>
-        /
-        <a href="respirenet_2020.bib">bibtex</a>
-        <p></p>
-        <p>RespireNet is a simple CNN-based model, along with a suite of novel techniques—device specific fine-tuning, concatenation-based  augmentation, blank region clipping, and smart padding— enabling one to efficiently use small-sized datasets. We perform extensive evaluation on the ICBHI dataset, and improve upon the state-of-the-art results for 4-class classification by <b>2.2%<b></p>
-      </td>
-    </tr>
-
     <!-- SimPropNet IJCAI 2020 -->
 
     <tr onmouseout="style_stop()" onmouseover="style_start()" >
@@ -353,6 +277,176 @@
                 <p><small>*Both authors contributed equally towards this work.</small></p>
       </td>
     </tr>
+      
+      <tr>
+        <td width="25%">
+        </td>
+        <td width="75%">
+            <p style="text-align:right;"><subheading>Applied ML, Vision, HCI for Healthcare</subheading></p>
+        </td>
+      </tr>
+      <br>
+      
+      <!-- IMWUT 2022 paper -->
+      <tr onmouseout="style_stop()" onmouseover="style_start()" >
+      <td width="25%">
+        <div class="one">
+        <div class="two" id = 'retino_image'><img src='./images/auto_retinoscopy.jpeg' style='width:160px;height:178px;'></div>
+        <img src='./images/auto_retinoscopy.jpeg' style='width:160px;height:178px;'>
+        </div>
+        <script type="text/javascript">
+        function style_start() {
+        document.getElementById('retino_image').style.opacity = "1";
+        }
+        function style_stop() {
+        document.getElementById('retino_image').style.opacity = "0";
+        }
+        style_stop()
+        </script>
+      </td>
+      <td valign="top" width="75%">
+	  <a href="https://">
+          <papertitle>Towards Automating Retinoscopy for Refractive Error Diagnosis</papertitle>
+	  </a>
+	  <br>          
+                    <a href="https://">Aditya Aggarwal</a>,
+					<strong>Siddhartha Gairola</strong>,
+					<a href="https://www.microsoft.com/en-us/research/people/nkwatra/">Nipun Kwatra</a> and 
+					<a href="https://mohitjaindr.github.io/">Mohit Jain</a> et al.<br>
+                    <em>Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies (IMWUT), Volume 6, Issue 3, </em> 2022. <br>
+        <a href="https://github.com/microsoft/Auto-retinoscopy">code</a>
+        /
+        <a href="https://www.microsoft.com/en-us/research/project/auto-retinoscopy-automating-retinoscopy-for-refractive-error-diagnosis/">project_page</a>
+        /
+        <a href="https://arxiv.org/pdf/2208.05552.pdf">pdf</a>
+        <p></p>
+        <p>In this work, we automate retinoscopy by attaching a smartphone to a retinoscope and recording retinoscopic videos with the patient wearing a custom pair of paper frames. We develop a video processing pipeline that takes retinoscopic videos as input and estimates the net refractive error based on our proposed extension of the retinoscopy mathematical model. Our system alleviates the need for a lens kit and can be performed by an untrained examiner. In a clinical trial with 185 eyes, we achieved a sensitivity of 91.0% and specificity of 74.0% on refractive error diagnosis. Moreover, the mean absolute error of our approach was 0.75+/-0.67D on net refractive error estimation compared to subjective refraction measurements. Our results indicate that our approach has the potential to be used as a retinoscopy-based refractive error screening tool in real-world medical settings.
+        </p>
+      </td>
+    </tr>
+
+    <!-- EMBC 2022 paper -->
+    <tr onmouseout="style_stop()" onmouseover="style_start()" >
+      <td width="25%">
+        <div class="one">
+        <div class="two" id = 'smartkcdl_image'><img src='./images/device_and_setup.png' style='width:160px;height:120px;'></div>
+        <img src='./images/device_and_setup.png' style='width:160px;height:120px;'>
+        </div>
+        <script type="text/javascript">
+        function style_start() {
+        document.getElementById('smartkcdl_image').style.opacity = "1";
+        }
+        function style_stop() {
+        document.getElementById('smartkcdl_image').style.opacity = "0";
+        }
+        style_stop()
+        </script>
+      </td>
+      <td valign="top" width="75%">
+	  <a href="https://">
+          <papertitle>Keratoconus Classifier for Smartphone-based Corneal Topographer<papertitle>
+	  </a>
+	  <br>
+					<strong>Siddhartha Gairola</strong>,
+					<a href="https://www.microsoft.com/en-us/research/people/nkwatra/">Nipun Kwatra</a> and 
+					<a href="https://mohitjaindr.github.io/">Mohit Jain</a> et al.<br>
+                    <em>IEEE Engineering in Medicine & Biology Society (EMBC),</em> 2022.<br>
+
+        <a href="https://arxiv.org/abs/2205.03702">arXiv</a>
+        /
+        <a href="https://arxiv.org/pdf/2205.03702.pdf">pdf</a>
+        <p></p>
+        <p>In this work, we propose a dual-head convolutional neural network (CNN) for classifying keratoconus on the heatmaps generated by <a href="https://www.microsoft.com/en-us/research/project/smartkc-a-smartphone-based-corneal-topographer/">SmartKC</a>. Since SmartKC is a new device and only had a small dataset (114 samples), we developed a 2-stage transfer learning strategy -- using historical data collected from a medical-grade topographer and a subset of SmartKC data -- to satisfactorily train our network. This, combined with our domain-specific data augmentations, achieved a sensitivity of 91.3% and a specificity of 94.2%.</p>
+      </td>
+    </tr>
+
+    </tr>
+      <!-- IMWUT 2021 paper -->
+      <tr onmouseout="style_stop()" onmouseover="style_start()" >
+      <td width="25%">
+        <div class="one">
+        <div class="two" id = 'topographer_image'><img src='./images/corneal_topographer.png' style='width:161px;height:168px;'></div>
+        <img src='./images/corneal_topographer.png' style='width:161px;height:168px;'>
+        </div>
+        <script type="text/javascript">
+        function style_start() {
+        document.getElementById('topographer_image').style.opacity = "1";
+        }
+        function style_stop() {
+        document.getElementById('topographer_image').style.opacity = "0";
+        }
+        style_stop()
+        </script>
+      </td>
+      <td valign="top" width="75%">
+	  <a href="https://">
+            <papertitle>Smartphone based Corneal Topographer</papertitle>
+	  </a>
+	  <br>
+					<strong>Siddhartha Gairola</strong>,
+					<a href="https://www.microsoft.com/en-us/research/people/nkwatra/">Nipun Kwatra</a> and 
+					<a href="https://mohitjaindr.github.io/">Mohit Jain</a> <br>
+                    <em>Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies (IMWUT), Volume 5, Issue 4, </em> 2021. <br>
+        <a href="https://github.com/microsoft/SmartKC-A-Smartphone-based-Corneal-Topographer">code</a>
+        /
+        <a href="https://www.microsoft.com/en-us/research/project/smartkc-a-smartphone-based-corneal-topographer/">project_page</a>
+        /
+        <a href="smartkc.pdf">pdf</a>
+        /
+        <a href="https://www.youtube.com/watch?v=rp4uyzf6e2Q">demo_video</a>
+        <p></p>
+        <p>SmartKC is a low-cost smartphone-based corneal topographer. It provides a low-cost solution for the mass screening of keratoconus at scale.</p>
+      </td>
+    </tr>
+    
+    <!-- EMBC 2021 paper -->
+    <tr onmouseout="style_stop()" onmouseover="style_start()" >
+      <td width="25%">
+        <div class="one">
+        <div class="two" id = 'respirenet_image'><img src='./images/respirenet.png' style='width:161px;height:108px;'></div>
+        <img src='./images/respirenet.png' style='width:161px;height:108px;'>
+        </div>
+        <script type="text/javascript">
+        function style_start() {
+        document.getElementById('respirenet_image').style.opacity = "1";
+        }
+        function style_stop() {
+        document.getElementById('respirenet_image').style.opacity = "0";
+        }
+        style_stop()
+        </script>
+      </td>
+      <td valign="top" width="75%">
+	  <a href="https://">
+            <papertitle>RespireNet: A Deep Neural Network for Accurately Detecting Abnormal Lung Sounds in Limited Data Setting</papertitle>
+	  </a>
+	  <br>
+					<strong>Siddhartha Gairola</strong>,
+					<a href="">Francis Tom</a>,
+					<a href="https://www.microsoft.com/en-us/research/people/nkwatra/">Nipun Kwatra</a> and 
+					<a href="https://mohitjaindr.github.io/">Mohit Jain</a> <br>
+                    <em>IEEE Engineering in Medicine & Biology Society (EMBC),</em> 2021.<br>
+        <a href="https://github.com/microsoft/RespireNet">code</a>
+        /
+        <a href="https://arxiv.org/abs/2011.00196">arXiv</a>
+        /
+        <a href="respirenet.pdf">pdf</a>
+        /
+        <a href="respirenet_2020.bib">bibtex</a>
+        <p></p>
+        <p>RespireNet is a simple CNN-based model, along with a suite of novel techniques—device specific fine-tuning, concatenation-based  augmentation, blank region clipping, and smart padding— enabling one to efficiently use small-sized datasets. We perform extensive evaluation on the ICBHI dataset, and improve upon the state-of-the-art results for 4-class classification by <b>2.2%<b></p>
+      </td>
+    </tr>
+    
+    <tr>
+        <td width="25%">
+        </td>
+        <td width="75%">
+            <p style="text-align:right;"><subheading>Multimodal Machine Learning: Vision and NLP</subheading></p>
+        </td>
+    </tr>
+    <br>
+
 
     <tr onmouseout="aperture_stop()" onmouseover="aperture_start()" >
       <td width="25%">
