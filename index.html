@@ -178,6 +178,46 @@
             <subheading>Computer Vision, Image Processing and Machine Learning</subheading>
         </td>
     </tr>
+
+
+    <!-- DAVE Attribution -->
+    <tr onmouseout="style_stop()" onmouseover="style_start()" >                           
+      <td width="25%">                                                                    
+        <div class="one">                                                                 
+        <div class="two" id = 'dave'><img src='./images/dave_fig.png' style='width:192px;height:84px;'></div>
+        <img src='./images/dave_fig.png' style='width:192px;height:84px;'>                    
+        </div>                                                                            
+        <script type="text/javascript">                                                   
+        function style_start() {                                                          
+        document.getElementById('dave').style.opacity = "1";                         
+        }                                                                                 
+        function style_stop() {                                                           
+        document.getElementById('dave').style.opacity = "0";                         
+        }                                                                                 
+        style_stop()                                                                      
+        </script>                                                                         
+      </td>                                                                               
+      <td valign="top" width="75%">                                                       
+      <a href="https://">                                                                 
+            <papertitle>DAVE : Distribution-aware Attribution via ViT Gradient Decomposition</papertitle>
+      </a>                                                                                
+      <br>                                                                                
+                    <a href="https://www.linkedin.com/in/adamvrobel/">Adam Wróbel</a>,                                          
+                    <strong>Siddhartha Gairola</strong>,                                  
+                    <a href="https://jacek-tabor.u.matinf.uj.edu.pl/">Jacek Tabor</a>,                                          
+                    <a href="https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/people/bernt-schiele">Bernt Schiele</a> <br>
+                    <a href="https://bartoszzielinski.github.io/">Bartosz Zieliński</a>,                                          
+                    <a href="https://dawrym.github.io/">Dawid Rymarczyk</a>,                                          
+        <em>Pre-print</em>, Feb. 2026<br>
+        <a href="https://arxiv.org/abs/2602.06613">arxiv</a>                                               
+        /
+        <a href="https://github.com/a-vrobell/DAVE">code</a>
+        /                                                                                 
+        <a href="">bibtex</a>                                               
+        <p></p>                                                                           
+        <p>DAVE is a distribution-aware attribution method for Vision Transformers that produces stable, high-resolution pixel-level explanations while reducing patch/grid artifacts common in ViT saliency maps. It decomposes ViT input gradients to suppress operator-variation noise and enforces local equivariance via averaging over small transforms and perturbations, improving localization and faithfulness across multiple ViT backbones.</p>
+      </td>                                                                               
+    </tr>
     <!-- How To Probe, ICLR 2025 -->                                                        
                                                                                           
     <tr onmouseout="style_stop()" onmouseover="style_start()" >                           
