@@ -462,6 +462,9 @@ section {
 }
 
 .education-entry {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--border);
 }
@@ -469,6 +472,14 @@ section {
 .education-entry:last-child {
   border-bottom: none;
   padding-bottom: 0;
+}
+
+.education-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: 6px;
 }
 
 .education-entry .institution {
