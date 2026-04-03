@@ -15,6 +15,24 @@
   --max-width: 900px;
 }
 
+/* ===== Dark Mode ===== */
+[data-theme="dark"] {
+  --bg-primary: #1A1A1A;
+  --bg-card: #242424;
+  --text-primary: #E0DDD5;
+  --text-secondary: #9A9590;
+  --text-heading: #F0ECE4;
+  --accent: #E07A52;
+  --accent-hover: #F09070;
+  --accent-sub: #C4A36F;
+  --border: #3A3530;
+  --highlight: #2A2520;
+}
+
+[data-theme="dark"] img {
+  opacity: 0.9;
+}
+
 /* ===== Reset & Base ===== */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -34,6 +52,7 @@ body {
   color: var(--text-primary);
   background-color: var(--bg-primary);
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ===== Typography ===== */
@@ -119,6 +138,7 @@ section {
   background-color: var(--bg-primary);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(10px);
+  transition: background-color 0.3s ease;
 }
 
 .nav-inner {
@@ -147,6 +167,7 @@ section {
   display: flex;
   flex-wrap: wrap;
   gap: 1.25rem;
+  align-items: center;
 }
 
 .nav-links a {
@@ -160,10 +181,27 @@ section {
   color: var(--accent);
 }
 
+/* Dark mode toggle */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--text-secondary);
+  transition: border-color 0.15s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+}
+
 /* ===== Hero / Banner ===== */
 .hero {
   text-align: center;
-  padding: 2.5rem 0 1.5rem;
+  padding: 1.5rem 0 1rem;
 }
 
 .hero h1 {
@@ -171,11 +209,13 @@ section {
 }
 
 .hero-banner {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 
 .hero-banner img {
   width: 100%;
+  max-height: 300px;
+  object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
@@ -215,6 +255,63 @@ section {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
+/* ===== News Section ===== */
+.news-container {
+  max-height: 200px;
+  overflow-y: auto;
+  position: relative;
+  padding-right: 0.5rem;
+}
+
+.news-container::-webkit-scrollbar {
+  width: 5px;
+}
+
+.news-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.news-container::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+.news-container::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-sub);
+}
+
+.news-list {
+  list-style: none;
+  padding: 0;
+}
+
+.news-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.92rem;
+}
+
+.news-item:last-child {
+  border-bottom: none;
+}
+
+.news-date {
+  display: inline-block;
+  background-color: var(--accent);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+[data-theme="dark"] .news-date {
+  background-color: var(--accent-sub);
+  color: #1A1A1A;
+}
+
 /* ===== Publications ===== */
 .pub-entry {
   display: flex;
@@ -225,6 +322,30 @@ section {
 
 .pub-entry:last-child {
   border-bottom: none;
+}
+
+/* Featured paper highlight */
+.pub-entry.featured {
+  background-color: var(--bg-card);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 1.25rem 1rem;
+  margin: 0.5rem 0;
+  position: relative;
+}
+
+.pub-entry.featured .featured-badge {
+  display: inline-block;
+  background-color: var(--accent);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-left: 0.5rem;
+  vertical-align: middle;
 }
 
 .pub-image {
@@ -333,6 +454,20 @@ section {
   color: var(--text-secondary);
   font-size: 0.9rem;
   font-style: italic;
+}
+
+/* ===== Academic Service ===== */
+.service-content p {
+  margin-bottom: 0.5rem;
+}
+
+.service-content strong {
+  color: var(--text-heading);
+}
+
+.service-venues {
+  color: var(--text-primary);
+  line-height: 1.7;
 }
 
 /* ===== Talks ===== */
@@ -503,6 +638,38 @@ section {
   color: var(--text-secondary);
 }
 
+/* ===== Scroll to Top ===== */
+.scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.15s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  z-index: 50;
+}
+
+.scroll-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-top:hover {
+  background-color: var(--accent-hover);
+}
+
 /* ===== Secondary Pages ===== */
 .page-header {
   padding: 2rem 0 1rem;
@@ -659,6 +826,19 @@ section {
   .education-content {
     flex-direction: column;
     align-items: center;
+  }
+
+  .education-entry {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .scroll-top {
+    bottom: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
   }
 }
 

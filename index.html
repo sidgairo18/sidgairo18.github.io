@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Siddhartha Gairola</title>
 
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❄️</text></svg>">
+
+  <!-- SEO & Social -->
+  <meta name="description" content="Siddhartha Gairola — ELLIS PhD Student at MPI for Informatics. Research in Computer Vision, Explainable AI, and Object-Centric Representations.">
+  <meta property="og:title" content="Siddhartha Gairola">
+  <meta property="og:description" content="ELLIS PhD Student at MPI for Informatics. Research in Computer Vision, XAI, and Object-Centric Representations.">
+  <meta property="og:image" content="https://sidgairo18.github.io/images/sid_beard_profile_paris.jpg">
+  <meta property="og:url" content="https://sidgairo18.github.io">
+  <meta name="twitter:card" content="summary">
+
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120374008-1"></script>
   <script>
@@ -35,6 +46,7 @@
       <a href="#useful-resources">Resources</a>
       <a href="https://twitter.com/sidgairo18">Twitter</a>
       <a href="./personal.html">Personal</a>
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">🌙</button>
     </div>
   </div>
 </nav>
@@ -64,6 +76,22 @@
     </div>
   </section>
 
+  <!-- News -->
+  <section class="news" id="news">
+    <h2 class="section-heading">News</h2>
+    <div class="news-container">
+      <ul class="news-list">
+        <li class="news-item"><span class="news-date">Feb 2026</span> DAVE pre-print on distribution-aware attribution for ViTs released on <a href="https://arxiv.org/abs/2602.06613">arXiv</a>.</li>
+        <li class="news-item"><span class="news-date">Jan 2025</span> <a href="https://openreview.net/forum?id=57NfyYxh5f">"How to Probe"</a> accepted at <strong>ICLR 2025</strong>.</li>
+        <li class="news-item"><span class="news-date">2025</span> SmartKC++ accepted at <strong>WACV 2025</strong>.</li>
+        <li class="news-item"><span class="news-date">Oct 2024</span> Invited talk at <a href="https://gmum.net/">GMUM Workshop, Jagiellonian University</a> on XAI in Visual Models.</li>
+        <li class="news-item"><span class="news-date">Sept 2022</span> Started PhD at Max Planck Institute for Informatics as part of the <a href="https://ellis.eu/phd-postdoc">ELLIS PhD program</a>.</li>
+        <li class="news-item"><span class="news-date">2022</span> Auto-retinoscopy and keratoconus classifier papers published at <strong>IMWUT</strong> and <strong>EMBC</strong>.</li>
+        <li class="news-item"><span class="news-date">2021</span> SmartKC published at <strong>IMWUT</strong>; RespireNet at <strong>EMBC 2021</strong>.</li>
+      </ul>
+    </div>
+  </section>
+
   <!-- Research -->
   <section class="research" id="research">
     <h2 class="section-heading">Research</h2>
@@ -72,20 +100,19 @@
       <li><em>Interpretability and Robustness of Deep Neural Networks</em></li>
       <li><em>Learning Powerful (unsupervised) Object-Centric Representations</em></li>
     </ol>
-    <p><strong>Published Research:</strong> My prior research has involved using machine learning, image processing, and optical physics to tackle key challenges in computer vision and healthcare, including (1) image compositing, (2) self-supervised representation learning, (3) few-shot image segmentation, (4) explainable AI (xAI) (5) anomaly detection, and (6) AI-based medical diagnosis. These have resulted in publications at top conferences like <strong>ICLR, IJCAI, WACV, SIGIR, EMBC, IMWUT/Ubicomp</strong> and <strong>MMM</strong>.</p>
     <p>When not working on my research, I like to play the piano and guitar, listen to music, read non-fiction, drive motorcycles, and go for a run or hike. I also am really fascinated by paradoxes, can find some <a href="https://en.wikipedia.org/wiki/List_of_paradoxes">here.</a> (<em>I wish I had Hermione's <a href="https://harrypotter.fandom.com/wiki/Time-Turner">Time-Turner</a> to do much more in a day as much as I'd like to.</em>) (see more at <a href="./personal.html">Personal</a>)</p>
 
     <!-- Computer Vision, Image Processing and ML -->
     <h3 class="pub-category">Computer Vision, Image Processing and Machine Learning</h3>
 
-    <!-- DAVE -->
-    <article class="pub-entry">
+    <!-- DAVE (Featured) -->
+    <article class="pub-entry featured">
       <div class="pub-image">
         <img src="./images/dave_fig.png" alt="DAVE figure">
         <img class="pub-img-hover" src="./images/dave_fig.png" alt="DAVE figure hover">
       </div>
       <div class="pub-details">
-        <a href="https://"><h4 class="paper-title">DAVE : Distribution-aware Attribution via ViT Gradient Decomposition</h4></a>
+        <a href="https://"><h4 class="paper-title">DAVE : Distribution-aware Attribution via ViT Gradient Decomposition</h4></a><span class="featured-badge">New</span>
         <p class="paper-authors">
           <a href="https://www.linkedin.com/in/adamvrobel/">Adam Wr&oacute;bel</a>,
           <strong>Siddhartha Gairola</strong>,
@@ -101,18 +128,18 @@
           <a href="assets/presentations/dave_ppt.pdf">presentation</a> /
           <a href="">bibtex</a>
         </p>
-        <p class="paper-abstract">DAVE is a distribution-aware attribution method for Vision Transformers that produces stable, high-resolution pixel-level explanations while reducing patch/grid artifacts common in ViT saliency maps. It decomposes ViT input gradients to suppress operator-variation noise and enforces local equivariance via averaging over small transforms and perturbations, improving localization and faithfulness across multiple ViT backbones.</p>
+        <p class="paper-abstract">DAVE is a distribution-aware attribution method for Vision Transformers that produces stable, high-resolution pixel-level explanations while reducing patch/grid artifacts common in ViT saliency maps.</p>
       </div>
     </article>
 
-    <!-- How To Probe -->
-    <article class="pub-entry">
+    <!-- How To Probe (Featured) -->
+    <article class="pub-entry featured">
       <div class="pub-image">
         <img src="./images/how_to_probe.png" alt="How to Probe figure">
         <img class="pub-img-hover" src="./images/how_to_probe.png" alt="How to Probe figure hover">
       </div>
       <div class="pub-details">
-        <a href="https://"><h4 class="paper-title">How to Probe: Simple Yet Effective Techniques for Improving Post-hoc Explanations</h4></a>
+        <a href="https://"><h4 class="paper-title">How to Probe: Simple Yet Effective Techniques for Improving Post-hoc Explanations</h4></a><span class="featured-badge">ICLR</span>
         <p class="paper-authors">
           <strong>Siddhartha Gairola</strong>,
           <a href="https://moboehle.github.io/">Moritz Boehle</a>,
@@ -126,7 +153,7 @@
           <a href="https://github.com/sidgairo18/how-to-probe">code</a> /
           <a href="">bibtex</a>
         </p>
-        <p class="paper-abstract">Post-hoc importance attribution methods are a popular tool for "explaining" Deep Neural Networks (DNNs) and are inherently based on the assumption that the explanations can be applied independently of how the models were trained. Contrarily, in this work we bring forward empirical evidence that challenges this very notion. Surprisingly, we discover a strong dependency on and demonstrate that the training details of a pre-trained model's classification layer (&lt;10% of model parameters) play a crucial role, much more than the pre-training scheme itself. With this finding we also present simple yet effective adjustments to the classification layers, that can significantly enhance the quality of model explanations.</p>
+        <p class="paper-abstract">We show that training details of a pre-trained model's classification layer (&lt;10% of parameters) play a crucial role in post-hoc explanations, and present simple adjustments that significantly enhance explanation quality across multiple visual pre-training frameworks.</p>
       </div>
     </article>
 
@@ -251,7 +278,7 @@
           <a href="https://www.microsoft.com/en-us/research/project/auto-retinoscopy-automating-retinoscopy-for-refractive-error-diagnosis/">project_page</a> /
           <a href="https://arxiv.org/pdf/2208.05552.pdf">pdf</a>
         </p>
-        <p class="paper-abstract">In this work, we automate retinoscopy by attaching a smartphone to a retinoscope and recording retinoscopic videos with the patient wearing a custom pair of paper frames. We develop a video processing pipeline that takes retinoscopic videos as input and estimates the net refractive error based on our proposed extension of the retinoscopy mathematical model. Our system alleviates the need for a lens kit and can be performed by an untrained examiner.</p>
+        <p class="paper-abstract">We automate retinoscopy using a smartphone attached to a retinoscope, achieving 91.0% sensitivity and 0.75D mean error for refractive error screening.</p>
       </div>
     </article>
 
@@ -273,7 +300,7 @@
           <a href="https://arxiv.org/abs/2205.03702">arXiv</a> /
           <a href="https://arxiv.org/pdf/2205.03702.pdf">pdf</a>
         </p>
-        <p class="paper-abstract">In this work, we propose a dual-head convolutional neural network (CNN) for classifying keratoconus on the heatmaps generated by <a href="https://www.microsoft.com/en-us/research/project/smartkc-a-smartphone-based-corneal-topographer/">SmartKC</a>. Since SmartKC is a new device and only had a small dataset (114 samples), we developed a 2-stage transfer learning strategy to satisfactorily train our network, achieving a sensitivity of 91.3% and a specificity of 94.2%.</p>
+        <p class="paper-abstract">A dual-head CNN for classifying keratoconus on SmartKC heatmaps, achieving 91.3% sensitivity and 94.2% specificity using a 2-stage transfer learning strategy.</p>
       </div>
     </article>
 
@@ -322,7 +349,7 @@
           <a href="assets/papers/respirenet.pdf">pdf</a> /
           <a href="assets/bib/respirenet_2020.bib">bibtex</a>
         </p>
-        <p class="paper-abstract">RespireNet is a simple CNN-based model, along with a suite of novel techniques&mdash;device specific fine-tuning, concatenation-based augmentation, blank region clipping, and smart padding&mdash;enabling one to efficiently use small-sized datasets. We perform extensive evaluation on the ICBHI dataset, and improve upon the state-of-the-art results for 4-class classification by <strong>2.2%</strong>.</p>
+        <p class="paper-abstract">RespireNet is a CNN-based model with novel techniques&mdash;device specific fine-tuning, concatenation-based augmentation, blank region clipping, and smart padding. We improve upon the state-of-the-art on ICBHI dataset by <strong>2.2%</strong>.</p>
       </div>
     </article>
 
@@ -410,6 +437,45 @@
     </div>
   </section>
 
+  <!-- Education -->
+  <section class="education" id="education">
+    <h2 class="section-heading">Education</h2>
+    <div class="education-list">
+        <div class="education-entry">
+          <img src="images/mpi_logo.svg" alt="Max Planck Institute for Informatics" class="education-logo">
+          <div>
+            <a href="https://www.mpi-inf.mpg.de/home" class="institution">Max Planck Institute for Informatics &amp; Saarland University</a><br>
+            <span class="degree">Ph.D. Student, Computer Science (Sept. 2022 - present)</span>
+          </div>
+        </div>
+        <div class="education-entry">
+          <img src="images/iiit.png" alt="IIIT Hyderabad" class="education-logo">
+          <div>
+            <a href="https://www.iiit.ac.in/" class="institution">International Institute of Information Technology - Hyderabad</a><br>
+            <span class="degree">Master of Science (MS) by Research, Computer Science (2018-2020)</span><br>
+            <span class="degree">Bachelor of Technology (BTech) with Honours, Computer Science (2014-2018)</span>
+          </div>
+        </div>
+        <div class="education-entry">
+          <img src="images/Education.png" alt="St. Joseph's Academy" class="education-logo">
+          <div>
+            <a href="https://stjosephacademy.in/" class="institution">St. Joseph's Academy, Dehradun</a><br>
+            <span class="degree">Senior Secondary, ISC (2012-2013)</span><br>
+            <span class="degree">Secondary, ICSE (2010-2011)</span>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- Academic Service -->
+  <section class="service" id="service">
+    <h2 class="section-heading">Academic Service</h2>
+    <div class="service-content">
+      <p><strong>Organizer:</strong> Computer Vision for Developing Countries Workshop at <a href="https://accv2024.org/">ACCV 2024</a>, <a href="https://iccv2025.thecvf.com/">ICCV 2025</a></p>
+      <p><strong>Reviewer:</strong> <span class="service-venues">ICML 2023-25; NeurIPS 2022-23, 2025; ICLR 2022-24; CVPR 2024-26; ECCV 2024; ICCV 2025; IHCI 2021</span></p>
+    </div>
+  </section>
+
   <!-- Talks -->
   <section class="talks">
     <h2 class="section-heading">Talks and Presentations</h2>
@@ -433,6 +499,36 @@
         <span class="talk-title">Unsupervised Image Style Embeddings for Retrieval and Recognition Tasks</span><br>
         <span class="talk-venue">IEEE WACV 2020</span>
         <div class="talk-links"><a href="https://www.youtube.com/watch?v=EbUOg1gVcFw&t=909s">video</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaching -->
+  <section class="teaching">
+    <h2 class="section-heading">Teaching Experience</h2>
+    <div class="teaching-list">
+      <div class="teaching-item">
+        <img src="images/saarland_logo.jpeg" alt="Saarland University">
+        <div class="teaching-details">
+          <p>Worked as a Teaching Assistant at <a href="https://www.uni-saarland.de/en/home.html">Saarland University</a> for the courses listed below. The duties involved setting up questions for assignments, examinations and paper corrections.</p>
+          <ul class="course-list">
+            <li>1. Elements of Data Science and Artificial Intelligence (Winter 2023, 2024)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="teaching-item">
+        <img src="images/iiit.png" alt="IIIT Hyderabad">
+        <div class="teaching-details">
+          <p>Worked as a Teaching Assistant at <a href="https://iiit.ac.in/">IIIT Hyderabad</a> for the courses listed below. The duties involved taking regular tutorials, paper corrections, setting up questions for assignments and conducting evaluations.</p>
+          <ul class="course-list">
+            <li>1. Digital Logic and Processors (Monsoon 2016)</li>
+            <li>2. Artificial Intelligence (Spring 2017)</li>
+            <li>3. Digital Image Processing (Monsoon 2017)</li>
+            <li>4. Computer Vision (Spring 2018)</li>
+            <li>5. Digital Image Processing (Monsoon 2018)</li>
+            <li>6. Computer Graphics (Spring 2019)</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -469,90 +565,53 @@
     </div>
   </section>
 
-  <!-- Teaching -->
-  <section class="teaching">
-    <h2 class="section-heading">Teaching Experience</h2>
-    <div class="teaching-list">
-      <div class="teaching-item">
-        <img src="images/saarland_logo.jpeg" alt="Saarland University">
-        <div class="teaching-details">
-          <p>Worked as a Teaching Assistant at <a href="https://www.uni-saarland.de/en/home.html">Saarland University</a> for the courses listed below. The duties involved setting up questions for assignments, examinations and paper corrections.</p>
-          <ul class="course-list">
-            <li>1. Elements of Data Science and Artificial Intelligence (Winter 2023, 2024)</li>
-          </ul>
-        </div>
-      </div>
-      <div class="teaching-item">
-        <img src="images/iiit.png" alt="IIIT Hyderabad">
-        <div class="teaching-details">
-          <p>Worked as a Teaching Assistant at <a href="https://iiit.ac.in/">IIIT Hyderabad</a> for the courses listed below. The duties involved taking regular tutorials, paper corrections, setting up questions for assignments and conducting evaluations.</p>
-          <ul class="course-list">
-            <li>1. Digital Logic and Processors (Monsoon 2016)</li>
-            <li>2. Artificial Intelligence (Spring 2017)</li>
-            <li>3. Digital Image Processing (Monsoon 2017)</li>
-            <li>4. Computer Vision (Spring 2018)</li>
-            <li>5. Digital Image Processing (Monsoon 2018)</li>
-            <li>6. Computer Graphics (Spring 2019)</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Education -->
-  <section class="education" id="education">
-    <h2 class="section-heading">Education</h2>
-    <div class="education-list">
-        <div class="education-entry">
-          <img src="images/mpi_logo.svg" alt="Max Planck Institute for Informatics" class="education-logo">
-          <div>
-            <a href="https://www.mpi-inf.mpg.de/home" class="institution">Max Planck Institute for Informatics &amp; Saarland University</a><br>
-            <span class="degree">Ph.D. Student, Computer Science (Sept. 2022 - present)</span>
-          </div>
-        </div>
-        <div class="education-entry">
-          <img src="images/iiit.png" alt="IIIT Hyderabad" class="education-logo">
-          <div>
-            <a href="https://www.iiit.ac.in/" class="institution">International Institute of Information Technology - Hyderabad</a><br>
-            <span class="degree">Master of Science (MS) by Research, Computer Science (2018-2020)</span>
-          </div>
-        </div>
-        <div class="education-entry">
-          <img src="images/iiit.png" alt="IIIT Hyderabad" class="education-logo">
-          <div>
-            <a href="https://www.iiit.ac.in/" class="institution">International Institute of Information Technology - Hyderabad</a><br>
-            <span class="degree">Bachelor of Technology (BTech) with Honours, Computer Science (2014-2018)</span>
-          </div>
-        </div>
-        <div class="education-entry">
-          <img src="images/Education.png" alt="St. Joseph's Academy" class="education-logo">
-          <div>
-            <a href="https://stjosephacademy.in/" class="institution">St. Joseph's Academy, Dehradun</a><br>
-            <span class="degree">Senior Secondary, ISC (2012-2013)</span>
-          </div>
-        </div>
-        <div class="education-entry">
-          <img src="images/Education.png" alt="St. Joseph's Academy" class="education-logo">
-          <div>
-            <a href="https://stjosephacademy.in/" class="institution">St. Joseph's Academy, Dehradun</a><br>
-            <span class="degree">Secondary, ICSE (2010-2011)</span>
-          </div>
-        </div>
-    </div>
-  </section>
-
 </main>
 
 <footer class="site-footer">
 </footer>
 
-<!-- Hover effect script -->
+<!-- Scroll to Top Button -->
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8593;</button>
+
+<!-- Scripts -->
 <script>
+// Hover effect for publications
 document.querySelectorAll('.pub-entry').forEach(function(entry) {
   var hover = entry.querySelector('.pub-img-hover');
   if (!hover) return;
   entry.addEventListener('mouseenter', function() { hover.style.opacity = '1'; });
   entry.addEventListener('mouseleave', function() { hover.style.opacity = '0'; });
+});
+
+// Dark mode toggle
+function toggleTheme() {
+  var html = document.documentElement;
+  var current = html.getAttribute('data-theme');
+  var next = current === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  document.querySelector('.theme-toggle').textContent = next === 'dark' ? '☀️' : '🌙';
+}
+
+// Load saved theme
+(function() {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelector('.theme-toggle').textContent = '☀️';
+    });
+  }
+})();
+
+// Scroll to top button visibility
+window.addEventListener('scroll', function() {
+  var btn = document.querySelector('.scroll-top');
+  if (window.scrollY > 300) {
+    btn.classList.add('visible');
+  } else {
+    btn.classList.remove('visible');
+  }
 });
 </script>
 
