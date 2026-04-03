@@ -33,23 +33,7 @@
 
   <!-- Theme (load early to avoid flash) -->
   <script>
-    (function() {
-      if (localStorage.getItem('theme') === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-      }
-    })();
-    function toggleTheme() {
-      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      if (isDark) {
-        document.documentElement.removeAttribute('data-theme');
-        localStorage.setItem('theme', 'light');
-        document.querySelector('.theme-toggle').textContent = '\u{1F319}';
-      } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        document.querySelector('.theme-toggle').textContent = '\u{2600}\u{FE0F}';
-      }
-    }
+    try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch(e) {}
   </script>
 </head>
 <body>
@@ -67,7 +51,7 @@
       <a href="#useful-resources">Resources</a>
       <a href="https://twitter.com/sidgairo18">Twitter</a>
       <a href="./personal.html">Personal</a>
-      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">🌙</button>
+      <button class="theme-toggle" type="button" id="theme-btn" title="Toggle dark mode">🌙</button>
     </div>
   </div>
 </nav>
@@ -604,10 +588,30 @@ document.querySelectorAll('.pub-entry').forEach(function(entry) {
   entry.addEventListener('mouseleave', function() { hover.style.opacity = '0'; });
 });
 
-// Update toggle button icon if dark mode is active
-if (document.documentElement.getAttribute('data-theme') === 'dark') {
-  document.querySelector('.theme-toggle').textContent = '\u{2600}\u{FE0F}';
-}
+// Dark mode toggle
+(function() {
+  var btn = document.getElementById('theme-btn');
+  if (!btn) return;
+
+  function updateIcon() {
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    btn.textContent = isDark ? '\u2600\uFE0F' : '\uD83C\uDF19';
+  }
+
+  updateIcon();
+
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      document.documentElement.removeAttribute('data-theme');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+    try { localStorage.setItem('theme', isDark ? 'light' : 'dark'); } catch(e) {}
+    updateIcon();
+  });
+})();
 
 // Scroll to top button visibility
 window.addEventListener('scroll', function() {
