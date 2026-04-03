@@ -30,6 +30,27 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Theme (load early to avoid flash) -->
+  <script>
+    (function() {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+    function toggleTheme() {
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        document.querySelector('.theme-toggle').textContent = '\u{1F319}';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        document.querySelector('.theme-toggle').textContent = '\u{2600}\u{FE0F}';
+      }
+    }
+  </script>
 </head>
 <body>
 
@@ -583,26 +604,10 @@ document.querySelectorAll('.pub-entry').forEach(function(entry) {
   entry.addEventListener('mouseleave', function() { hover.style.opacity = '0'; });
 });
 
-// Dark mode toggle
-function toggleTheme() {
-  var html = document.documentElement;
-  var current = html.getAttribute('data-theme');
-  var next = current === 'dark' ? 'light' : 'dark';
-  html.setAttribute('data-theme', next);
-  localStorage.setItem('theme', next);
-  document.querySelector('.theme-toggle').textContent = next === 'dark' ? '☀️' : '🌙';
+// Update toggle button icon if dark mode is active
+if (document.documentElement.getAttribute('data-theme') === 'dark') {
+  document.querySelector('.theme-toggle').textContent = '\u{2600}\u{FE0F}';
 }
-
-// Load saved theme
-(function() {
-  var saved = localStorage.getItem('theme');
-  if (saved === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelector('.theme-toggle').textContent = '☀️';
-    });
-  }
-})();
 
 // Scroll to top button visibility
 window.addEventListener('scroll', function() {
