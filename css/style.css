@@ -341,7 +341,7 @@ section {
   position: relative;
 }
 
-.pub-entry.featured .featured-badge {
+.featured-badge {
   display: inline-block;
   background-color: var(--accent);
   color: #fff;
