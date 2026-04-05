@@ -4,8 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Grad School Resources</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❄️</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch(e) {}
+  </script>
 </head>
 <body>
 
@@ -16,6 +20,7 @@
       <a href="./index.html">Home</a>
       <a href="./index.html#research">Research</a>
       <a href="./index.html#useful-resources">Resources</a>
+      <button class="theme-toggle" type="button" id="theme-btn" title="Toggle dark mode">🌙</button>
     </div>
   </div>
 </nav>
@@ -105,6 +110,42 @@
     <p><em>Note: Please understand that these materials are written based on my personal experience and may / may not be applicable to everyone. So try to take these with a grain of salt (as most things in life 😉).</em></p>
   </section>
 </main>
+
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8593;</button>
+
+<script>
+// Dark mode toggle
+(function() {
+  var btn = document.getElementById('theme-btn');
+  if (!btn) return;
+  function updateIcon() {
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    btn.textContent = isDark ? '\u2600\uFE0F' : '\uD83C\uDF19';
+  }
+  updateIcon();
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      document.documentElement.removeAttribute('data-theme');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+    try { localStorage.setItem('theme', isDark ? 'light' : 'dark'); } catch(e) {}
+    updateIcon();
+  });
+})();
+
+// Scroll to top
+window.addEventListener('scroll', function() {
+  var btn = document.querySelector('.scroll-top');
+  if (window.scrollY > 300) {
+    btn.classList.add('visible');
+  } else {
+    btn.classList.remove('visible');
+  }
+});
+</script>
 
 </body>
 </html>
