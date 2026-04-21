@@ -465,7 +465,12 @@ section {
 
 /* ===== Academic Service ===== */
 .service-content p {
-  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.service-content p:first-child {
+  margin-top: 0;
 }
 
 .service-content strong {
@@ -475,6 +480,18 @@ section {
 .service-venues {
   color: var(--text-primary);
   line-height: 1.7;
+}
+
+.service-list {
+  list-style: disc;
+  margin: 0 0 0.5rem 1.75rem;
+  padding: 0;
+  color: var(--text-primary);
+  line-height: 1.7;
+}
+
+.service-list li {
+  margin-bottom: 0.15rem;
 }
 
 /* ===== Talks ===== */
