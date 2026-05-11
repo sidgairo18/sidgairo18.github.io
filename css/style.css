@@ -371,30 +371,32 @@ section {
   vertical-align: middle;
 }
 
+.spotlight-badge--news {
+  font-size: 0.65rem;
+  margin-left: 0;
+  margin-right: 0.45rem;
+}
+
 .spotlight-icon {
-  width: 0.8rem;
-  height: 0.8rem;
+  width: 0.78rem;
+  height: 0.95rem;
   display: inline-block;
   position: relative;
   flex: 0 0 auto;
-}
-
-.spotlight-icon::before,
-.spotlight-icon::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 2px;
   background: #fff;
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+  transform: rotate(-8deg);
 }
 
 .spotlight-icon::before {
-  transform: rotate(45deg) scale(0.8);
-}
-
-.spotlight-icon::after {
-  transform: rotate(45deg) scale(0.45);
-  opacity: 0.8;
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 28%;
+  background: rgba(255, 255, 255, 0.72);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
 .pub-image {
