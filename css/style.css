@@ -355,6 +355,11 @@ section {
   vertical-align: middle;
 }
 
+.news-tag-badge {
+  margin-left: 0;
+  margin-right: 0.45rem;
+}
+
 .spotlight-badge {
   display: inline-flex;
   align-items: center;
