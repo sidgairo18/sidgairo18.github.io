@@ -10,8 +10,8 @@
   --accent-sub: #8B6F47;
   --border: #D5CFC4;
   --highlight: #FFF8E7;
-  --font-heading: 'Playfair Display', Georgia, serif;
-  --font-body: 'Inter', 'Lato', Helvetica, sans-serif;
+  --font-heading: "Times New Roman", Times, serif;
+  --font-body: "Times New Roman", Times, serif;
   --max-width: 900px;
 }
 
@@ -53,6 +53,13 @@ body {
   background-color: var(--bg-primary);
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
 }
 
 /* ===== Typography ===== */
