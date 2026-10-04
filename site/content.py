@@ -195,7 +195,7 @@ VOLUNTEERING = [("ICVGIP 2018", "https://cvit.iiit.ac.in/icvgip18/index.php", "s
 # ---------------------------------------------------------------------------
 RESOURCES = [
     ("pen", "Guides I maintain", [
-        ("How to Do Research", "notes_and_resources_on_how_to_do_research.html", "notes and resources for young researchers; the most visited"),
+        ("How to Do Research", "notes_and_resources_on_how_to_do_research.html", "notes and resources for young researchers"),
         ("Writing Academic Papers", "how_to_write_academic_papers.html", "structure, clarity and process"),
         ("Reviewing Scientific Papers", "how_to_review_scientific_papers.html", "how to review well and fairly"),
         ("PhD Applications", "grad_school_resources.html", "writings, resources and FAQs on applying to grad school"),

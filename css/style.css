@@ -259,6 +259,19 @@ h2 a:hover{color:var(--fg)}
 .prose .qa .a a{color:var(--fg)}
 @media (max-width:640px){.prose .sops li{grid-template-columns:1fr auto}.prose .sops .who{grid-column:1/-1}}
 
+.prose .tocblock h3{margin-top:0}
+.prose .links li{margin-bottom:6px}
+.prose .links a[href^="http"]::after{content:" ↗";color:var(--mute);font-size:11px}
+.prose .checklist{list-style:none;margin-left:0}
+.prose .checklist li{position:relative;padding-left:26px;margin-bottom:7px}
+.prose .checklist li::before{content:"✓";position:absolute;left:4px;top:0;color:var(--accent);font-weight:700}
+.prose .numbered li{margin-bottom:8px}
+.prose .quotes{list-style:none;margin:0 0 14px}
+.prose .quotes li{padding:8px 0 8px 14px;border-left:2px solid var(--accent-soft);margin-bottom:8px}
+.prose .quotes .by{color:var(--mute);font-size:13.5px;white-space:nowrap}
+.prose .places{columns:2;column-gap:28px;margin-left:1.4em}
+.prose .places li{break-inside:avoid}
+@media (max-width:640px){.prose .places{columns:1}}
 /* project page (style.html) */
 .project-hero{text-align:center;padding:0 0 10px}
 .project-hero h1{margin:0 0 10px}
