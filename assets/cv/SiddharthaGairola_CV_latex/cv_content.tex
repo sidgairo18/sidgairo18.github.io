@@ -1,0 +1,180 @@
+% ======================================================================
+%  cv_content.tex  --  shared CV content, style-agnostic.
+%  Each variant_*.tex defines the macros below and then \input{}s this file.
+%
+%  Macros expected from the style file:
+%    \cvheader                                     name + contact block
+%    \begin{cvsection}{Title} ... \end{cvsection}
+%    \cventry{Org}{Location}{Role}{Dates}{Body}     org line + role line + body
+%    \cvsubentry{Role}{Dates}{Body}                 extra role under same org
+%    \begin{cvbullets} \item ... \end{cvbullets}
+%    \cvpublications                               prints publications.bib (see cv_bib.tex)
+%    \cvproject{Title}{Dates}{Body}
+%    \cvline{Label}{Text}                           labelled one-liner
+%    \begin{cvreviews} \cvreview{Venue}{y1,y2,..}{gold years} ... \cvreviewlegend{Text} \end{cvreviews}
+%    \cvtalk{Text}                                  plain bullet
+%    \cvaward{trophy|medal|award|cap}{Title}{Detail}{Year}
+%    \cvteach{Institution}{Courses}                 teaching row with icon
+%    \begin{cvskills} \cvskill{Label}{Text} ... \end{cvskills}
+%    \cvnote{Text}                                  small right-aligned note
+% ======================================================================
+
+\cvheader
+
+% ---------------------------------------------------------------- Education
+\begin{cvsection}{Education}
+
+\cventry{MPI for Informatics \& Saarland University}{Saarbrücken, Germany}
+        {Ph.D. Student, Computer Science}{Oct 2022 -- present}{%
+  \begin{cvbullets}
+    \item Advisors: Prof. Bernt Schiele, Prof. Francesco Locatello
+  \end{cvbullets}}
+
+\cventry{Institute of Science and Technology Austria (ISTA)}{Klosterneuburg, Austria}
+        {Visiting Researcher, Causal Learning and Artificial Intelligence Lab}{Aug 2024 -- Feb 2025}{}
+
+\cventry{International Institute of Information Technology, Hyderabad}{Hyderabad, India}
+        {MS by Research in CSE}{2018 -- 2020}{%
+  \begin{cvbullets}
+    \item Advisor: Prof. P. J. Narayanan
+    \item Thesis: \textit{\href{https://web2py.iiit.ac.in/research_centres/publications/view_publication/mastersthesis/828}{Image Representations for Style Retrieval, Recognition and Background Replacement Tasks}}
+    \item CGPA: \textbf{9.75/10}
+  \end{cvbullets}}
+
+\cvsubentry{BTech with Honours in CSE}{2014 -- 2018}{%
+  \begin{cvbullets}
+    \item CGPA: \textbf{8.91/10}
+  \end{cvbullets}}
+
+\end{cvsection}
+
+% ---------------------------------------------------------- Work Experience
+\begin{cvsection}{Work Experience}
+
+\cventry{Microsoft Research, India}{Bengaluru, India}{Research Fellow}{Aug 2020 -- Aug 2022}{%
+  \begin{cvbullets}
+    \item Advisors: Dr. Mohit Jain, Dr. Nipun Kwatra
+    \item Developed a low-cost smartphone-based corneal topographer for keratoconus detection in collaboration with Sankara Eye Hospital. Published at ACM IMWUT/Ubicomp 2021.
+    \item Worked on training DNN models for abnormality detection in limited data settings. Published at EMBC 2021.
+  \end{cvbullets}}
+
+\cvsubentry{Research Intern}{Jan 2020 -- Jul 2020}{%
+  \begin{cvbullets}
+    \item Advisors: Dr. Mohit Jain, Dr. Nipun Kwatra
+    \item Worked on building smartphone based diagnostic solutions for eye diseases using mobile computing, computer vision and machine learning.
+  \end{cvbullets}}
+
+\cventry{Adobe Systems, India}{Noida, India}{Product Intern, Media and Data Science Research Lab}{Jun 2019 -- Jan 2020}{%
+  \begin{cvbullets}
+    \item Advisors: Balaji K., Mayur Hemani
+    \item Worked on Guided Few-shot Image Segmentation, improved on the prior state-of-the-art by 6\%.
+    \item Published at IJCAI 2020 and filed a patent.
+  \end{cvbullets}}
+
+\cventry{IIIT Hyderabad}{Hyderabad, India}{Research Assistant, Center for Visual Information Technology (CVIT)}{May 2016 -- May 2019}{%
+  \begin{cvbullets}
+    \item Advisor: Prof. P. J. Narayanan
+    \item Worked on representation learning for image style search and retrieval. Published at WACV 2020.
+    \item Also worked on the task of color-consistent background replacement. Published at MMM 2018.
+  \end{cvbullets}}
+
+\cventry{Google Summer of Code (GSoC)}{Scilab, remote}{Student Developer}{May 2018 -- Aug 2018}{%
+  \begin{cvbullets}
+    \item Accepted as a developer for the Google Summer of Code Program for the $2^{nd}$ time with Scilab.
+    \item Implemented a demo in C/C++ and Scilab as a working example for the MEX Library in Scilab.
+  \end{cvbullets}}
+
+\cvsubentry{Student Developer}{May 2017 -- Aug 2017}{%
+  \begin{cvbullets}
+    \item Accepted as a developer for the Google Summer of Code Program with the organization Scilab.
+    \item Implemented a C/C++ wrapper for Matlab MEX-API on current API Scilab.
+  \end{cvbullets}}
+
+\end{cvsection}
+
+% ----------------------------------------------------------------- Patents
+\begin{cvsection}{Patents}
+\cvtalk{\textbf{S. Gairola}, M. Hemani, A. Chopra, J. Dahl, Balaji K. Improved Similarity Propagation for One-Shot and Few-Shot Image Segmentation \textbf{(US 16/906,954)}, \textit{2020}.}
+\end{cvsection}
+
+% ----------------------------------------------------------- Publications
+\begin{cvsection}{Peer-Reviewed Publications}
+\cvpublications
+\cvnote{*equal contribution}
+\end{cvsection}
+
+% ------------------------------------------------------- Academic Service
+\begin{cvsection}{Academic Service}
+\cvline{Organizer}{Computer Vision for Developing Countries (CV4DC) Workshop at \href{https://cv4dc.github.io/2024/}{ACCV 2024}, \href{https://cv4dc.github.io/2025/}{ICCV 2025}}
+\cvline{Reviewer}{\begin{cvreviews}
+  \cvreview{ICML}{2023,2024,2025,2026}{2026}
+  \cvreview{NeurIPS}{2022,2023,2025}{}
+  \cvreview{ICLR}{2022,2023,2024}{}
+  \cvreview{CVPR}{2024,2025,2026}{}
+  \cvreview{ECCV}{2024}{}
+  \cvreview{ICCV}{2025}{}
+  \cvreview{IHCI}{2021}{}
+  \cvreviewlegend{\goldmark\ Gold reviewer}
+\end{cvreviews}}
+\cvline{Volunteer}{\href{https://cvit.iiit.ac.in/icvgip18/index.php}{ICVGIP 2018}}
+\end{cvsection}
+
+% ------------------------------------------------------------------ Talks
+\begin{cvsection}{Talks \& Conference Presentations}
+\cvtalk{Intriguing Applications and Overlooked Pitfalls of XAI in Visual Models, at the \href{https://gmum.net/}{GMUM Workshop, Jagiellonian University}, October 2024.}
+\cvtalk{A DNN for Accurately Detecting Abnormal Lung Sounds in Limited Data Setting, \textit{EMBC 2021} (\href{https://youtu.be/XoAF3fCAqq4}{video}).}
+\cvtalk{Improved Similarity Propagation for Few-shot Image Segmentation, \textit{IJCAI 2020} (\href{https://www.ijcai.org/proceedings/2020/video/24830}{video}).}
+\cvtalk{Unsupervised Image Style Embeddings for Retrieval and Recognition Tasks, \textit{WACV 2020} (\href{https://www.youtube.com/watch?v=EbUOg1gVcFw&t=909s}{video}).}
+\end{cvsection}
+
+% --------------------------------------------------------------- Projects
+\begin{cvsection}{Selected Research Projects}
+
+\cvproject{Smartphone-based Corneal Topographer}{Nov 2020 -- Oct 2021}{%
+Developed a low-cost smartphone-based corneal topographer. It provides a portable and scalable solution for the mass screening of keratoconus. Built the entire system: an AI powered smartphone app, the 3D printed attachment, and the processing software. [\textit{Android, Python, PyTorch}; \href{https://www.microsoft.com/en-us/research/project/smartkc-a-smartphone-based-corneal-topographer/}{project page}]}
+
+\cvproject{Abnormality Detection in Respiratory Signals}{Aug 2020 -- Nov 2020}{%
+Developed a `ResNet34'-based model along with a suite of novel augmentation and fine-tuning techniques to effectively utilize small-sized datasets. The method improved upon the state-of-the-art for 4-class classification on the ICBHI dataset by 2.2\%. [\textit{Python, PyTorch}; \href{https://github.com/microsoft/RespireNet}{code}]}
+
+\cvproject{Similarity Propagation for Few-Shot Image Segmentation}{Jun 2019 -- Jan 2020}{%
+Developed a deep learning system that leverages background-foreground similarity to perform few-shot image segmentation. The method achieved state-of-the-art results on the PASCAL-5i, COCO-20i and FSS datasets. [\textit{Python, PyTorch}]}
+
+\cvproject{Unsupervised Image Style Representation Learning}{Jan 2019 -- Jun 2019}{%
+Developed a deep learning model to learn robust style representations without supervision. Achieved state-of-the-art results across six datasets and it was published as a paper. [\textit{Python, PyTorch}; \href{https://github.com/sidgairo18/unsupervised-style-learning}{code}]}
+
+\cvproject{Sketching with Style}{Aug 2018 -- Dec 2018}{%
+Implemented the ICCV 2017 paper ``Sketching with Style'' (\href{https://openaccess.thecvf.com/content_iccv_2017/html/Collomosse_Sketching_With_Style_ICCV_2017_paper.html}{link}). Reproduced the results provided in the paper and open-sourced the code. [\textit{PyTorch, Python}; \href{https://github.com/sidgairo18/Sketching-with-Style-ICCV-2017-PyTorch-}{code}]}
+
+\cvproject{Neural Clickbait Detection Engine}{May 2017 -- Aug 2017}{%
+Developed a system to robustly identify clickbait social media posts. The system comprises a siamese network that fuses visual and textual information to learn a neural embedding used to detect clickbait. [\textit{Python, Keras}; \href{https://github.com/vaibhav4595/Clickbait_Detection}{code}]}
+
+\cvproject{Color Consistent Background Replacement}{Jan 2017 -- Apr 2017}{%
+Developed a data-driven method for color-consistent sky search and replacement. A diverse set of skies consistent in color and illumination are retrieved from a curated dataset and used to generate composites, which are re-ranked based on realism and diversity. [\textit{MATLAB}; \href{https://cvit.iiit.ac.in/research/projects/cvit-projects/findmeasky}{project page}]}
+
+\end{cvsection}
+
+% --------------------------------------------------------------- Teaching
+\begin{cvsection}{Teaching Experience}
+\cvteach{Saarland University}{Elements of Data Science and Artificial Intelligence (Winter 2023, 2024, 2025, 2026)}
+\cvteach{IIIT Hyderabad}{Computer Graphics (Spring 2019), Digital Image Processing (Monsoon 2017, 2018), Computer Vision (Spring 2018), Artificial Intelligence (Spring 2017), Digital Logic and Processors (Monsoon 2016)}
+\cvtalk{Duties as a TA involved taking regular tutorials, setting up assignments and conducting evaluations.}
+\end{cvsection}
+
+% ----------------------------------------------------------------- Awards
+\begin{cvsection}{Awards \& Achievements}
+\cvaward{trophy}{Dean's Research Award}{for a paper published at an international conference while an undergraduate}{2018}
+\cvaward{medal}{Dean's List Award}{six consecutive semesters: Monsoon '15, '16, '17 and Spring '16, '17, '18}{2015 -- 2018}
+\cvaward{award}{ACM ICPC Asia Onsite Regionals}{qualified twice}{2015, 2016}
+\cvaward{cap}{JEE Advanced}{\textbf{98.5} percentile among 150,000 candidates}{2014}
+\cvaward{cap}{JEE Main}{\textbf{99.7} percentile among 1.2 million candidates}{2014}
+\end{cvsection}
+
+% ----------------------------------------------------------------- Skills
+\begin{cvsection}{Technical Skills}
+\begin{cvskills}
+  \cvskill{Working Knowledge}{Bash, C/C++, Python, MATLAB, Octave, OpenCV, Android-SDK}
+  \cvskill{Software \& Tools}{GNU/Linux, HTML, CSS, JavaScript, LaTeX, Excel}
+  \cvskill{Deep Learning Frameworks}{PyTorch, TensorFlow, Keras, Caffe}
+  \cvskill{Past Experience}{Java, OpenGL, WebGL, Django, Web2py}
+\end{cvskills}
+\end{cvsection}

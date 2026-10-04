@@ -1,0 +1,109 @@
+% ======================================================================
+%  SiddharthaGairola_CV.tex  --  main CV (was variant B, "Modern Sans")
+%  Source Sans Pro, navy accent, section heads in colour with a light rule,
+%  name block left with icon contact list right, grey dates.
+%  Build:  ./build.sh          (writes ../SiddharthaGairola_CV.pdf)
+% ======================================================================
+\documentclass[10pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[default,semibold]{sourcesanspro}
+\usepackage[left=0.7in,right=0.7in,top=0.6in,bottom=0.7in]{geometry}
+\usepackage{microtype,xcolor,etoolbox,enumitem,titlesec,fancyhdr,lastpage,needspace,tabularx,fontawesome5,tikz}
+\usepackage[colorlinks=true,allcolors=accent]{hyperref}
+
+\newcommand{\pubnumfmt}[1]{{\color{accent}\bfseries #1}}
+\newcommand{\pubtitlefmt}[1]{\textbf{#1}}
+\newcommand{\pubvenuefmt}[1]{{\color{datecol}#1}}
+\newcommand{\pubnotefmt}[1]{\goldtag{#1}}   % gold starred tag, defined below
+\input{cv_bib}
+
+\definecolor{accent}{HTML}{1F4E79}
+\definecolor{accentlight}{HTML}{C9D6E6}
+\definecolor{datecol}{HTML}{6B6B6B}
+\definecolor{textcol}{HTML}{222222}
+\definecolor{gold}{HTML}{7A5A00}
+\definecolor{goldlight}{HTML}{F6E7B4}
+\color{textcol}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\pagestyle{fancy}\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{datecol}Siddhartha Gairola}
+\fancyfoot[R]{\footnotesize\color{datecol}\thepage\,/\,\pageref{LastPage}}
+
+% --- section heading: accent colour, light rule beneath
+\titleformat{\section}{\Large\bfseries\color{accent}}{}{0pt}{}[\vspace{-0.3em}{\color{accentlight}\titlerule[1.4pt]}]
+\titlespacing*{\section}{0pt}{1.05em}{0.5em}
+
+% --- header
+\newcommand{\cvheader}{%
+  \begin{minipage}[b]{0.55\textwidth}
+    {\fontsize{26}{30}\selectfont\bfseries\color{accent}Siddhartha Gairola}\\[0.35em]
+    {\color{datecol}PhD Student in Computer Vision \& Machine Learning}\\
+    {\color{datecol}Max Planck Institute for Informatics \& Saarland University}
+  \end{minipage}\hfill
+  \begin{minipage}[b]{0.4\textwidth}\raggedleft\small
+    \href{mailto:sgairola@mpi-inf.mpg.de}{sgairola@mpi-inf.mpg.de}\ \textcolor{accent}{\faEnvelope}\\[0.15em]
+    \href{https://sidgairo18.github.io}{sidgairo18.github.io}\ \textcolor{accent}{\faGlobe}\\[0.15em]
+    \href{https://github.com/sidgairo18}{github.com/sidgairo18}\ \textcolor{accent}{\faGithub}\\[0.15em]
+    \href{https://scholar.google.co.in/citations?user=4tInxbgAAAAJ&hl=en}{Google Scholar}\ \textcolor{accent}{\faGraduationCap}\\[0.15em]
+    Saarbrücken, Germany\ \textcolor{accent}{\faMapMarker*}
+  \end{minipage}
+  \par\vspace{0.6em}{\color{accent}\hrule height 1.8pt}\par\vspace{-0.3em}}
+
+% --- building blocks
+\newenvironment{cvsection}[1]{\Needspace*{5\baselineskip}\section*{#1}}{}
+
+\newcommand{\datefmt}[1]{{\small\color{datecol}#1}}
+\newcommand{\cventry}[5]{%
+  \par\vspace{0.4em}
+  {\bfseries\large #1}\hfill\datefmt{#2}\par\nopagebreak
+  {\color{accent}#3}\hfill\datefmt{#4}\par\nopagebreak
+  #5\par}
+\newcommand{\cvsubentry}[3]{%
+  \par\vspace{0.25em}
+  {\color{accent}#1}\hfill\datefmt{#2}\par\nopagebreak
+  #3\par}
+
+\newenvironment{cvbullets}
+  {\begin{itemize}[leftmargin=1.1em,itemsep=0.5pt,topsep=1.5pt,parsep=0pt,label=\textcolor{accent}{\small\textbullet}]}
+  {\end{itemize}}
+
+
+\newcommand{\cvproject}[3]{%
+  \par\vspace{0.5em}
+  {\bfseries #1}\hfill\datefmt{#2}\par\nopagebreak
+  #3\par}
+
+\newcommand{\cvline}[2]{\par\vspace{0.25em}\hangindent=1.1em\hangafter=1 {\bfseries\color{accent}#1}\quad #2\par}
+\newcommand{\cvtalk}[1]{\par\vspace{0.25em}\hangindent=1.1em\hangafter=1 \makebox[1.1em][l]{\textcolor{accent}{\small\textbullet}}#1\par}
+
+% --- reviewing record as venue tags with year chips
+\newcommand{\goldmark}{\textcolor{gold}{\faStar}}
+\newcommand{\goldtag}[1]{\tikz[baseline=(c.base)]\node(c)[fill=goldlight,text=gold,rounded corners=2pt,inner xsep=4pt,inner ysep=1.8pt,font=\footnotesize\bfseries]{\faStar\ #1};}
+\newcommand{\yearchip}[1]{\tikz[baseline=(c.base)]\node(c)[fill=accentlight,text=accent,rounded corners=2pt,inner xsep=3.5pt,inner ysep=1.6pt,font=\footnotesize\bfseries]{#1};}
+\newcommand{\goldchip}[1]{\tikz[baseline=(c.base)]\node(c)[fill=goldlight,text=gold,rounded corners=2pt,inner xsep=3.5pt,inner ysep=1.6pt,font=\footnotesize\bfseries]{#1\,\faStar};}
+\newcommand{\reviewchip}[1]{\ifinlist{#1}{\goldlist}{\goldchip{#1}}{\yearchip{#1}}\hspace{2pt}}
+\newcommand{\cvreview}[3]{\def\goldlist{}\forcsvlist{\listadd\goldlist}{#3}%
+  \mbox{{\bfseries #1}\hspace{0.45em}\forcsvlist{\reviewchip}{#2}}\hspace{1.3em plus 0.8em}}
+\newenvironment{cvreviews}{\begin{minipage}[t]{\dimexpr\linewidth-5.6em\relax}\raggedright\linespread{1.3}\selectfont}{\end{minipage}}
+\newcommand{\cvreviewlegend}[1]{\hfill\mbox{\footnotesize\color{datecol}#1}}
+
+% --- awards: gold icon, accent title, detail, year right
+\newcommand{\awardicon}[1]{\ifstrequal{#1}{trophy}{\faTrophy}{\ifstrequal{#1}{medal}{\faMedal}{\ifstrequal{#1}{award}{\faAward}{\ifstrequal{#1}{cap}{\faGraduationCap}{\faStar}}}}}
+\newcommand{\cvaward}[4]{\par\vspace{0.35em}\hangindent=1.7em\hangafter=1
+  \makebox[1.7em][l]{\textcolor{gold}{\awardicon{#1}}}{\bfseries\color{accent}#2}\ \textcolor{datecol}{\textperiodcentered}\ #3\hfill\datefmt{#4}\par}
+
+% --- teaching: chalkboard icon, accent institution, courses
+\newcommand{\cvteach}[2]{\par\vspace{0.35em}\hangindent=1.7em\hangafter=1
+  \makebox[1.7em][l]{\textcolor{accent}{\faChalkboardTeacher}}{\bfseries\color{accent}#1}\ \textcolor{datecol}{\textperiodcentered}\ #2\par}
+\newcommand{\cvnote}[1]{\par\nopagebreak\vspace{0.3em}\hfill{\small\color{datecol}#1}\par}
+
+\newenvironment{cvskills}{\par\vspace{0.3em}\begin{tabular}{@{}>{\bfseries\color{accent}}l @{\hspace{1.2em}} p{\dimexpr\textwidth-14em\relax}@{}}}{\end{tabular}\par}
+\newcommand{\cvskill}[2]{#1 & #2 \\[1pt]}
+
+\begin{document}
+\input{cv_content}
+\end{document}

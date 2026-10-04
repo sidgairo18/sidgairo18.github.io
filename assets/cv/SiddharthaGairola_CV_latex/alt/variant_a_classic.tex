@@ -1,0 +1,93 @@
+% ======================================================================
+%  Variant A  --  "Classic Serif"
+%  Charter-family serif, small-caps section heads with a hairline rule,
+%  centered name block, dates flush right.  Conservative academic look.
+%  Build (from the parent dir):  ./build.sh alt/variant_a_classic
+% ======================================================================
+\documentclass[10.5pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{XCharter}
+\usepackage[left=0.75in,right=0.75in,top=0.65in,bottom=0.7in]{geometry}
+\usepackage{microtype,xcolor,etoolbox,enumitem,titlesec,fancyhdr,lastpage,needspace,array}
+\usepackage[colorlinks=true,allcolors=linkcol]{hyperref}
+
+\newcommand{\pubnumfmt}[1]{#1.}
+\newcommand{\pubtitlefmt}[1]{#1}
+\newcommand{\pubvenuefmt}[1]{\textit{#1}}
+\newcommand{\pubnotefmt}[1]{\textbf{\textit{#1}}}
+\input{cv_bib}
+
+\definecolor{linkcol}{HTML}{1A4D8F}
+\definecolor{rulecol}{HTML}{444444}
+\definecolor{mutecol}{HTML}{555555}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\pagestyle{fancy}\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{mutecol}Siddhartha Gairola \textperiodcentered\ Curriculum Vitae}
+\fancyfoot[R]{\footnotesize\color{mutecol}Page \thepage\ of \pageref{LastPage}}
+
+% --- section heading: letterspaced small caps + hairline
+\titleformat{\section}{\large\scshape\bfseries\color{rulecol}}{}{0pt}{}[\vspace{-0.25em}{\color{rulecol}\titlerule[0.5pt]}]
+\titlespacing*{\section}{0pt}{1.1em}{0.55em}
+
+% --- header
+\newcommand{\cvheader}{%
+  \begin{center}
+    {\Huge\scshape Siddhartha Gairola}\\[0.45em]
+    {\small\color{mutecol}
+      \href{mailto:sgairola@mpi-inf.mpg.de}{sgairola@mpi-inf.mpg.de}
+      \;\textperiodcentered\; \href{https://sidgairo18.github.io}{sidgairo18.github.io}
+      \;\textperiodcentered\; \href{https://github.com/sidgairo18}{github.com/sidgairo18}
+      \;\textperiodcentered\; \href{https://scholar.google.co.in/citations?user=4tInxbgAAAAJ&hl=en}{Google Scholar}\\[0.15em]
+      Max Planck Institute for Informatics, Saarbrücken, Germany}
+  \end{center}
+  \vspace{-0.6em}}
+
+% --- building blocks
+\newenvironment{cvsection}[1]{\Needspace*{5\baselineskip}\section*{#1}}{}
+
+\newcommand{\cventry}[5]{%
+  \par\vspace{0.35em}
+  {\bfseries #1}\hfill{#2}\par\nopagebreak
+  {\itshape #3}\hfill{\itshape #4}\par\nopagebreak
+  #5\par}
+\newcommand{\cvsubentry}[3]{%
+  \par\vspace{0.2em}
+  {\itshape #1}\hfill{\itshape #2}\par\nopagebreak
+  #3\par}
+
+\newenvironment{cvbullets}
+  {\begin{itemize}[leftmargin=1.2em,itemsep=0.5pt,topsep=1.5pt,parsep=0pt,label=\textbullet]}
+  {\end{itemize}}
+
+
+\newcommand{\cvproject}[3]{%
+  \par\vspace{0.45em}
+  {\bfseries #1}\hfill{\itshape\small #2}\par\nopagebreak
+  #3\par}
+
+\newcommand{\cvline}[2]{\par\vspace{0.25em}\hangindent=1.2em\hangafter=1 {\bfseries #1:} #2\par}
+\newcommand{\cvtalk}[1]{\par\vspace{0.25em}\hangindent=1.2em\hangafter=1 \makebox[1.2em][l]{\textbullet}#1\par}
+
+% --- reviewing record, plain text
+\newcommand{\goldmark}{$\star$}
+\newcommand{\cvreview}[3]{\def\sep{}\renewcommand*{\do}[1]{\sep##1\ifinlist{##1}{\goldlist}{\goldmark}{}\def\sep{, }}%
+  \def\goldlist{}\forcsvlist{\listadd\goldlist}{#3}%
+  {\bfseries #1}~\docsvlist{#2};\ }
+\newenvironment{cvreviews}{}{}
+\newcommand{\cvreviewlegend}[1]{{\footnotesize #1}}
+
+\newcommand{\cvaward}[4]{\cvtalk{\textbf{#2} (#4): #3.}}
+
+\newcommand{\cvteach}[2]{\cvline{#1}{#2}}
+\newcommand{\cvnote}[1]{\par\nopagebreak\vspace{0.3em}\hfill{\small\itshape #1}\par}
+
+\newenvironment{cvskills}{\par\vspace{0.3em}\begin{tabular}{@{}>{\bfseries}l @{\hspace{1.2em}} p{\dimexpr\textwidth-14em\relax}@{}}}{\end{tabular}\par}
+\newcommand{\cvskill}[2]{#1 & #2 \\}
+
+\begin{document}
+\input{cv_content}
+\end{document}

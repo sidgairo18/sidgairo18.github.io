@@ -1,0 +1,79 @@
+% ======================================================================
+%  cv_bib.tex  --  biblatex setup for the publication list.
+%  Input this in the preamble AFTER hyperref.  The style file may define
+%  these hooks before inputting (defaults below are plain):
+%     \pubnumfmt{#1}    the running number        \pubtitlefmt{#1}  the title
+%     \pubvenuefmt{#1}  venue + year               \pubnotefmt{#1}   addendum
+%  Then call \cvpublications where the list should appear.
+% ======================================================================
+\providecommand{\pubnumfmt}[1]{#1.}
+\providecommand{\pubtitlefmt}[1]{#1}
+\providecommand{\pubvenuefmt}[1]{\textit{#1}}
+\providecommand{\pubnotefmt}[1]{\textbf{\textit{#1}}}
+
+\usepackage[backend=biber,style=numeric,sorting=none,defernumbers=true,
+            maxbibnames=99,giveninits=true,
+            doi=false,isbn=false,url=false,eprint=false]{biblatex}
+\addbibresource{publications.bib}
+
+% --- names: "S. Gairola", comma-separated, highlighted / starred via author+an
+\DeclareNameAlias{sortname}{given-family}
+\DeclareNameAlias{default}{given-family}
+\renewcommand*{\finalnamedelim}{\addcomma\space}
+\renewcommand*{\multinamedelim}{\addcomma\space}
+\renewcommand*{\mkbibnamegiven}[1]{\ifitemannotation{me}{\textbf{#1}}{#1}}
+\renewcommand*{\mkbibnamefamily}[1]{%
+  \ifitemannotation{me}{\textbf{#1}}{#1}%
+  \ifitemannotation[author][eq]{eq}{\textsuperscript{*}}{}}
+
+% --- reverse numbering: newest entry gets the highest number
+\AtDataInput{\csnumgdef{pubtotal}{\csuse{pubtotal}+1}}
+\DeclareFieldFormat{labelnumber}{\number\numexpr\csuse{pubtotal}+1-#1\relax}
+\DeclareFieldFormat{labelnumberwidth}{\pubnumfmt{#1}}
+
+% --- field formats
+\DeclareFieldFormat*{title}{\pubtitlefmt{#1}}
+\DeclareFieldFormat{venue}{\pubvenuefmt{#1}}
+\DeclareFieldFormat{addendum}{\pubnotefmt{#1}}
+
+\newbibmacro*{pub:title}{%
+  \iffieldundef{url}
+    {\printfield{title}}
+    {\href{\thefield{url}}{\printfield{title}}}}
+
+\newbibmacro*{pub:venue}{%
+  \printtext[venue]{%
+    \ifentrytype{article}
+      {\printfield{journaltitle}%
+       \iffieldundef{volume}{}{\addcomma\space\printfield{volume}%
+         \iffieldundef{number}{}{(\printfield{number})}}}
+      {\iffieldundef{booktitle}{\printfield{note}}{\printfield{booktitle}}}%
+    \addcomma\space\printdate}}
+
+\newbibmacro*{pub:entry}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \printnames{author}\setunit{\addperiod\space}\newblock
+  \usebibmacro{pub:title}\setunit{\addperiod\space}\newblock
+  \usebibmacro{pub:venue}\setunit{\addperiod\space}\newblock
+  \printfield{addendum}%
+  \usebibmacro{finentry}}
+
+\DeclareBibliographyDriver{inproceedings}{\usebibmacro{pub:entry}}
+\DeclareBibliographyDriver{article}{\usebibmacro{pub:entry}}
+\DeclareBibliographyDriver{unpublished}{\usebibmacro{pub:entry}}
+\DeclareBibliographyDriver{misc}{\usebibmacro{pub:entry}}
+
+% --- list layout: right-aligned number, hanging body
+\defbibenvironment{bibliography}
+  {\list{\printtext[labelnumberwidth]{\printfield{labelnumber}}}
+     {\setlength{\labelwidth}{2.1em}%
+      \setlength{\labelsep}{0.6em}%
+      \setlength{\leftmargin}{2.7em}%
+      \setlength{\itemsep}{0.45em}%
+      \setlength{\parsep}{0pt}%
+      \renewcommand*{\makelabel}[1]{\hfill##1}}}
+  {\endlist}
+  {\item}
+
+\newcommand{\cvpublications}{\nocite{*}\printbibliography[heading=none]}

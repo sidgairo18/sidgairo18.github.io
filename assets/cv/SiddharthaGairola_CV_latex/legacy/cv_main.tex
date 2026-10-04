@@ -1,0 +1,494 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Medium Length Professional CV
+% LaTeX Template
+% Version 2.0 (8/5/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Trey Hunner (http://www.treyhunner.com/)
+%
+% Important note:
+% This template requires the resume.cls file to be in the same directory as the
+% .tex file. The resume.cls file provides the resume style used for structuring the
+% document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{resume} % Use the custom resume.cls style
+\usepackage[left=0.75in,top=0.5in,right=0.75in,bottom=0.5in]{geometry} % Document margins
+\usepackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = blue,
+            citecolor = green,
+            anchorcolor = blue]{hyperref}
+
+%https://tex.stackexchange.com/questions/392703/change-one-footnote-symbol-from-number-to-asterisk
+
+
+\usepackage{footnote}
+\usepackage{footmisc}
+\renewcommand{\thefootnote}{\alph{footnote}}
+\newcommand{\astfootnote}[1]{%
+\let\oldthefootnote=\thefootnote%
+\setcounter{footnote}{0}%
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}%
+\footnote{#1}%
+\let\thefootnote=\oldthefootnote%
+}
+
+
+
+
+\newcommand{\tab}[1]{\hspace{.2667\textwidth}\rlap{#1}}
+\newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
+
+%\name{\begin{center}Curriculum Vitae\end{center}}
+%\vspace{-2.00mm}
+%\address{\begin{center}\large Siddhartha Gairola, Ph.D. Applicant in Computer Science and Engineering, U-M ID: 94142877\end{center}}
+
+\name{\begin{center}Siddhartha Gairola\end{center}} % Your name
+%\address{\begin{center}\small \textit{E-mail}: \href{mailto:siddhartha.gairola18@gmail.com}{sgairola@mpi-inf.mpg.de}, \textit{Website:} \href{https://sidgairo18.github.io/}{https://sidgairo18.github.io}\end{center}}% Your phone number and email
+%\address{Microsoft Research Lab, 9, Vigyan 1st floor, Lavelle Road, Bengaluru, Karnataka 560001} % Your address
+%\address{123 Pleasant Lane \\ City, State 12345} % Your secondary addess (optional)
+
+
+
+%\address{\small\textit{Website:} \href{https://sidgairo18.github.io/}{https://sidgairo18.github.io}}
+%\begin{small}\textit{E-mail: }siddhartha.gairola18@gmail.com\end{small}
+
+\pagenumbering{arabic}
+
+%\usepackage[english]{babel}
+%\usepackage{fancyhdr}
+%\usepackage{lastpage}
+
+%\pagestyle{fancy}
+%\fancyhf{}
+%\rfoot{Page \thepage \hspace{1pt} of \pageref{LastPage}}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+%\vspace{-2pt}
+\begin{rSection}{Education}
+
+{\bf MPI for Informatics \& Saarland University} \hfill {Saarbrücken, Germany}
+
+Ph.D. Student, Computer Science \hfill {Oct, 2022 - present}
+\begin{itemize} \itemsep -1.0mm
+    \item Advisors: Prof. Bernt Schiele, Prof. Francesco Locatello
+\end{itemize}
+
+{\bf Institute of Science and Technology (ISTA)} \hfill {Klosterneuburg, Austria}
+
+Visiting Researcher, Causal Learning and Artificial Intelligence Lab \hfill {Aug, 2024 - Feb, 2025}
+
+{\bf International Institute of Information Technology, Hyderabad} \hfill {Hyderabad, India} 
+
+MS by Research in CSE \hfill {2018 - 2020}
+\begin{small}
+\begin{itemize}\itemsep -1.0mm 
+    \item Advisor: Prof. P. J. Narayanan
+    \item Thesis: \textit{\href{https://web2py.iiit.ac.in/research_centres/publications/view_publication/mastersthesis/828}{Image Representations for Style Retrieval, Recognition and Background Replacement Tasks}}
+    \item CGPA: \textbf{9.75/10}
+\end{itemize}
+\end{small}
+
+BTech with Honours in CSE \hfill {2014 - 2018}
+\begin{small}
+\begin{itemize}\itemsep -1.0mm 
+    \item CGPA: \textbf{8.91/10}
+\end{itemize}
+\end{small}
+
+
+%{\bf St. Joseph's Academy} \hfill {Dehradun, India} 
+%\\ Senior Secondary, ISC; Average: \textbf{93.6\%} \hfill {2012 - 2013}
+%\\ Secondary, ICSE; Average: \textbf{95.28\%} \hfill {2010 - 2011}
+
+\end{rSection}
+
+
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
+
+%\vspace{-2pt}
+\begin{rSection}{Work Experience} \itemsep -2pt
+
+\begin{rSubsection}{\textbf{Microsoft Research, India} - \textit{Research Fellow}}{Aug 2020 - Aug 2022}{}{}
+\begin{small}
+\item Advisors: Dr. Mohit Jain, Dr. Nipun Kwatra
+%\item Working on problems in healthcare, using computer vision and machine learning.
+\item Developed a low-cost smartphone-based corneal topographer for keratoconus detection in collaboration with Sankara Eye Hospital. Published at ACM IMWUT/Ubicomp 2021.
+\item Worked on training DNN models for abnormality detection in limited data settings. Published at EMBC 2021.
+\end{small}
+\end{rSubsection}
+
+\vspace{-3pt}
+\begin{rSubsection}{\textbf{Microsoft Research, India} - \textit{Research Intern}}{Jan 2020 - Jul 2020}{}{}
+\begin{small}
+\item Advisors: Dr. Mohit Jain, Dr. Nipun Kwatra
+\item Worked on building smartphone based diagnostic solutions for eye diseases using mobile computing, computer vision and machine learning.
+\end{small}
+\end{rSubsection}
+
+\vspace{-3pt}
+\begin{rSubsection}{\textbf{Adobe Systems, India} - \textit{Product Intern}}{Jun 2019 - Jan 2020}{}{}
+\begin{small}
+\item Advisors: Balaji K., Mayur Hemani
+\item Worked at the Media and Data Science Research lab.
+\item Worked on Guided Few-shot Image Segmentation, improved on the prior state-of-the-art by 6\%. 
+\item Published at IJCAI 2020 and filed a patent.
+%\item Implemented a deep learning model in \textit{Python, PyTorch} to perform \textbf{Few-shot Guided Segmentation} on images, beat the SOTA by 6\%, published a paper (IJCAI 2020) and filed a patent for the same.
+\end{small}
+\end{rSubsection}
+
+\vspace{-3pt}
+\begin{rSubsection}{\textbf{IIIT Hyderabad} - \textit{Research Assistant}}{May 2016 - May 2019}{}{}
+\begin{small}
+\item Advisor: Prof. P. J. Narayanan
+\item Research assistant at the Center for Visual Information and Technology (CVIT)
+\item Worked on representation learning for image style search and retrieval. Published at WACV 2020.
+\item Also worked on task of color-consistent background replacement. Published at MMM 2018.
+\end{small}
+\end{rSubsection}
+
+\vspace{-3pt}
+\begin{rSubsection}{\textbf{Google Summer of Code (GSoC)} - \textit{Student Developer}}{May 2018 - Aug 2018}{}{}
+\begin{small}
+\item Was accepted as a developer for the Google Summer of Code Program for the $2^{nd}$ time with Scilab.
+\item Implemented a demo in C/C++ and Scilab as a working example for the MEX Library in Scilab.
+\end{small}
+\end{rSubsection}
+
+\vspace{-3pt}
+\begin{rSubsection}{\textbf{Google Summer of Code (GSoC)} - \textit{Student Developer}}{May 2017 - Aug 2017}{}{}
+\begin{small}
+\item Was accepted as a developer for the Google Summer of Code Program with the organization Scilab.
+\item Implemented a C/C++ wrapper for Matlab MEX-API on current API Scilab.
+\end{small}
+\end{rSubsection}
+\end{rSection}
+
+
+% Patents
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Patents}
+%\vspace{-4pt}
+\begin{rSubsection}{\large \underline{\textbf{}} }{}{}{}
+ \item \textbf{S. Gairola}, M. Hemani, A. Chopra, J. Dahl, Balaji K. Improved Similarity Propagation for One-Shot and Few-Shot Image Segmentation \textbf{(US 16/906,954)}, \textit{2020}.
+\end{rSubsection}
+\end{rSection}
+
+
+
+% Publications
+%----------------------------------------------------------------------------------------
+%\vspace{-7pt}
+\begin{rSection}{Peer-Reviewed Publications} \itemsep -2pt
+%\vspace{-2pt}
+%\begin{rSubsection}{\large \underline {\textbf{In Submission}} }{}{}{}
+%\item \textbf{S. Gairola}, M. Bohra, N. Shaheer, N. Jayashankar, P. %Joshi, A. Balasubramaniam, K. Murli, N. Kwatra, and M. Jain. SmartKC: %Smartphone-based Corneal Topographer for Keratoconus Detection. %\textit{In Proceedings of the ACM on Interactive, Mobile, Wearable and %Ubiquitous Technologies (IMWUT), Volume 5, Issue 4, 2021}.
+%\end{rSubsection}
+
+%\begin{rSubsection}{\large \underline{\textbf{Peer-Reviewed %Publications}} }{}{}{}
+
+\item[(14.)] \textbf{S. Gairola*}, A. Pardyl*, S. Rao, A. Wróbel, B. Zieliński, B. Schiele, D. Rymarczyk. \href{https://}{DisParQ: Self-Supervised Part Concepts for Interpretable Vision Foundation Models.} \textit{Under Submission, 2026.}
+
+\item[(13.)] \textbf{S. Gairola}, J. Xie, A. Kukleva, F. Locatello, B. Schiele. \href{https://}{Stranger Things: When Objects Appear Without Their Typical Neighbours.} \textit{In Conference on Neural Information Processing Systems (NeurIPS), 2026.}
+
+\item[(12.)] \textbf{S. Gairola*}, A. Wróbel*, J. Tabor, B. Schiele, B. Zieliński, D. Rymarczyk. \href{https://arxiv.org/abs/2602.06613}{DAVE : Distribution-aware Attribution via ViT Gradient Decomposition.} \textit{In International Conference on Machine Learning (ICML), 2026.} \textbf{\textit{Spotlight, top 2.2\% of all $\sim$24K submissions.}}
+
+\item[(11.)] \textbf{S. Gairola*}, R. Maser*, S. Rao, B. Schiele. \href{https://cvpr.thecvf.com/virtual/2026/poster/40400}{Align Once to Explain: Feature Alignment for Scalable B-cosification of Foundational Vision Transformers.} \textit{In Computer Vision and Pattern Recognition Conference (CVPR), 2026.}
+
+\item[(10.)] \textbf{S. Gairola}, M. B{\"o}hle, F. Locatello, B. Schiele. \href{https://openreview.net/pdf?id=57NfyYxh5f}{How to Probe: Simple Yet Effective Techniques for Improving Post-hoc Explanations.} \textit{In International Conference on Learning Representations (ICLR), 2025.}
+
+\item[(9.)] V. Ganatra, \textbf{S. Gairola}, P. Joshi, A. Balasubramaniam, K. Murali, A. Varadharajan, B. Mallikarjuna, N. Kwatra, M. Jain. \href{https://openaccess.thecvf.com/content/WACV2025/html/Ganatra_SmartKC_Improving_Performance_of_Smartphone-Based_Corneal_Topographers_WACV_2025_paper.html}{SmartKC++: Improving Performance of Smartphone-Based Corneal Topographers.} \textit{In IEEE Winter Conference on Applications of Computer Vision (WACV), 2025.}
+
+\item[(8.)] \textbf{S. Gairola}, P. Joshi, A. Balasubramaniam, K. Murali, N. Kwatra, M. Jain. \href{https://arxiv.org/abs/2205.03702}{Keratoconus Classifier for Smartphone-based Corneal Topographer.} \textit{44th Annual International Conference of the IEEE Engineering in Medicine \& Biology Society (EMBC) (2022)}.
+
+\item[(7.)] A. Aggarwal, \textbf{S. Gairola}, U. Uppadhyay, A. P. Vasishta, D. Rao, A. Goyal, K. Murali, N. Kwatra, and M. Jain. \href{https://arxiv.org/abs/2208.05552}{Towards Automating Retinoscopy for Refractive Error Diagnosis.} \textit{In Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies (IMWUT), Volume 6, Issue 3, 2022}.
+
+\item[(6.)] \textbf{S. Gairola}, M. Bohra, N. Shaheer, N. Jayaprakash, P. Joshi, A. Balasubramaniam, K. Murali, N. Kwatra, and M. Jain. \href{https://sidgairo18.github.io/smartkc.pdf}{SmartKC: Smartphone-based Corneal Topographer for Keratoconus Detection.} \textit{In Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies (IMWUT), Volume 5, Issue 4, 2021}.
+
+\item[(5.)] \textbf{S. Gairola}, F. Tom, N. Kwatra, and M. Jain. \href{https://arxiv.org/pdf/2011.00196.pdf}{RespireNet: A Deep Neural Network for Accurately Detecting Abnormal Lung Sounds in Limited Data Setting}. \textit{43rd Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC), 2021.}
+
+\vspace{4pt}
+\item[(4.)] \textbf{S. Gairola}, A. Chopra, M. Hemani, Balaji K. \href{https://www.ijcai.org/Proceedings/2020/0080.pdf}{SimPropNet:  Improved Similarity Propagation for Few-Shot Image Segmentation}. \textit{International Joint Conference on Artificial Intelligence (IJCAI), 2020}.
+
+\vspace{4pt}
+\item[(3.)] \textbf{S. Gairola}, R. Shah, P. J. Narayanan. \href{https://openaccess.thecvf.com/content_WACV_2020/papers/Gairola_Unsupervised_Image_Style_Embeddings_for_Retrieval_and_Recognition_Tasks_WACV_2020_paper.pdf}{Unsupervised Image Style Embeddings for Retrieval and Recognition Tasks}. \textit{IEEE Winter Conference on Applications of Computer Vision (WACV), 2020}. %\href{https://openaccess.thecvf.com/content_WACV_2020/html/Gairola_Unsupervised_Image_Style_Embeddings_for_Retrieval_and_Recognition_Tasks_WACV_2020_paper.html}{(link)}.
+
+\vspace{4pt}
+\item[(2.)] V. Kumar*, D. Khattar*, \textbf{S. Gairola}*, Y. K. Lal*, V. Varma. \href{https://arxiv.org/pdf/1710.01507.pdf}{Identifying Clickbait:  A Multi-Strategy Approach Using Neural Networks}. \textit{The 41st International ACM SIGIR Conference on Research \& Development in Information Retrieval, 2018}. %\href{https://dl.acm.org/doi/10.1145/3209978.3210144}{(link)}.
+
+\vspace{4pt}
+\item[(1.)] S. Rawat*, \textbf{S. Gairola*}, R. Shah, P. J. Narayanan. \href{https://sidgairo18.github.io/sky.pdf}{Find Me a Sky: A Data-Driven Method for Color-Consistent Sky Search and Replacement}. \textit{International Conference on Multimedia Modeling (MMM), 2018}. %\href{https://link.springer.com/chapter/10.1007/978-3-319-73603-7_18}{(link)}.
+%\end{rSubsection}
+
+%\vspace{-2pt}
+\hfill \small{*equal contribution}
+%\hfill \tiny{C=Conference, J=Journal}
+% \astfootnote{equal contribution}
+\end{rSection}
+
+% Under Review
+%----------------------------------------------------------------------------------------
+%\vspace{-7pt}
+% \begin{rSection}{Papers Under-Review} \itemsep -2pt
+% %\vspace{-2pt}
+% %\begin{rSubsection}{\large \underline {\textbf{In Submission}} }{}{}{}
+% %\item \textbf{S. Gairola}, M. Bohra, N. Shaheer, N. Jayashankar, P. %Joshi, A. Balasubramaniam, K. Murli, N. Kwatra, and M. Jain. SmartKC: %Smartphone-based Corneal Topographer for Keratoconus Detection. %\textit{In Proceedings of the ACM on Interactive, Mobile, Wearable and %Ubiquitous Technologies (IMWUT), Volume 5, Issue 4, 2021}.
+% %\end{rSubsection}
+
+% %\begin{rSubsection}{\large \underline{\textbf{Peer-Reviewed %Publications}} }{}{}{}
+
+% \item[(1.)] \textbf{S. Gairola}, M. B{\"o}hle, F. Locatello, B. Schiele. \href{https://}{How to Probe: Simple Yet Effective Techniques for Improving Post-hoc Explanations.} \textit{(under review)}.
+% \end{rSection}
+
+%	Academic Service
+%----------------------------------------------------------------------------------------
+%\vspace{-5pt}
+\begin{rSection}{Academic Services} \itemsep -5pt
+%\vspace{-6pt}
+\item \textbf{Organizer:} Computer Vision for Developing Countries Workshop at \href{https://cv4dc.github.io/2024/}{ACCV 2024}, \href{https://cv4dc.github.io/2025/}{ICCV 2025}
+\item \textbf{Reviewer:} ICML 2023-26 (\textbf{\textit{Gold reviewer in 2026}}); NeurIPS 2022-23,'25; ICLR 2022-24; CVPR 2024-26; ECCV 2024; ICCV 2025; IHCI 2021
+\item \textbf{Volunteer:} ICVGIP 2018
+\end{rSection}
+
+%\clearpage
+% Invited Talks and Presentations
+%---------------------------------------------------------------------------------------
+\vspace{-4pt}
+\begin{rSection}{Talks \& Conference Presentations} \itemsep -4pt
+\vspace{-4pt}
+\begin{small}
+\item Intriguing Applications and Overlooked Pitfalls of XAI in Visual Models, at the \href{https://gmum.net/}{GMUM  Workshop, Jagiellonian University}, October 2024.
+\item A DNN for Accurately Detecting Abnormal Lung Sounds in Limited Data Setting, \textit{EMBC 2021} (\href{https://youtu.be/XoAF3fCAqq4}{video}).
+\item Improved Similarity Propagation for Few-shot Image Segmentation, \textit{IJCAI 2020} (\href{https://www.ijcai.org/proceedings/2020/video/24830}{video}).
+\item Unsupervised Image Style Embeddings for Retrieval and Recognition Tasks, \textit{WACV 2020} (\href{https://www.youtube.com/watch?v=EbUOg1gVcFw&t=909s}{video}).
+\end{small}
+
+\end{rSection}
+
+
+%\clearpage
+%	Projects
+%----------------------------------------------------------------------------------------
+%\vspace{-3pt}
+\begin{rSection}{Selected Research Projects} %\itemsep -2.5pt
+%\item \textbf{Hostel Portal:} Developed a hostel management portal using python, Web2py framework. \textit{Spring 2015}
+
+%\item \textbf{Linux C-Shell:} A linux like terminal implemented using \textit{C} language using different concepts like fork, signals, exec, piping. \textit{Monsoon 2015}
+
+%\item \textbf{P2P File Sharing:} Developed an application layer file transfer protocol with support for TCP. It included features such as file upload, file download and indexed searching. (Computer Networks course) \textit{Spring 2016}
+
+\vspace{-8pt}
+
+\item \textbf{Smartphone-based Corneal Topographer} \hfill Nov 2020 - Oct 2021 \\ 
+Developed a low-cost smartphone-based corneal topographer. It provides a portable and scalable solution for the mass screening of keratoconus. Built the entire system: an AI powered smartphone app, the 3D printed attachment, and the processing software. [\textit{Android, Python, PyTorch}; \href{https://www.microsoft.com/en-us/research/project/smartkc-a-smartphone-based-corneal-topographer/}{project page}]
+
+
+\item \textbf{Abnormality Detection in Respiratory Signals} \hfill Aug 2020 - Nov 2020\\ Developed a `ResNet34' based model along with a suite of novel augmentation and fine-tuning techniques to effectively utilize small-sized datasets. The method improved upon the state-of-the-art for 4-class classification on the ICBHI dataset by 2.2\%. [\textit{Python, PyTorch}; \href{https://github.com/microsoft/RespireNet}{code}] %\textit{2020}
+
+\item \textbf{Similarity Propagation for Few-Shot Image Segmentation} \hfill Jun 2019 - Jan 2020\\
+Developed a deep learning system that leverages background-foreground similarity to perform few-shot image segmentation. The method achieved state-of-the art results on the PASCAL-5i, COCO-20i and FSS datasets. [\textit{Python, PyTorch}] %\textit{Monsoon 2019}
+
+\item \textbf{Unsupervised Image Style Representation Learning} \hfill Jan 2019 - Jun 2019\\
+Developed a deep learning model to learn robust style representations without supervision. Achieved state-of-the-art results across six datasets and it was published as a paper. [\textit{Python, PyTorch}; \href{https://github.com/sidgairo18/unsupervised-style-learning}{code}] %\textit{Spring 2019}
+
+\item \textbf{Sketching with Style} \hfill Aug 2018 - Dec 2018\\
+Implemented the ICCV 2017 paper ``Sketching with Style'' (\href{https://openaccess.thecvf.com/content_iccv_2017/html/Collomosse_Sketching_With_Style_ICCV_2017_paper.html}{link}). Was able to reproduce the results provided in the paper and open-sourced the code.
+%\footnote{J.  Collomosse,  T.  Bui,  M.  Wilber,  C.  Fang,  and  H.  Jin. Sketching with style:  Visual search with sketches and aesthetic context. In 2017 IEEE International Conference on Computer Vision (ICCV), 2017.} 
+[\textit{PyTorch, Python}; \href{https://github.com/sidgairo18/Sketching-with-Style-ICCV-2017-PyTorch-}{code}]  %\textit{Monsoon 2018}
+
+%\item \textbf{Movie Genre Classification} \hfill Jan 2018 - Apr 2018\\ 
+%Developed a deep learning model to predict the genres of a movie based on its poster and plot. Created a new movie poster dataset by scraping IMDB website for movies produced in the US and UK. Identified four key components in a movie poster: key graphic, background, title text, billing block. Annotated the dataset with these four components using an OCR and saliency model. [\textit{Python, TensorFlow}] %\textit{Monsoon 2017}
+
+% \item \textbf{Wiki-Search Engine} \hfill Aug 2017 - Dec 2017\\
+% Implemented an efficient and scalable search engine on Wikipedia dump in \textit{Python}. Retrieve top relevant documents based on input query. Handled field as well as phrase queries. Documents were re-ranked based on `tf-idf' measure. For fast retrieval used threading and multi-level indexing.
+%\textit{Monsoon 2017}
+
+\item \textbf{Neural Clickbait Detection Engine} \hfill May 2017 - Aug 2017\\
+Developed a system to robustly identify clickbait social media posts. The system comprises of a siamese-network that fuses visual and textual information to learn a neural embedding used to detect clickbaits. [\textit{Python, Keras}; \href{https://github.com/vaibhav4595/Clickbait_Detection}{code}] %\textit{Spring 2017}
+
+\item \textbf{Color Consistent Background Replacement} \hfill Jan 2017 - Apr 2017\\
+Developed a data driven method for color-consistent sky search and replacement. A diverse set of skies consistent in color and illumination are retrieved from a curated dataset, and used to generate composites. The composites are re-ranked based on realism and diversity. [\textit{MATLAB}; \href{https://cvit.iiit.ac.in/research/projects/cvit-projects/findmeasky}{project page}] %\textit{Spring 2017}
+
+%\item \textbf{High Dynamic Range Images}: HDR imaging - generating images with a greater range of luminance levels than which can be achieved by taking only a single photograph with a fixed exposure. Using tone mapping, high-boost filtering and bilateral filtering for improvements.
+%\textit{Monsoon 2016}
+
+%\item \textbf{Tic-tac-toe Bot:} Designed an automated agent bot to play the a modified version of tic-tac-toe game. Using a minimax algorithm and alpha-beta pruning. \textit{Spring 2016}
+
+%\item \textbf{2D Game:} A 2-dimensional shooting game developed using \textit{OpenGl C++}.\textit{Spring 2016}
+
+%\item \textbf{3D Game:} A 3-dimensional game developed using \textit{OpenGl C++}(GLFW library).\textit{Spring 2016}
+
+\end{rSection}
+
+%\clearpage
+% Teaching Experience
+%---------------------------------------------------------------------------------------
+\vspace{-5pt}
+\begin{rSection}{Teaching Experience} \itemsep -3pt
+\vspace{-5pt}
+\item \textbf{Saarland University}: Elements of Data Science and Artificial Intelligence (Winter 2023, 2024)
+\item \textbf{IIIT Hyderabad}: Computer Graphics (Spring 2019), Digitial Image Processing (Monsoon 2017, 2018), Computer Vision (Spring 2018), Artificial Intelligence (Spring 2017), Digital Logic and Processors (Monsoon 2016)
+% \item \textbf{Computer Graphics}, IIIT Hyderabad \hfill Spring 2019
+% \item \textbf{Digital Image Processing}, IIIT Hyderabad \hfill Monsoon 2018
+% \item \textbf{Computer Vision}, IIIT Hyderabad \hfill Spring 2018
+% \item \textbf{Digital Image Processing}, IIIT Hyderabad \hfill Monsoon 2017
+% \item \textbf{Artificial Intelligence}, IIIT Hyderabad \hfill Spring 2017
+% \item \textbf{Digital Logic and Processors}, IIIT Hyderabad \hfill Monsoon 2016
+
+%\begin{rSubsection}{\textbf{CSE251: Computer Graphics}, IIIT Hyderabad}{Spring 2019}{}{}
+%\item Head Teaching Assistant with Prof. P. J. Narayanan.
+%\end{rSubsection}
+
+%\vspace{-3pt}
+%\begin{rSubsection}{\textbf{CSE478: Digital Image Processing}, IIIT Hyderabad}{Monsoon 2018}{}{}
+%\item Teaching Assistant with Prof. Ravi Kiran.
+%\end{rSubsection}
+
+%\vspace{-3pt}
+%\begin{rSubsection}{\textbf{CSE578: Computer Vision}, IIIT Hyderabad}{Spring 2018}{}{}
+%\item Teaching Assistant with Prof. Avinash Sharma.
+%\end{rSubsection}
+
+%\vspace{-3pt}
+%\begin{rSubsection}{\textbf{CSE478: Digital Image Processing}, IIIT Hyderabad}{Monsoon 2017}{}{}
+%\item Teaching Assistant with Prof. Avinash Sharma.
+%\end{rSubsection}
+
+%\vspace{-3pt}
+%\begin{rSubsection}{\textbf{CSE371: Artificial Intelligence}, IIIT Hyderabad}{Spring 2017}{}{}
+%\item Teaching Assistant with Prof. Praveen Paruchuri.
+%\end{rSubsection}
+
+%\vspace{-3pt}
+%\begin{rSubsection}{\textbf{IEC101: Digital Logic and Processors}, IIIT Hyderabad}{Monsoon 2016}{}{}
+%\item Teaching Assistant with Prof. Madhav Krishna.
+%\end{rSubsection}
+
+The duties as a TA involved taking regular tutorials, setting up assignments and conducting evaluations.
+\end{rSection}
+
+%	Academic
+%----------------------------------------------------------------------------------------
+\vspace{-5pt}
+\begin{rSection}{Awards \& Achievements}
+\begin{rSubsection}{\large \underline {} }{}{}{} \itemsep -1.5pt
+\item Awarded the \textbf{Dean's Research Award} for a paper published at an international conference while in undergraduate, 2018.
+\item Awarded the \textbf{Dean's List Award} for 6 semesters straight: Monsoon'15, '16, '17 \& Spring'16, '17, '18
+\item Qualified for the \textbf{ACM ICPC Asia Onsite Regionals} twice (2015, 2016).
+%\item Was a member of the teams \textbf{Pendulum} and \textbf{GOAT} which qualified for the \textbf{ACM ICPC Asia Amritapuri Onsite Regionals} in 2015 and 2016 respectively.
+%\item \textbf{All India Rank 2262} in \textbf{JEE Advanced 2014} (\textbf{98.5\%} percentile among 150,000 students).
+%\item \textbf{All India Rank 3856} in \textbf{JEE Mains 2014} (\textbf{99.7\%} percentile among 1.2 million students).
+\item \textbf{98.5} percentile in \textbf{JEE Advanced (2014)} examination among 150,000 students.
+\item \textbf{99.7} percentile in \textbf{JEE Main (2014)} examination among 1.2 million students.
+\end{rSubsection}
+\end{rSection}
+
+
+
+%----------------------------------------------------------------------------------------
+%	TECHNICAL STRENGTHS SECTION
+%----------------------------------------------------------------------------------------
+%\vspace{-2.5pt}
+\begin{rSection}{Technical Skills}
+%\vspace{-1.0pt}
+\begin{small}
+\begin{tabular}{ @{} >{\bfseries}l @{\hspace{1ex}} l }
+Working Knowledge &   Bash, C/C++, Python, MATLAB, Octave, OpenCV, Android-SDK \\
+Software \& Tools & GNU/Linux, HTML, CSS, JavaScript, LaTeX, Excel \\
+Deep Learning Frameworks & PyTorch, TensorFlow, Keras, Caffe \\
+Past Experience & Java, OpenGL, WebGL, Django, Web2py 
+\end{tabular}
+\end{small}
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	Contact Details
+%----------------------------------------------------------------------------------------
+%\vspace{-2.5pt}
+\begin{rSection}{Contact}
+%\vspace{-1.0pt}
+\begin{small}
+\begin{tabular}{ @{} >{\bfseries}l @{\hspace{1ex}} l }
+E-mail &   \href{mailto:sgairola@mpi-inf.mpg.de}{sgairola@mpi-inf.mpg.de} \\
+Website & \href{https://sidgairo18.github.io/}{https://sidgairo18.github.io/} \\
+Address & Office 608, Max-Planck-Institut für Informatik, Campus E1 4, 66123 Saarbrücken, Germany \\
+Phone & +49 681 9325 2149 \\
+Fax & +49 681 9325 2099 \\
+\end{tabular}
+\end{small}
+
+\end{rSection}
+
+
+%	Programming and Open-source
+%----------------------------------------------------------------------------------------
+%\vspace{-3pt}
+%\begin{rSection}{Programming and Open-Source} \itemsep -5pt
+%\item \textbf{Programming:} Take part actively in competitive programming contests.\newline
+%\textbf{Codechef} (handle: sidgairo18)\newline
+%\textbf{Codeforces} (handle: sidgairo18)
+
+%\item \textbf{Open-Source:} Contribute to open source actively. Have made contributions to open source organizations like \textbf{Scilab, LibreOffice and CCExtractor}.
+%(\textbf{Github profile} : sidgairo18)
+%\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%\vspace{-3pt}
+%\begin{rSection}{Advanced Courses}
+%\itab{\textbf{Core Courses}} \tab{}  %\tab{\textbf{Other Courses}}
+%\\ \itab{Computer Programming } \tab{}  \tab{Linear Algebra}
+%\\ \itab{Data Structures} \tab{}  \tab{Discrete Mathematics} 
+%\\ \itab{Algorithms} \tab{}  \tab{Complexity and Advanced Algorithms} 
+%\\ \itab{Operating Systems} \tab{} \tab{Computer System \& Organization}
+%\\ \itab{Database Systems} \tab{} \tab{Digital Image Processing}
+%\\ \itab{Artificial Intelligence} \tab{} \tab{Computer Vision}
+%\\ \itab{Machine Learning} \tab{} \tab{Information Security}
+%\\ \itab{Advanced Computer Networks} \tab{} \tab{Systems Network Security}
+%\\ \itab{Information Retrieval \& Extraction} \tab{} \tab{Natural Language Applications}
+% \\ \itab{Process Control (ongoing)} \tab{} \tab{Electrodynamics}
+
+%\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%\begin{rSection}{Extra-Cirrucular} \itemsep -5pt
+%\item Play the piano and guitar.
+%\item Member of the school football team from 2007-2011.
+%\item Member of the IIIT Hyderabad college football team from 2014-2018.
+%\end{rSection}
+
+
+%	References
+%----------------------------------------------------------------------------------------
+%\vspace{-4pt}
+%\begin{rSection}{References} \itemsep -5pt
+%\vspace{-4pt}
+%\begin{small}
+%\item \textbf{Prof. P. J. Narayanan}, Director, IIIT-Hyderabad, India \href{mailto:pjn@iiit.ac.in}{(email)}
+%\item \textbf{Dr. Mohit Jain}, Senior Researcher, Microsoft Research, India \href{mailto:mohja@microsoft.com}{(email)}
+%\item \textbf{Dr. Nipun Kwatra}, Principal Researcher, Microsoft Research, India \href{mailto:nkwatra@microsoft.com}{(email)}
+%\item \textbf{Balaji Krishamurthy}, Principal Scientist, Adobe Systems, India \href{mailto:kbalaji@adobe.com}{(email)}
+%\item \textbf{Mayur Hemani}, Senior Research Scientist, Adobe Systems, India \href{mailto:mayur@adobe.com}{(email)}
+%\end{small}
+%\end{rSection}
+
+
+
+\end{document}
