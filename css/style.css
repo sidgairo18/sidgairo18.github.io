@@ -228,6 +228,37 @@ h2 a:hover{color:var(--fg)}
 .prose .updated,.prose p em:only-child{color:var(--mute);font-size:13px}
 .prose nav h2{margin-top:0}
 .prose nav ul{columns:2;column-gap:28px}
+/* prose utilities (used by the guide pages) */
+.prose .lede{font-size:17px;line-height:1.6;color:var(--fg)}
+.prose .toc{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 8px;font-size:13px}
+.prose .toc a{color:var(--mute);border:0}
+.prose .toc a:hover{color:var(--accent)}
+.prose .toc a::before{content:"→ ";color:var(--line)}
+.prose .sops{list-style:none;margin:0 0 10px}
+.prose .sops li{display:grid;grid-template-columns:1fr auto auto;gap:6px 12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.prose .sops li:last-child{border-bottom:0}
+.prose .sops .who a{font-weight:600;border:0}
+.prose .sops a.dl{justify-self:start}
+.prose .sops .who a:hover{color:var(--accent)}
+.prose .sops sup{color:var(--mute);margin-left:2px}
+.prose .status{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:4px;background:var(--soft);color:var(--mute);white-space:nowrap}
+.prose .status.ok{background:var(--accent-soft);color:var(--accent)}
+.prose a.dl{display:inline-flex;align-items:center;font-size:12.5px;font-weight:600;color:var(--fg);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px 10px;white-space:nowrap;text-decoration:none}
+.prose a.dl:hover{border-color:var(--accent);color:var(--accent)}
+.prose .dlrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.prose .fn{font-size:13px;color:var(--mute);line-height:1.6;margin-bottom:8px}
+.prose .fn sup{margin-right:3px}
+.prose .callout{margin:18px 0;padding:12px 16px;border-radius:10px;background:var(--soft);border:1px solid var(--line);font-size:14.5px}
+.prose .questions li{margin-bottom:6px}
+.prose .qa{margin:0 0 18px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.prose .qa p{margin:0;display:grid;grid-template-columns:28px 1fr;gap:10px}
+.prose .qa .q{font-weight:600;margin-bottom:8px}
+.prose .qa .a{color:var(--mute)}
+.prose .qa p .lbl{font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--accent);padding-top:4px}
+.prose .qa .a .lbl{color:var(--mute)}
+.prose .qa .a a{color:var(--fg)}
+@media (max-width:640px){.prose .sops li{grid-template-columns:1fr auto}.prose .sops .who{grid-column:1/-1}}
+
 /* project page (style.html) */
 .project-hero{text-align:center;padding:0 0 10px}
 .project-hero h1{margin:0 0 10px}
