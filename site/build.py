@@ -1,0 +1,360 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Build sidgairo18.github.io from site/content.py + the CV's publications.bib.
+
+    python3 site/build.py            # writes index.html, secondary pages, assets/bib/*.bib
+
+Everything generated is plain static HTML; css/style.css is hand-maintained.
+"""
+import os, re, sys, html
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from content import *  # noqa
+
+BIB_FILE = os.path.join(ROOT, "assets/cv/SiddharthaGairola_CV_latex/publications.bib")
+BIB_OUT = os.path.join(ROOT, "assets/bib")
+
+
+# ---------------------------------------------------------------------------
+# BibTeX: parse the CV file, clean each entry for the website
+# ---------------------------------------------------------------------------
+def parse_bib(path):
+    text = open(path, encoding="utf-8").read()
+    entries = {}
+    for m in re.finditer(r"@(\w+)\s*\{\s*([^,\s]+)\s*,", text):
+        etype, key = m.group(1).lower(), m.group(2)
+        i, depth, j = m.end(), 1, m.end()
+        while j < len(text) and depth:
+            if text[j] == "{": depth += 1
+            elif text[j] == "}": depth -= 1
+            j += 1
+        body = text[i:j - 1]
+        fields = {}
+        for fm in re.finditer(r"([\w+:\-]+)\s*=\s*\{", body):
+            name = fm.group(1).lower()
+            k, d = fm.end(), 1
+            while k < len(body) and d:
+                if body[k] == "{": d += 1
+                elif body[k] == "}": d -= 1
+                k += 1
+            fields[name] = body[fm.end():k - 1].strip()
+        entries[key] = dict(type=etype, key=key, fields=fields)
+    return entries
+
+
+LATEX_MAP = {r"{\'o}": "ó", r"{\'n}": "ń", r'{\"o}': "ö", r'{\"u}': "ü", r'{\"a}': "ä", r"{\'e}": "é", r"\&": "&amp;", "--": "–", "~": " "}
+
+
+def latex_to_html(s):
+    for a, b in LATEX_MAP.items():
+        s = s.replace(a, b)
+    s = re.sub(r"\$\{\\sim\}\$", "~", s)
+    s = s.replace(r"\%", "%")
+    s = re.sub(r"[{}]", "", s)
+    return html.escape(s, quote=False).replace("&amp;amp;", "&amp;")
+
+
+def split_authors(field):
+    return [latex_to_html(a.strip()) for a in re.split(r"\s+and\s+", field)]
+
+
+def eq_indices(fields):
+    spec = fields.get("author+an:eq", "")
+    return {int(x.split("=")[0]) - 1 for x in spec.split(";") if "=" in x}
+
+
+def protect_title(t):
+    """Brace words BibTeX would otherwise lower-case: acronyms (DAVE, ViT, CNN) and
+    words with internal capitals (DisParQ, SmartKC++).  Hyphenated Title-Case words
+    (Self-Supervised) are left alone; trailing punctuation stays outside the braces."""
+    out = []
+    for w in t.split(" "):
+        m = re.match(r"^(\W*)(.*?)(\W*)$", w)
+        lead, core, trail = m.groups()
+        parts = [p for p in core.split("-") if p]
+        needs = any(re.search(r"[A-Z]", p[1:]) for p in parts) or any(len(p) >= 2 and p.isupper() for p in parts)
+        if needs and core and not (lead.startswith("{") or trail.endswith("}")):
+            w = f"{lead}{{{core}}}{trail}"
+        out.append(w)
+    return " ".join(out)
+
+
+def clean_bibtex(entry, authors):
+    """Website BibTeX: standard fields only, consistent layout, true author order."""
+    f = entry["fields"]
+    etype = entry["type"]
+    rows = [("author", " and ".join(authors)), ("title", protect_title(f["title"]))]
+    if etype == "inproceedings":
+        rows.append(("booktitle", f["booktitle"]))
+    elif etype == "article":
+        rows.append(("journal", f.get("journaltitle", f.get("journal", ""))))
+        if f.get("volume"): rows.append(("volume", f["volume"]))
+        if f.get("number"): rows.append(("number", f["number"]))
+    elif etype == "unpublished":
+        rows.append(("note", f.get("note", "Under submission")))
+    rows.append(("year", f["year"]))
+    if f.get("url"): rows.append(("url", f["url"]))
+    w = max(len(k) for k, _ in rows)
+    body = ",\n".join(f"  {k.ljust(w)} = {{{v}}}" for k, v in rows)
+    return f"@{etype}{{{entry['key']},\n{body}\n}}\n"
+
+
+def bib_authors_tex(entry, order_html):
+    """Return the raw (LaTeX) author strings in the requested display order."""
+    raw = [a.strip() for a in re.split(r"\s+and\s+", entry["fields"]["author"])]
+    by_html = {latex_to_html(a): a for a in raw}
+    return [by_html.get(a, a) for a in order_html]
+
+
+# ---------------------------------------------------------------------------
+# Small HTML helpers
+# ---------------------------------------------------------------------------
+def I(k):
+    return f'<i class="ico">{ICONS[k]}</i>'
+
+
+STAR = I("star")
+
+
+def author_html(name, eq):
+    s = f'<a href="{AUTHOR_LINKS[name]}">{name}</a>' if name in AUTHOR_LINKS else name
+    if name == ME:
+        s = f'<span class="me">{name}</span>'
+    return s + ("<sup>*</sup>" if eq else "")
+
+
+def links_html(links, soon=False, bibkey=None):
+    out = []
+    for lab, href in links:
+        out.append(f'<a href="{href}">{lab}</a>' if href else f'<span class="soon">{lab}</span>')
+    if bibkey:
+        out.append(f'<a href="#bib-{bibkey}" class="bibtoggle" data-key="{bibkey}">bibtex</a>')
+    s = " · ".join(out)
+    if soon:
+        s += ' <span class="soon-note">(coming soon)</span>'
+    return s
+
+
+def yrange(ys):
+    ys = sorted(int(x) for x in ys)
+    out, i = [], 0
+    while i < len(ys):
+        k = i
+        while k + 1 < len(ys) and ys[k + 1] == ys[k] + 1:
+            k += 1
+        out.append(f"{ys[i]}–{str(ys[k])[2:]}" if k > i else str(ys[i]))
+        i = k + 1
+    return ", ".join(out)
+
+
+def logo(name, label):
+    if name in MASK_LOGOS:
+        return f'<span class="lg mask {name}" role="img" aria-label="{label}"></span>'
+    return f'<img class="lg {name}" src="images/logos/{name}.svg" alt="{label}">'
+
+
+def blk(icon, title, body, small=""):
+    return f'<div class="blk"><h3>{I(icon)}{title}{f"<small>{small}</small>" if small else ""}</h3>{body}</div>'
+
+
+def bibpanel(key, bibtex):
+    return (f'<div class="bibpanel" id="bib-{key}" hidden><pre>{html.escape(bibtex)}</pre>'
+            f'<div class="bar"><button type="button" class="copybib">{I("copy")} Copy</button>'
+            f'<a href="assets/bib/{key}.bib" download>{I("download")} Download .bib</a><span class="ok" aria-live="polite"></span></div></div>')
+
+
+# ---------------------------------------------------------------------------
+# Publications
+# ---------------------------------------------------------------------------
+def build_pubs():
+    bib = parse_bib(BIB_FILE)
+    os.makedirs(BIB_OUT, exist_ok=True)
+    pubs = []
+    for ex in PUBS:
+        e = bib[ex["key"]]
+        f = e["fields"]
+        authors = ex.get("authors") or split_authors(f["author"])
+        if ex.get("authors"):          # equal-contribution stars follow the CV spec
+            cv_order = split_authors(f["author"])
+            eq_names = {cv_order[i] for i in eq_indices(f) if i < len(cv_order)}
+        else:
+            eq_names = {authors[i] for i in eq_indices(f) if i < len(authors)}
+        venue = latex_to_html(f.get("booktitle") or f.get("journaltitle") or f.get("note", ""))
+        if e["type"] == "article" and f.get("volume"):
+            venue += f", {f['volume']}({f.get('number', '')})".replace("()", "")
+        addendum = f.get("addendum", "")
+        p = dict(ex)
+        p.update(title=latex_to_html(f["title"]), year=f["year"], venue=venue,
+                 authors_html=", ".join(author_html(a, a in eq_names) for a in authors),
+                 spotlight=addendum.lower().startswith("spotlight"),
+                 bibtex=clean_bibtex(e, bib_authors_tex(e, authors)),
+                 venue_short=f"{ex['badge']} {f['year']}" if ex["badge"] != "Preprint" else "Preprint")
+        p.setdefault("featured", False); p.setdefault("notes", []); p.setdefault("soon", False)
+        p["short"] = p["title"].split(":")[0]
+        open(os.path.join(BIB_OUT, f"{p['key']}.bib"), "w", encoding="utf-8").write(p["bibtex"])
+        pubs.append(p)
+    return pubs
+
+
+def pub_row(p):
+    tags = f'<span class="tag{" soft" if p["badge"] == "Preprint" else ""}">{p["badge"]}</span>'
+    if p["spotlight"]:
+        tags += f'<span class="tag spot">{STAR} Spotlight</span>'
+    notes = "".join(f'<p class="nt">{n}</p>' for n in p["notes"])
+    return (f'<li class="pub" id="{p["key"]}" data-tags="{" ".join(p.get("tags", []))}"><div class="bd"><div class="t">{p["title"]}</div>'
+            f'<div class="au">{p["authors_html"]}</div><div class="vn">{tags}<span>{p["venue"]}</span></div>'
+            f'<div class="lk">{links_html(p["links"], p["soon"], p["key"])}</div>{notes}{bibpanel(p["key"], p["bibtex"])}</div></li>')
+
+
+def pubs_by_year(pubs):
+    years = sorted({p["year"] for p in pubs}, reverse=True)
+    out = []
+    for y in years:
+        rows = "".join(pub_row(p) for p in pubs if p["year"] == y)
+        out.append(f'<div class="yr"><div class="y">{y}</div><ul class="plist">{rows}</ul></div>')
+    th = THESIS
+    out.append(f'<div class="yr"><div class="y">Thesis</div><ul class="plist"><li class="pub" data-tags="{" ".join(th.get("tags", []))}"><div class="bd"><div class="t">{th["title"]}</div>'
+               f'<div class="au"><span class="me">{ME}</span></div><div class="vn"><span class="tag soft">{th["badge"]}</span><span>{th["venue"]}, {th["year"]}</span></div>'
+               f'<div class="lk">{links_html(th["links"])}</div></div></li></ul></div>')
+    return "".join(out)
+
+
+def card(p):
+    gs = f'<span class="gs">{STAR} Spotlight</span>' if p["spotlight"] else ""
+    return (f'<article class="card"><a class="fig" href="#{p["key"]}" aria-label="{p["title"]}"><img src="{IMG}{p["img"]}" alt=""><img class="hov" src="{IMG}{p["img2"]}" alt=""></a>'
+            f'<div class="bd"><div class="k">{p["venue_short"]}{gs}</div><div class="t"><a href="#{p["key"]}">{p["short"]}</a></div>'
+            f'<p class="ab">{p.get("blurb", "")}</p><div class="lk">{links_html(p["links"], p["soon"], p["key"])}</div></div></article>')
+
+
+# ---------------------------------------------------------------------------
+# Page pieces
+# ---------------------------------------------------------------------------
+def head(title, description, extra=""):
+    return f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{title}</title>
+<meta name="description" content="{description}">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{description}">
+<meta property="og:image" content="{SITE_URL}/images/sid_beard_profile_paris.jpg">
+<meta property="og:url" content="{SITE_URL}/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧙</text></svg>">
+<script>try{{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}}catch(e){{}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">{extra}
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120374008-1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','UA-120374008-1');</script>
+</head>'''
+
+
+THEME_BTN = f'<button id="theme-btn" type="button" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="ico moon">{ICONS["moon"]}</i><i class="ico sun">{ICONS["sun"]}</i></button>'
+
+SCRIPTS = """<script>
+(function(){var b=document.getElementById('theme-btn');if(!b)return;function cur(){var t=document.documentElement.getAttribute('data-theme');if(t)return t;return window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}
+b.addEventListener('click',function(){var n=cur()==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);try{localStorage.setItem('theme',n);}catch(e){}});})();
+(function(){
+document.querySelectorAll('.bibtoggle').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var p=document.getElementById('bib-'+a.getAttribute('data-key'));if(!p)return;
+var inCard=!!a.closest('.card');if(inCard){p.hidden=false;document.getElementById(a.getAttribute('data-key')).scrollIntoView({behavior:'smooth',block:'center'});}else{p.hidden=!p.hidden;}});});
+document.querySelectorAll('.copybib').forEach(function(b){b.addEventListener('click',function(){var panel=b.closest('.bibpanel'),txt=panel.querySelector('pre').textContent,ok=panel.querySelector('.ok');
+function done(){ok.textContent='Copied';setTimeout(function(){ok.textContent='';},1600);}
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done);}else{var r=document.createRange();r.selectNodeContents(panel.querySelector('pre'));var s=window.getSelection();s.removeAllRanges();s.addRange(r);try{document.execCommand('copy');done();}catch(e){}s.removeAllRanges();}});});
+var fb=document.querySelectorAll('.filters button');fb.forEach(function(b){b.addEventListener('click',function(){var t=b.getAttribute('data-tag');fb.forEach(function(x){x.classList.toggle('on',x===b);});
+document.querySelectorAll('.pub[data-tags]').forEach(function(li){li.hidden=!(t==='all'||(' '+li.getAttribute('data-tags')+' ').indexOf(' '+t+' ')>=0);});
+document.querySelectorAll('.yr').forEach(function(y){y.hidden=!y.querySelector('.pub:not([hidden])');});});});
+if(location.hash&&location.hash.indexOf('#bib-')===0){var p=document.getElementById(location.hash.slice(1));if(p)p.hidden=false;}
+})();
+</script>"""
+
+
+def build_index(pubs):
+    icons = "".join((f'<a class="pri" href="{h}" title="{l}">{I(ic)}<span>{l}</span></a>' if l == "CV"
+                     else f'<a href="{h}" title="{l}" aria-label="{l}">{I(ic)}</a>') for l, ic, h in TOPLINKS)
+    # news
+    def nitem(d, b, t):
+        t = t.replace("<b>Spotlight</b>", f'<b class="gs" style="font-size:inherit;letter-spacing:0;text-transform:none;margin:0">{STAR} Spotlight</b>')
+        return f'<li><time>{d}</time><span>{f"<b>{b}</b>" if b else ""}{t}</span></li>'
+    news = (f'<ul class="news">{"".join(nitem(*n) for n in NEWS[:NEWS_SHOWN])}</ul>'
+            f'<details class="more"><summary>Older news</summary><ul class="news">{"".join(nitem(*n) for n in NEWS[NEWS_SHOWN:])}</ul></details>')
+    # background
+    exp = "".join(f'<li>{logo(lg, c)}<div class="l"><b>{c}</b><span>{r}</span></div><div class="r">{d}</div></li>' for c, r, d, lg in EXPERIENCE)
+    edu = "".join(f'<li>{logo(lg, n)}<div class="l"><b><a href="{h}">{n}</a></b>{"".join(f"<span>{x}</span>" for x in degs)}</div><div class="r">{d}</div></li>' for n, h, degs, d, lg in EDUCATION)
+    exp_list = '<ul class="rows withlogo">' + exp + '</ul>'
+    edu_list = '<ul class="rows withlogo">' + edu + '</ul>'
+    background = '<div class="blocks">' + blk("briefcase", "Experience", exp_list) + blk("cap", "Education", edu_list) + '</div>'
+    # service
+    organizing = "".join(f'<li><div class="l"><b><a href="{h}">{t}</a></b><span>{r} · ' + " · ".join(f'<a href="{vh}"><span class="k" style="margin:0">{v}</span></a>' for v, vh in venues) + '</span></div></li>' for t, h, r, venues in ORGANIZING)
+    def revitem(v, y):
+        g = STAR.replace('class="ico"', 'class="gs ico"') if GOLD_REVIEWS.get(v) else ""
+        return f'<span class="rv"><b>{v}</b> {yrange([x.strip() for x in y.split(",")])}{g}</span>'
+    reviewing = f'<p class="revline">{"".join(revitem(v, y) for v, y in REVIEWING)}</p><div class="legend">{STAR} {GOLD_LEGEND}</div>'
+    talks = '<ul class="rows">' + "".join(f'<li><div class="l"><b>{t}</b><span>{v} · <a class="lnk" href="{lk[1]}">{I(lk[0])} {lk[0]}</a></span></div><div class="r">{y}</div></li>' for t, v, y, lk in TALKS) + '</ul>'
+    def teach(n, h, role, per, cs, lg):
+        cl = "".join(f'<li><span>{c}</span><span>{t}</span></li>' for c, t in cs)
+        return f'<li class="teach">{logo(lg, n)}<div class="l"><b><a href="{h}">{n}</a></b><span>{role}</span></div><div class="r">{per}</div><ul class="courses">{cl}</ul></li>'
+    ncourses = sum(len(cs) for *_, cs, _ in TEACHING)
+    teaching = '<ul class="rows withlogo">' + "".join(teach(*t) for t in TEACHING) + '</ul>'
+    oss = '<ul class="rows">' + "".join(f'<li><div class="l"><b><a href="{h}">{t}</a></b><span>{d}</span></div></li>' for t, h, d in OPENSOURCE) + '</ul>'
+    vol = '<ul class="rows">' + "".join(f'<li><div class="l"><b><a href="{h}">{t}</a></b><span>{r}</span></div></li>' for t, h, r in VOLUNTEERING) + '</ul>'
+    service = ('<div class="blocks">' + blk("users", "Organizing", f'<ul class="rows">{organizing}</ul>') + blk("clipboard", "Reviewing", reviewing)
+               + blk("mic", "Talks", talks, f"{len(TALKS)} talks") + blk("chalk", "Teaching", teaching, f"teaching assistant · {ncourses} courses")
+               + blk("code", "Open source", oss) + blk("heart", "Volunteering", vol) + '</div>')
+    resources = "".join(blk(ic, title, '<ul class="res">' + "".join(f'<li><a href="{h}">{t}</a><span>{d}</span></li>' for t, h, d in items) + '</ul>') for ic, title, items in RESOURCES)
+    sel = [p for p in pubs if p["featured"]]
+    filters = ('<div class="filters" role="group" aria-label="Filter publications by topic"><span class="flabel">Show</span>'
+               '<button type="button" data-tag="all" class="on">All</button>'
+               + "".join(f'<button type="button" data-tag="{t}">{l}</button>' for t, l in TAGS) + '</div>')
+    desc = f"{ME} — ELLIS PhD student at the Max Planck Institute for Informatics and ISTA. Computer vision, representation learning, interpretability."
+    return f'''{head(ME, desc)}
+<body>{THEME_BTN}<div class="wrap">
+<figure class="cover"><img src="{IMG}aspen_snowmass.jpeg" alt="Snowmass Mountain, Colorado"><figcaption>Snowmass, CO · March 2020</figcaption></figure>
+<header class="hdr"><img src="{IMG}sid_beard_profile_paris.jpg" alt="{ME}"><div><h1>{ME}</h1><p class="sub">{TAGLINE}</p><nav class="icons" aria-label="Links">{icons}</nav></div></header>
+<section class="bio" id="about">{"".join(f"<p>{p}</p>" for p in BIO)}<p class="off">{OFFHOURS}</p></section>
+<section id="news"><h2>News</h2>{news}</section>
+<section id="selected"><h2>Selected work<a href="#publications">all {len(pubs)} papers ↓</a></h2><div class="cards">{"".join(card(p) for p in sel)}</div></section>
+<section id="publications"><h2>Publications<a href="{SCHOLAR}">Google Scholar ↗</a></h2>{filters}{pubs_by_year(pubs)}<p class="eqnote"><sup>*</sup>equal contribution · click <em>bibtex</em> on an entry to copy or download its citation</p></section>
+<section id="background"><h2>Background<a href="{CV_PDF}">full CV (PDF) ↗</a></h2>{background}</section>
+<section id="service"><h2>Academic service &amp; more</h2>{service}</section>
+<section id="resources"><h2>Writing &amp; resources</h2><div class="rgroups">{resources}</div></section>
+<footer style="margin-top:56px"><span>© 2026 {ME}</span><span>Updated {UPDATED}</span></footer>
+</div>{SCRIPTS}</body></html>
+'''
+
+
+def build_page(slug):
+    frag = open(os.path.join(ROOT, "site/pages", slug + ".html"), encoding="utf-8").read()
+    meta = dict(re.findall(r"<!--\s*(\w+):\s*(.*?)\s*-->", frag))
+    body = re.sub(r"^(<!--.*?-->\s*)+", "", frag, flags=re.S)
+    title = meta["title"]
+    back_href, back_label = [x.strip() for x in meta["back"].split("|")]
+    wide = meta.get("wide") == "true"
+    h1 = "" if meta.get("notitle") == "true" else f"<h1>{title}</h1>"
+    nav = "".join(f'<a href="{h}">{l}</a>' for l, h in SUBNAV)
+    return f'''{head(f"{title} · {ME}", f"{title} — {ME}")}
+<body>
+<div class="topbar"><div class="in"><a class="nm" href="index.html">{ME}</a><nav>{nav}{THEME_BTN}</nav></div></div>
+<main class="page{" wide" if wide else ""}"><a class="back" href="{back_href}">← {back_label}</a>{h1}
+<div class="prose">
+{body.strip()}
+</div>
+<footer style="margin-top:56px"><span>© 2026 {ME}</span><span>Updated {UPDATED}</span></footer>
+</main>{SCRIPTS}</body></html>
+'''
+
+
+def main():
+    pubs = build_pubs()
+    open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8").write(build_index(pubs))
+    for slug in PAGES:
+        open(os.path.join(ROOT, slug + ".html"), "w", encoding="utf-8").write(build_page(slug))
+    print(f"built index.html, {len(PAGES)} pages, {len(pubs)} bib files")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Siddhartha Gairola</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧙</text></svg>">
+
+  <!-- SEO & Social -->
+  <meta name="description" content="Siddhartha Gairola — ELLIS PhD Student at MPI for Informatics. Research in Computer Vision, Explainable AI, and Object-Centric Representations.">
+  <meta property="og:title" content="Siddhartha Gairola">
+  <meta property="og:description" content="ELLIS PhD Student at MPI for Informatics. Research in Computer Vision, XAI, and Object-Centric Representations.">
+  <meta property="og:image" content="https://sidgairo18.github.io/images/sid_beard_profile_paris.jpg">
+  <meta property="og:url" content="https://sidgairo18.github.io">
+  <meta name="twitter:card" content="summary">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120374008-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-120374008-1');
+  </script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Theme (load early to avoid flash) -->
+  <script>
+    try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch(e) {}
+  </script>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-name">Siddhartha Gairola</a>
+    <div class="nav-links">
+      <a href="mailto:sgairola@mpi-inf.mpg.de">Email</a>
+      <a href="assets/cv/SiddharthaGairola_CV.pdf">CV</a>
+      <a href="assets/cv/SidGairola-bio.txt">Bio</a>
+      <a href="https://www.github.com/sidgairo18">GitHub</a>
+      <a href="https://scholar.google.co.in/citations?user=4tInxbgAAAAJ&hl=en">G Scholar</a>
+      <a href="#useful-resources">Resources</a>
+      <a href="https://twitter.com/sidgairo18">Twitter</a>
+      <a href="./personal.html">Personal</a>
+      <button class="theme-toggle" type="button" id="theme-btn" title="Toggle dark mode">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<main class="site-wrapper">
+
+  <!-- Hero -->
+  <header class="hero" id="home">
+    <h1>Siddhartha Gairola</h1>
+    <figure class="hero-banner">
+      <img src="./images/aspen_snowmass.jpeg" alt="Snowmass Aspen">
+      <figcaption>Snowmass Mountain, Snowmass Village, CO, USA (clicked by me in March, 2020).</figcaption>
+    </figure>
+  </header>
+
+  <!-- Bio -->
+  <section class="bio" id="bio">
+    <div class="bio-content">
+      <div class="bio-text">
+        <p>I am an <a href="https://ellis.eu/phd-postdoc">ELLIS PhD Student</a> advised by <a href="https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/people/bernt-schiele">Prof. Bernt Schiele</a> (<a href="https://www.mpi-inf.mpg.de/home">Max Planck Institute of Informatics, Saarbr&uuml;cken</a>) and <a href="https://www.francescolocatello.com/">Prof. Francesco Locatello</a> (<a href="https://ist.ac.at/de/home/">ISTA</a>). During the course of my PhD I shall be associated with both the <a href="https://www.mpi-inf.mpg.de/home">Max Planck Institute for Informatics</a> and <a href="https://ist.ac.at/de/home/">Institute of Science and Technology, Austria</a>.</p>
+        <p>Previously, I was a <a href="https://www.microsoft.com/en-us/research/academic-program/research-fellows-program-at-microsoft-research-india/">Research Fellow</a> at <a href="https://www.microsoft.com/en-us/research/lab/microsoft-research-india/">Microsoft Research (MSR), India</a> in the Technology for Emerging Markets group, where I worked on applications of Computer Vision, Image Processing and Machine Learning to developing low-cost diagnostic solutions for healthcare. Before that, I worked as a Research Intern at <a href="https://www.adobe.com/in/">Adobe Inc.</a> in the Media and Data Science Research Group on image understanding tasks.</p>
+        <p>I completed my Master's and B.Tech with Honours in May, 2020 at <a href="http://iiit.ac.in">IIIT Hyderabad</a>, where I was advised by <a href="https://faculty.iiit.ac.in/~pjn/">Prof. PJ Narayanan</a>. My work was mainly on learning robust unsupervised style representations for image recognition and retrieval tasks.</p>
+      </div>
+      <div class="bio-photo">
+        <img src="./images/sid_beard_profile_paris.jpg" alt="Siddhartha Gairola">
+      </div>
+    </div>
+  </section>
+
+  <!-- News -->
+  <section class="news" id="news">
+    <h2 class="section-heading">News</h2>
+    <div class="news-container">
+      <ul class="news-list">
+        <li class="news-item"><span class="news-date">Sept 2026</span> <span class="featured-badge news-tag-badge">NeurIPS</span> "Stranger Things" accepted at <strong>NeurIPS 2026</strong>.</li>
+        <li class="news-item"><span class="news-date">May 2026</span> <span class="featured-badge news-tag-badge">ICML</span> <span class="spotlight-badge spotlight-badge--news"><span class="spotlight-icon" aria-hidden="true"><svg viewBox="0 0 64 64" role="img" focusable="false" aria-hidden="true"><path fill="#C4613C" d="M32 4l6 6 8-2 4 7 8 1-1 8 7 4-2 8 6 6-6 6 2 8-7 4 1 8-8 1-4 7-8-2-6 6-6-6-8 2-4-7-8-1 1-8-7-4 2-8-6-6 6-6-2-8 7-4-1-8 8-1 4-7 8 2z"/><circle cx="32" cy="32" r="14" fill="#fff"/><path fill="#C4613C" d="M32 21l2.7 5.6 6.2.9-4.5 4.3 1.1 6.1-5.5-2.9-5.5 2.9 1.1-6.1-4.5-4.3 6.2-.9z"/><path fill="#C4613C" d="M20 43l-8 13 9.3-2.2L28 60l4-13z"/><path fill="#C4613C" d="M44 43l8 13-9.3-2.2L36 60l-4-13z"/></svg></span>Spotlight</span> DAVE accepted at <strong>ICML 2026</strong>.</li>
+        <li class="news-item"><span class="news-date">Feb 2026</span> ALOE accepted at <strong>CVPR 2026</strong> as poster.</li>
+        <li class="news-item"><span class="news-date">Feb 2026</span> DAVE pre-print on distribution-aware attribution for ViTs released on <a href="https://arxiv.org/abs/2602.06613">arXiv</a>.</li>
+        <li class="news-item"><span class="news-date">Aug 2025</span> SmartKC++ accepted at <strong>WACV 2025</strong>.</li>
+        <li class="news-item"><span class="news-date">Jan 2025</span> <span class="featured-badge news-tag-badge">ICLR</span> <a href="https://openreview.net/forum?id=57NfyYxh5f">"How to Probe"</a> accepted at <strong>ICLR 2025</strong>.</li>
+        <li class="news-item"><span class="news-date">Oct 2024</span> Invited talk at <a href="https://gmum.net/">GMUM Workshop, Jagiellonian University</a> on XAI in Visual Models.</li>
+        <li class="news-item"><span class="news-date">Sept 2022</span> Started PhD at Max Planck Institute for Informatics as part of the <a href="https://ellis.eu/phd-postdoc">ELLIS PhD program</a>.</li>
+        <li class="news-item"><span class="news-date">2022</span> Auto-retinoscopy and keratoconus classifier papers published at <strong>IMWUT</strong> and <strong>EMBC</strong>.</li>
+        <li class="news-item"><span class="news-date">2021</span> SmartKC published at <strong>IMWUT</strong>; RespireNet at <strong>EMBC 2021</strong>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Research -->
+  <section class="research" id="research">
+    <h2 class="section-heading">Research</h2>
+    <p><strong>Current Research:</strong> I am broadly interested in Artificial Intelligence (Machine Learning), Computer Vision, Image Processing, Natural Language Processing and their applications to real-world problems. I am particularly interested in building reliable (robust) systems that model visual perception with limited supervision. To this end, for my PhD I will be exploring two major directions:</p>
+    <ol style="margin: 0.5rem 0 1rem 1.5rem;">
+      <li><em>Interpretability and Robustness of Deep Neural Networks</em></li>
+      <li><em>Learning Powerful (unsupervised) Object-Centric Representations</em></li>
+    </ol>
+    <p>When not working on my research, I like to play the piano and guitar, listen to music, read non-fiction, drive motorcycles, and go for a run or hike. I also am really fascinated by paradoxes, can find some <a href="https://en.wikipedia.org/wiki/List_of_paradoxes">here.</a> (<em>I wish I had Hermione's <a href="https://harrypotter.fandom.com/wiki/Time-Turner">Time-Turner</a> to do much more in a day as much as I'd like to.</em>) (see more at <a href="./personal.html">Personal</a>)</p>
+
+    <!-- Computer Vision, Image Processing and ML -->
+    <h3 class="pub-category">Computer Vision, Image Processing and Machine Learning</h3>
+
+    <!-- DisParQ (Under submission) -->
+    <article class="pub-entry">
+      <div class="pub-image">
+        <img src="./images/dpq_1.jpg" alt="DisParQ figure">
+        <img class="pub-img-hover" src="./images/dpq_2.jpg" alt="DisParQ figure hover">
+      </div>
+      <div class="pub-details">
+        <h4 class="paper-title">DisParQ: Self-Supervised Part Concepts for Interpretable Vision Foundation Models</h4>
+        <p class="paper-authors">
+          <a href="https://adam.pardyl.com/">Adam Pardyl</a><sup>*</sup>,
+          <strong>Siddhartha Gairola</strong><sup>*</sup>,
+          <a href="https://sukrutrao.github.io/">Sukrut Rao</a>,
+          <a href="https://www.linkedin.com/in/adamvrobel/">Adam Wr&oacute;bel</a>,
+          <a href="https://bartoszzielinski.github.io/">Bartosz Zieli&nacute;ski</a>,
+          <a href="https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/people/bernt-schiele">Bernt Schiele</a>,
+          <a href="https://dawrym.github.io/">Dawid Rymarczyk</a>
+        </p>
+        <p class="paper-venue"><em>Under submission</em>, 2026</p>
+        <p class="paper-links">
+          arxiv /
+          code /
+          bibtex
+          <em>(Coming soon!)</em>
+        </p>
+        <p class="paper-note">*Equal Contribution</p>
+      </div>
+    </article>
+
+    <!-- Stranger Things (Featured) -->
+    <article class="pub-entry featured">
+      <div class="pub-image">
+        <img src="./images/sb_1.jpg" alt="Stranger Things figure">
+        <img class="pub-img-hover" src="./images/sb_2.jpg" alt="Stranger Things figure hover">
+      </div>
+      <div class="pub-details">
+        <h4 class="paper-title">Stranger Things: When Objects Appear Without Their Typical Neighbours</h4> <span class="featured-badge">NeurIPS</span>
+        <p class="paper-authors">
+          <strong>Siddhartha Gairola</strong>,
+          <a href="https://jiahao000.github.io/">Jiahao Xie</a>,
+          <a href="https://annusha.github.io/">Anna Kukleva</a>,
+          <a href="https://www.francescolocatello.com/">Francesco Locatello</a>,
+          <a href="https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/people/bernt-schiele">Bernt Schiele</a>
+        </p>
+        <p class="paper-venue"><em>Conference on Neural Information Processing Systems (NeurIPS)</em>, 2026</p>
+        <p class="paper-links">
+          arxiv /
+          code /
+          dataset /
+          bibtex
+          <em>(Coming soon!)</em>
+        </p>
+      </div>
+    </article>
+
+    <!-- DAVE (Featured) -->
+    <article class="pub-entry featured">
+      <div class="pub-image">
+        <img src="./images/dave_fig.png" alt="DAVE figure">
+        <img class="pub-img-hover" src="./images/dave_fig.png" alt="DAVE figure hover">
+      </div>
+      <div class="pub-details">
+        <h4 class="paper-title">DAVE : Distribution-aware Attribution via ViT Gradient Decomposition</h4> <span class="featured-badge">ICML</span> <span class="spotlight-badge"><span class="spotlight-icon" aria-hidden="true"><svg viewBox="0 0 64 64" role="img" focusable="false" aria-hidden="true"><path fill="#C4613C" d="M32 4l6 6 8-2 4 7 8 1-1 8 7 4-2 8 6 6-6 6 2 8-7 4 1 8-8 1-4 7-8-2-6 6-6-6-8 2-4-7-8-1 1-8-7-4 2-8-6-6 6-6-2-8 7-4-1-8 8-1 4-7 8 2z"/><circle cx="32" cy="32" r="14" fill="#fff"/><path fill="#C4613C" d="M32 21l2.7 5.6 6.2.9-4.5 4.3 1.1 6.1-5.5-2.9-5.5 2.9 1.1-6.1-4.5-4.3 6.2-.9z"/><path fill="#C4613C" d="M20 43l-8 13 9.3-2.2L28 60l4-13z"/><path fill="#C4613C" d="M44 43l8 13-9.3-2.2L36 60l-4-13z"/></svg></span>Spotlight</span>
+        <p class="paper-authors">
+          <a href="https://www.linkedin.com/in/adamvrobel/">Adam Wr&oacute;bel</a><sup>*</sup>,
+          <strong>Siddhartha Gairola</strong><sup>*</sup>,
+          <a href="https://jacek-tabor.u.matinf.uj.edu.pl/">Jacek Tabor</a>,
+          <a href="https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/people/bernt-schiele">Bernt Schiele</a>,
+          <a href="https://bartoszzielinski.github.io/">Bartosz Zieli&nacute;ski</a>,
+          <a href="https://dawrym.github.io/">Dawid Rymarczyk</a>
+        </p>
+        <p class="paper-venue"><em>International Conference on Machine Learning (ICML)</em>, May 2026</p>
+        <p class="paper-links">
+          <a href="https://arxiv.org/abs/2602.06613">arxiv</a> /
+          <a href="https://github.com/a-vrobell/DAVE">code</a> /
+          <a href="assets/presentations/dave_ppt.pdf">presentation</a> /
+          bibtex
+        </p>
+        <p class="paper-abstract">DAVE is a distribution-aware attribution method for Vision Transformers that produces stable, high-resolution pixel-level explanations while reducing patch/grid artifacts common in ViT saliency maps.</p>
+        <p class="paper-note">*Equal Contribution</p>
+      </div>
+    </article>
+
+    <!-- ALOE (Featured) -->
+    <article class="pub-entry featured">
+      <div class="pub-image">
+        <img src="./images/aloe_teaser.png" alt="ALOE figure">
+        <img class="pub-img-hover" src="./images/aloe_teaser.png" alt="ALOE figure hover">
+      </div>
+      <div class="pub-details">
+        <h4 class="paper-title">Align Once to Explain: Feature Alignment for Scalable B-cosification of Foundational Vision Transformers</h4> <span class="featured-badge">CVPR</span>
+        <p class="paper-authors">
+          Raphael Maser<sup>*</sup>,
+          <strong>Siddhartha Gairola</strong><sup>*</sup>,
+          <a href="https://sukrutrao.github.io/">Sukrut Rao</a>,
+          <a href="https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/people/bernt-schiele">Bernt Schiele</a>
+        </p>
+        <p class="paper-venue"><em>IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</em>, 2026</p>
+        <p class="paper-links">
+          <a href="https://cvpr.thecvf.com/virtual/2026/poster/40400">abstract</a> /
+          arxiv /
+          code /
+          project_page /
+          bibtex
+        </p>
+        <p class="paper-abstract">ALOE (ALign Once to Explain) is a one-time, label-free feature alignment approach that efficiently converts foundational vision models (DINOv3, SigLIP2, etc.) into inherently interpretable B-cos variants. The aligned backbone serves as a drop-in replacement across downstream tasks, is 100&ndash;1000&times; more data-efficient than training from scratch, and outperforms fully-supervised B-cos models (e.g., +6.6 p.p. top-1 on ImageNet for ViT-B/16) while yielding well-localized, human-interpretable explanations by design.</p>
+        <ul class="paper-note">
+          <li>Also accepted as <strong>spotlight</strong> at <a href="https://sites.google.com/view/how-cvpr-workshop">The Second Workshop on How Do Vision Models Work? (HOW)</a> at CVPR 2026.</li>
+          <li>Also accepted as poster at <a href="https://xai4cv-workshop.github.io/xai4cv2026/">The 5th Explainable AI for Computer Vision (XAI4CV) Workshop</a> at CVPR 2026.</li>
+        </ul>
+        <p class="paper-note">*Equal Contribution</p>
+      </div>
+    </article>
+
+    <!-- How To Probe (Featured) -->
+    <article class="pub-entry featured">
+      <div class="pub-image">
+        <img src="./images/how_to_probe.png" alt="How to Probe figure">
+        <img class="pub-img-hover" src="./images/how_to_probe.png" alt="How to Probe figure hover">
+      </div>
+      <div class="pub-details">
+        <h4 class="paper-title">How to Probe: Simple Yet Effective Techniques for Improving Post-hoc Explanations</h4> <span class="featured-badge">ICLR</span>
+        <p class="paper-authors">
+          <strong>Siddhartha Gairola</strong>,
+          <a href="https://moboehle.github.io/">Moritz Boehle</a>,
+          <a href="https://www.francescolocatello.com/">Francesco Locatello</a> and
+          <a href="https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/people/bernt-schiele">Bernt Schiele</a>
+        </p>
+        <p class="paper-venue"><em>International Conference on Learning Representations (ICLR)</em>, 2025</p>
+        <p class="paper-links">
+          <a href="https://openreview.net/forum?id=57NfyYxh5f">OpenReview</a> /
+          <a href="https://arxiv.org/pdf/2503.00641">arxiv</a> /
+          <a href="https://github.com/sidgairo18/how-to-probe">code</a> /
+          bibtex
+        </p>
+        <p class="paper-abstract">We show that training details of a pre-trained model's classification layer (&lt;10% of parameters) play a crucial role in post-hoc explanations, and present simple adjustments that significantly enhance explanation quality across multiple visual pre-training frameworks.</p>
+      </div>
+    </article>
+
+    <!-- SimPropNet -->
+    <article class="pub-entry">
+      <div class="pub-image">
+        <img src="./images/fss.png" alt="SimPropNet figure">
+        <img class="pub-img-hover" src="./images/fss.png" alt="SimPropNet figure hover">
+      </div>
+      <div class="pub-details">
+        <h4 class="paper-title">SimPropNet: Improved Similarity Propagation for Few Shot Segmentation</h4> <span class="featured-badge">IJCAI</span>
+        <p class="paper-authors">
+          <strong>Siddhartha Gairola</strong>,
+          Ayush Chopra,
+          Mayur Hemani and
+          Balalji K.
+        </p>
+        <p class="paper-venue"><em>International Joint Conferences on Artificial Intelligence (IJCAI)</em>, 2020</p>
+        <p class="paper-links">
+          <a href="https://www.ijcai.org/Proceedings/2020/80">IJCAI_Proceedings</a> /
+          <a href="https://www.ijcai.org/Proceedings/2020/0080.pdf">pdf</a> /
+          <a href="assets/bib/ijcai_2020.bib">bibtex</a>
+        </p>
+        <p class="paper-abstract">Improving similarity propagation to improve one-shot and few-shot image segmentation.</p>
+      </div>
+    </article>
+
+    <!-- Style Embeddings -->
+    <article class="pub-entry">
+      <div class="pub-image">
+        <img src="./images/gram.png" alt="Style Embeddings figure">
+        <img class="pub-img-hover" src="./images/b-tri.png" alt="Style Embeddings figure hover">
+      </div>
+      <div class="pub-details">
+        <h4 class="paper-title">Unsupervised Image Style Embeddings for Retrieval and Recognition Tasks</h4> <span class="featured-badge">WACV</span>
+        <p class="paper-authors">
+          <strong>Siddhartha Gairola</strong>,
+          <a href="https://cvit.iiit.ac.in/people/phd/phd-students/rajvi-shah">Rajvi Shah</a>,
+          <a href="https://faculty.iiit.ac.in/~pjn/">P.J. Narayanan</a>
+        </p>
+        <p class="paper-venue"><em>IEEE Winter Conference on Applications of Computer Vision (WACV '20)</em>, 2020</p>
+        <p class="paper-links">
+          <a href="https://github.com/sidgairo18/unsupervised-style-learning">code</a> /
+          <a href="https://sidgairo18.github.io/style">project_page</a> /
+          <a href="https://openaccess.thecvf.com/content_WACV_2020/html/Gairola_Unsupervised_Image_Style_Embeddings_for_Retrieval_and_Recognition_Tasks_WACV_2020_paper.html">paper</a> /
+          <a href="assets/papers/style_supp.pdf">supp_material</a> /
+          <a href="assets/bib/wacv_2020.bib">bibtex</a>
+        </p>
+        <p class="paper-abstract">An unsupervised protocol for learning a neural embedding of visual style of images. The proposed protocol does not leverage categorical labels but a proxy measure for finding stylistically similar and dissimilar images.</p>
+      </div>
+    </article>
+
+    <!-- Find Me a Sky -->
+    <article class="pub-entry">
+      <div class="pub-image">
+        <img src="./images/sky_before.png" alt="Sky Search figure">
+        <img class="pub-img-hover" src="./images/sky_after.png" alt="Sky Search figure hover">
+      </div>
+      <div class="pub-details">
+        <a href="https://link.springer.com/chapter/10.1007/978-3-319-73603-7_18"><h4 class="paper-title">Find Me a Sky : A Data-driven Method for Color-Consistent Sky Search and Replacement</h4></a> <span class="featured-badge">MMM</span>
+        <p class="paper-authors">
+          Saumya Rawat*,
+          <strong>Siddhartha Gairola*</strong>,
+          <a href="https://cvit.iiit.ac.in/people/phd/phd-students/rajvi-shah">Rajvi Shah</a>,
+          <a href="https://faculty.iiit.ac.in/~pjn/">P.J. Narayanan</a>
+        </p>
+        <p class="paper-venue"><em>International Conference on Multimedia Modelling (MMM '18)</em>, 2018</p>
+        <p class="paper-links">
+          <a href="https://cvit.iiit.ac.in/research/projects/cvit-projects/findmeasky">project_page</a> /
+          <a href="assets/papers/sky.pdf">pdf</a> /
+          <a href="assets/bib/SKY2018.bib">bibtex</a>
+        </p>
+        <p class="paper-abstract">A data driven method for color-consistent sky search and replacement. This technology does not require the use of complex color transfer techniques.</p>
+        <p class="paper-note">*Both authors contributed equally towards this work.</p>
+      </div>
+    </article>
+
+    <!-- Applied ML, Vision, HCI for Healthcare -->
+    <h3 class="pub-category">Applied ML, Vision, HCI for Healthcare</h3>
+
+    <!-- SmartKC++ -->
+    <article class="pub-entry">
+      <div class="pub-image">
+        <img src="./images/smartkc_plusplus.png" alt="SmartKC++ figure">
+        <img class="pub-img-hover" src="./images/smartkc_plusplus.png" alt="SmartKC++ figure hover">
+      </div>
+      <div class="pub-details">
+        <h4 class="paper-title">SmartKC++: Improving Performance of Smartphone-Based Corneal Topographers</h4> <span class="featured-badge">WACV</span>
+        <p class="paper-authors">
+          <a href="https://ganatra-v.github.io/">Vaibhav Ganatra</a>,
+          <strong>Siddhartha Gairola</strong>,
+          <a href="https://www.microsoft.com/en-us/research/people/nkwatra/">Nipun Kwatra</a> and
+          <a href="https://mohitjaindr.github.io/">Mohit Jain</a> et al.
+        </p>
+        <p class="paper-venue"><em>IEEE Winter Conference on Applications of Computer Vision (WACV '25)</em>, 2025</p>
+        <p class="paper-links">
+          <a href="https://openaccess.thecvf.com/content/WACV2025/html/Ganatra_SmartKC_Improving_Performance_of_Smartphone-Based_Corneal_Topographers_WACV_2025_paper.html">Open Access</a> /
+          <a href="https://github.com/microsoft/SmartKC-A-Smartphone-based-Corneal-Topographer">code</a> /
+          <a href="assets/bib/smartkc_plusplus.bib">bibtex</a>
+        </p>
+        <p class="paper-abstract">Improving the SmartKC image processing pipeline, making it more robust and accurate.</p>
+      </div>
+    </article>
+
+    <!-- Auto Retinoscopy -->
+    <article class="pub-entry">
+      <div class="pub-image">
+        <img src="./images/auto_retinoscopy.jpeg" alt="Retinoscopy figure">
+        <img class="pub-img-hover" src="./images/auto_retinoscopy.jpeg" alt="Retinoscopy figure hover">
+      </div>
+      <div class="pub-details">
+        <h4 class="paper-title">Towards Automating Retinoscopy for Refractive Error Diagnosis</h4> <span class="featured-badge">IMWUT</span>
+        <p class="paper-authors">
+          Aditya Aggarwal,
+          <strong>Siddhartha Gairola</strong>,
+          <a href="https://www.microsoft.com/en-us/research/people/nkwatra/">Nipun Kwatra</a> and
+          <a href="https://mohitjaindr.github.io/">Mohit Jain</a> et al.
+        </p>
+        <p class="paper-venue"><em>Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies (IMWUT), Volume 6, Issue 3,</em> 2022</p>
+        <p class="paper-links">
+          <a href="https://github.com/microsoft/Auto-retinoscopy">code</a> /
+          <a href="https://www.microsoft.com/en-us/research/project/auto-retinoscopy-automating-retinoscopy-for-refractive-error-diagnosis/">project_page</a> /
+          <a href="https://arxiv.org/pdf/2208.05552.pdf">pdf</a>
+        </p>
+        <p class="paper-abstract">We automate retinoscopy using a smartphone attached to a retinoscope, achieving 91.0% sensitivity and 0.75D mean error for refractive error screening.</p>
+      </div>
+    </article>
+
+    <!-- Keratoconus Classifier -->
+    <article class="pub-entry">
+      <div class="pub-image">
+        <img src="./images/device_and_setup.png" alt="Keratoconus figure">
+        <img class="pub-img-hover" src="./images/device_and_setup.png" alt="Keratoconus figure hover">
+      </div>
+      <div class="pub-details">
+        <h4 class="paper-title">Keratoconus Classifier for Smartphone-based Corneal Topographer</h4> <span class="featured-badge">EMBC</span>
+        <p class="paper-authors">
+          <strong>Siddhartha Gairola</strong>,
+          <a href="https://www.microsoft.com/en-us/research/people/nkwatra/">Nipun Kwatra</a> and
+          <a href="https://mohitjaindr.github.io/">Mohit Jain</a> et al.
+        </p>
+        <p class="paper-venue"><em>IEEE Engineering in Medicine &amp; Biology Society (EMBC),</em> 2022</p>
+        <p class="paper-links">
+          <a href="https://arxiv.org/abs/2205.03702">arXiv</a> /
+          <a href="https://arxiv.org/pdf/2205.03702.pdf">pdf</a>
+        </p>
+        <p class="paper-abstract">A dual-head CNN for classifying keratoconus on SmartKC heatmaps, achieving 91.3% sensitivity and 94.2% specificity using a 2-stage transfer learning strategy.</p>
+      </div>
+    </article>
+
+    <!-- SmartKC -->
+    <article class="pub-entry">
+      <div class="pub-image">
+        <img src="./images/corneal_topographer.png" alt="SmartKC figure">
+        <img class="pub-img-hover" src="./images/corneal_topographer.png" alt="SmartKC figure hover">
+      </div>
+      <div class="pub-details">
+        <h4 class="paper-title">Smartphone based Corneal Topographer</h4> <span class="featured-badge">IMWUT</span>
+        <p class="paper-authors">
+          <strong>Siddhartha Gairola</strong>,
+          <a href="https://www.microsoft.com/en-us/research/people/nkwatra/">Nipun Kwatra</a> and
+          <a href="https://mohitjaindr.github.io/">Mohit Jain</a>
+        </p>
+        <p class="paper-venue"><em>Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies (IMWUT), Volume 5, Issue 4,</em> 2021</p>
+        <p class="paper-links">
+          <a href="https://github.com/microsoft/SmartKC-A-Smartphone-based-Corneal-Topographer">code</a> /
+          <a href="https://www.microsoft.com/en-us/research/project/smartkc-a-smartphone-based-corneal-topographer/">project_page</a> /
+          <a href="assets/papers/smartkc.pdf">pdf</a> /
+          <a href="https://www.youtube.com/watch?v=rp4uyzf6e2Q">demo_video</a>
+        </p>
+        <p class="paper-abstract">SmartKC is a low-cost smartphone-based corneal topographer. It provides a low-cost solution for the mass screening of keratoconus at scale.</p>
+      </div>
+    </article>
+
+    <!-- RespireNet -->
+    <article class="pub-entry">
+      <div class="pub-image">
+        <img src="./images/respirenet.png" alt="RespireNet figure">
+        <img class="pub-img-hover" src="./images/respirenet.png" alt="RespireNet figure hover">
+      </div>
+      <div class="pub-details">
+        <h4 class="paper-title">RespireNet: A Deep Neural Network for Accurately Detecting Abnormal Lung Sounds in Limited Data Setting</h4> <span class="featured-badge">EMBC</span>
+        <p class="paper-authors">
+          <strong>Siddhartha Gairola</strong>,
+          Francis Tom,
+          <a href="https://www.microsoft.com/en-us/research/people/nkwatra/">Nipun Kwatra</a> and
+          <a href="https://mohitjaindr.github.io/">Mohit Jain</a>
+        </p>
+        <p class="paper-venue"><em>IEEE Engineering in Medicine &amp; Biology Society (EMBC),</em> 2021</p>
+        <p class="paper-links">
+          <a href="https://github.com/microsoft/RespireNet">code</a> /
+          <a href="https://arxiv.org/abs/2011.00196">arXiv</a> /
+          <a href="assets/papers/respirenet.pdf">pdf</a> /
+          <a href="assets/bib/respirenet_2020.bib">bibtex</a>
+        </p>
+        <p class="paper-abstract">RespireNet is a CNN-based model with novel techniques&mdash;device specific fine-tuning, concatenation-based augmentation, blank region clipping, and smart padding. We improve upon the state-of-the-art on ICBHI dataset by <strong>2.2%</strong>.</p>
+      </div>
+    </article>
+
+    <!-- Multimodal ML -->
+    <h3 class="pub-category">Multimodal Machine Learning: Vision and NLP</h3>
+
+    <!-- Clickbait -->
+    <article class="pub-entry">
+      <div class="pub-image">
+        <img src="./images/clickbait_before.png" alt="Clickbait figure">
+        <img class="pub-img-hover" src="./images/clickbait_after.png" alt="Clickbait figure hover">
+      </div>
+      <div class="pub-details">
+        <a href="https://dl.acm.org/citation.cfm?id=3210144"><h4 class="paper-title">Identifying Clickbait: A Multi-Strategy Approach Using Neural Networks</h4></a> <span class="featured-badge">SIGIR</span>
+        <p class="paper-authors">
+          Dhruv Khattar,
+          <strong>Siddhartha Gairola</strong>,
+          Vaibhav Kumar,
+          Yash Kumar Lal,
+          <a href="https://faculty.iiit.ac.in/~vv/Home.html">Vasudeva Varma</a>
+        </p>
+        <p class="paper-venue"><em>ACM SIGIR</em>, 2018</p>
+        <p class="paper-links">
+          <a href="https://github.com/vaibhav4595/Clickbait_Detection">code</a> /
+          <a href="https://arxiv.org/abs/1710.01507">arxiv</a> /
+          <a href="assets/bib/Clickbait2018.bib">bibtex</a>
+        </p>
+        <p class="paper-abstract">Detecting clickbaits using Deep Learning.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- Master's Thesis -->
+  <section class="thesis">
+    <h2 class="section-heading">Master's Thesis</h2>
+    <p>For my Master's research I was supervised by Prof. P. J. Narayanan at CVIT at IIIT Hyderabad. My research was on the following two tasks (1) representation learning for image style search and retrieval, and (2) color consistent background replacement.</p>
+
+    <article class="pub-entry">
+      <div class="pub-image">
+        <img src="./images/ms_thesis.png" alt="MS Thesis figure">
+        <img class="pub-img-hover" src="./images/ms_thesis.png" alt="MS Thesis figure hover">
+      </div>
+      <div class="pub-details">
+        <h4 class="paper-title">Image Representations for Style Retrieval, Recognition and Background Replacement Tasks</h4>
+        <p class="paper-authors">
+          <strong>Siddhartha Gairola</strong>
+        </p>
+        <p class="paper-venue"><em>Master's Thesis, IIIT Hyderabad</em>, 2020</p>
+        <p class="paper-links">
+          <a href="https://web2py.iiit.ac.in/research_centres/publications/view_publication/mastersthesis/828">abstract</a> /
+          <a href="assets/papers/IIIT_Thesis_Siddhartha_Gairola.pdf">pdf</a>
+        </p>
+      </div>
+    </article>
+  </section>
+
+  <!-- Work Experience -->
+  <section class="experience" id="experience">
+    <h2 class="section-heading">Work Experience</h2>
+    <div class="experience-list">
+      <div class="experience-item">
+        <img class="company-logo" src="images/msft_logo.png" alt="Microsoft logo">
+        <div class="experience-details">
+          <span class="company-name">Microsoft Research</span>
+          <span class="role">Research Fellow</span>
+          <span class="dates">(Aug, 2020 - Aug, 2022)</span>
+        </div>
+      </div>
+      <div class="experience-item">
+        <img class="company-logo" src="images/msft_logo.png" alt="Microsoft logo">
+        <div class="experience-details">
+          <span class="company-name">Microsoft Research</span>
+          <span class="role">Research Intern</span>
+          <span class="dates">(Jan, 2020 - July, 2020)</span>
+        </div>
+      </div>
+      <div class="experience-item">
+        <img class="company-logo" src="images/adobe_logo.svg" alt="Adobe logo">
+        <div class="experience-details">
+          <span class="company-name">Adobe Inc.</span>
+          <span class="role">Research Intern</span>
+          <span class="dates">(Jun, 2019 - Jan, 2020)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="education" id="education">
+    <h2 class="section-heading">Education</h2>
+    <div class="education-list">
+        <div class="education-entry">
+          <img src="images/mpi_logo.svg" alt="Max Planck Institute for Informatics" class="education-logo">
+          <div>
+            <a href="https://www.mpi-inf.mpg.de/home" class="institution">Max Planck Institute for Informatics &amp; Saarland University</a><br>
+            <span class="degree">Ph.D. Student, Computer Science (Sept. 2022 - present)</span>
+          </div>
+        </div>
+        <div class="education-entry">
+          <img src="images/iiit.png" alt="IIIT Hyderabad" class="education-logo">
+          <div>
+            <a href="https://www.iiit.ac.in/" class="institution">International Institute of Information Technology - Hyderabad</a><br>
+            <span class="degree">Master of Science (MS) by Research, Computer Science (2018-2020)</span><br>
+            <span class="degree">Bachelor of Technology (BTech) with Honours, Computer Science (2014-2018)</span>
+          </div>
+        </div>
+        <div class="education-entry">
+          <img src="images/Education.png" alt="St. Joseph's Academy" class="education-logo">
+          <div>
+            <a href="https://stjosephacademy.in/" class="institution">St. Joseph's Academy, Dehradun</a><br>
+            <span class="degree">Senior Secondary, ISC (2012-2013)</span><br>
+            <span class="degree">Secondary, ICSE (2010-2011)</span>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- Academic Service -->
+  <section class="service" id="service">
+    <h2 class="section-heading">Academic Service</h2>
+    <div class="service-content">
+      <p><strong>Workshop organisation:</strong></p>
+      <ul class="service-list">
+        <li>Computer Vision for Developing Countries Workshop at <a href="https://iccv2025.thecvf.com/">ICCV, 2025</a></li>
+        <li>Computer Vision for Developing Countries Workshop at <a href="https://accv2024.org/">ACCV, 2024</a></li>
+      </ul>
+
+      <p><strong>Reviewer:</strong></p>
+      <ul class="service-list">
+        <li>ICML (2023, 2024, 2025)</li>
+        <li>NeurIPS (2022, 2023, 2025)</li>
+        <li>ICLR (2022, 2023, 2024)</li>
+        <li>CVPR (2024, 2025, 2026)</li>
+        <li>ECCV (2024)</li>
+        <li>ICCV (2025)</li>
+        <li>IHCI (2021)</li>
+      </ul>
+
+      <p><strong>Volunteer:</strong></p>
+      <ul class="service-list">
+        <li>ICVGIP (2018)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Talks -->
+  <section class="talks">
+    <h2 class="section-heading">Talks and Presentations</h2>
+    <div class="talks-list">
+      <div class="talk-item">
+        <span class="talk-title">Intriguing Applications and Overlooked Pitfalls of XAI in Visual Models</span><br>
+        <span class="talk-venue"><a href="https://gmum.net/">GMUM Workshop, Jagiellonian University</a>, October 2024</span>
+        <div class="talk-links"><a href="assets/presentations/GMUM_Talk_Sharing.pptx">slides</a></div>
+      </div>
+      <div class="talk-item">
+        <span class="talk-title">RespireNet: A DNN for Accurately Detecting Abnormal Lung Sounds in Limited Data Setting</span><br>
+        <span class="talk-venue">EMBC 2021</span>
+        <div class="talk-links"><a href="https://www.youtube.com/watch?v=XoAF3fCAqq4">video</a></div>
+      </div>
+      <div class="talk-item">
+        <span class="talk-title">SimPropNet: Improved Similarity Propagation for Few-shot Image Segmentation</span><br>
+        <span class="talk-venue">IJCAI 2020</span>
+        <div class="talk-links"><a href="https://www.ijcai.org/proceedings/2020/video/24830">video</a></div>
+      </div>
+      <div class="talk-item">
+        <span class="talk-title">Unsupervised Image Style Embeddings for Retrieval and Recognition Tasks</span><br>
+        <span class="talk-venue">IEEE WACV 2020</span>
+        <div class="talk-links"><a href="https://www.youtube.com/watch?v=EbUOg1gVcFw&t=909s">video</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaching -->
+  <section class="teaching">
+    <h2 class="section-heading">Teaching Experience</h2>
+    <div class="teaching-list">
+      <div class="teaching-item">
+        <img src="images/saarland_logo.jpeg" alt="Saarland University">
+        <div class="teaching-details">
+          <p>Worked as a Teaching Assistant at <a href="https://www.uni-saarland.de/en/home.html">Saarland University</a> for the courses listed below. The duties involved setting up questions for assignments, examinations and paper corrections.</p>
+          <ul class="course-list">
+            <li>1. Elements of Data Science and Artificial Intelligence (Winter 2023, 2024)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="teaching-item">
+        <img src="images/iiit.png" alt="IIIT Hyderabad">
+        <div class="teaching-details">
+          <p>Worked as a Teaching Assistant at <a href="https://iiit.ac.in/">IIIT Hyderabad</a> for the courses listed below. The duties involved taking regular tutorials, paper corrections, setting up questions for assignments and conducting evaluations.</p>
+          <ul class="course-list">
+            <li>1. Digital Logic and Processors (Monsoon 2016)</li>
+            <li>2. Artificial Intelligence (Spring 2017)</li>
+            <li>3. Digital Image Processing (Monsoon 2017)</li>
+            <li>4. Computer Vision (Spring 2018)</li>
+            <li>5. Digital Image Processing (Monsoon 2018)</li>
+            <li>6. Computer Graphics (Spring 2019)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Useful Resources -->
+  <section class="resources" id="useful-resources">
+    <h2 class="section-heading">Useful Resources and Writings</h2>
+    <ol class="resources-list">
+      <li><a href="https://sidgairo18.github.io/notes_and_resources_on_how_to_do_research.html">Notes and Resources on How to Do Research as a Young Researcher</a> &mdash; a collection of resources on doing research that I maintain and have found immensely useful; a gold mine.</li>
+      <li><a href="https://sidgairo18.github.io/how_to_write_academic_papers.html">Writing Academic Papers</a> &mdash; resources and guidance on writing strong academic papers.</li>
+      <li><a href="https://sidgairo18.github.io/how_to_review_scientific_papers.html">Reviewing Scientific Papers</a> &mdash; resources on how to review scientific papers effectively.</li>
+      <li><a href="https://sidgairo18.github.io/assets/presentations/ReproducibilityChecklist.pdf">Reproducibility Checklist</a> &mdash; by Joelle Pineau.</li>
+      <li>MPI-INF Poster Templates &mdash; <a href="assets/templates/MPI-INF_Poster_Templates/CVPR_2026_Poster.key">CVPR 2026 Poster</a> / <a href="assets/templates/MPI-INF_Poster_Templates/ICLR_2025_Poster.key">ICLR 2025 Poster</a>.</li>
+      <li><a href="https://sidgairo18.github.io/grad_school_resources.html">Graduate School (PhD) Application Resources</a> &mdash; writings, resources, and FAQs on the PhD application process, updated sporadically.</li>
+      <li><a href="https://medium.com/@siddhartha.gairola18">Medium Blog</a> &mdash; occasional posts on research, general thoughts, and personal things.</li>
+    </ol>
+  </section>
+
+  <!-- Open Source -->
+  <section class="opensource">
+    <h2 class="section-heading">Open-Source Contribution</h2>
+    <div class="opensource-content">
+      <img src="images/gsoc.png" alt="Google Summer of Code">
+      <div class="opensource-text">
+        <p>I contribute actively to open source organizations &mdash; Scilab and LibreOffice. I have been working with <a href="http://www.scilab.org/">Scilab</a> for the past 3 years now. My proposals were selected twice (2017, 2018) as a project for GSoC (Google Summer of Code) Program.</p>
+        <p>
+          <a href="https://summerofcode.withgoogle.com/archive/2017/projects/4882600426471424/"><strong class="project-title">Google Summer of Code 2017</strong></a><br>
+          Project Details: Implemented a <em>C/C++</em> wrapper for Matlab MEX-API on current API Scilab.
+        </p>
+        <p>
+          <a href="https://www.scilab.org/en/projects/gsoc/2018"><strong class="project-title">Google Summer of Code 2018</strong></a><br>
+          Project Details: Implemented a DEMO <em>in C/C++ and Scilab</em> as a working example for the MEX Library in Scilab.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+</footer>
+
+<!-- Scroll to Top Button -->
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8593;</button>
+
+<!-- Scripts -->
+<script>
+// Hover effect for publications
+document.querySelectorAll('.pub-entry').forEach(function(entry) {
+  var hover = entry.querySelector('.pub-img-hover');
+  if (!hover) return;
+  entry.addEventListener('mouseenter', function() { hover.style.opacity = '1'; });
+  entry.addEventListener('mouseleave', function() { hover.style.opacity = '0'; });
+});
+
+// Dark mode toggle
+(function() {
+  var btn = document.getElementById('theme-btn');
+  if (!btn) return;
+
+  function updateIcon() {
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    btn.textContent = isDark ? '\u2600\uFE0F' : '\uD83C\uDF19';
+  }
+
+  updateIcon();
+
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      document.documentElement.removeAttribute('data-theme');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+    try { localStorage.setItem('theme', isDark ? 'light' : 'dark'); } catch(e) {}
+    updateIcon();
+  });
+})();
+
+// Scroll to top button visibility
+window.addEventListener('scroll', function() {
+  var btn = document.querySelector('.scroll-top');
+  if (window.scrollY > 300) {
+    btn.classList.add('visible');
+  } else {
+    btn.classList.remove('visible');
+  }
+});
+</script>
+
+</body>
+</html>
