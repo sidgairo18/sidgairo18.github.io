@@ -341,6 +341,8 @@ def build_page(slug):
     frag = open(os.path.join(ROOT, "site/pages", slug + ".html"), encoding="utf-8").read()
     meta = dict(re.findall(r"<!--\s*(\w+):\s*(.*?)\s*-->", frag))
     body = re.sub(r"^(<!--.*?-->\s*)+", "", frag, flags=re.S)
+    body = re.sub(r'<(h[23])([^>]*?)\s+data-icon="(\w+)"([^>]*)>', lambda m: f'<{m.group(1)}{m.group(2)}{m.group(4)} class="hi">{I(m.group(3))}', body)
+    body = re.sub(r'<i data-icon="(\w+)"></i>', lambda m: f'<i class="ico inl">{ICONS[m.group(1)]}</i>', body)
     title = meta["title"]
     back_href, back_label = [x.strip() for x in meta["back"].split("|")]
     wide = meta.get("wide") == "true"

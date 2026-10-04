@@ -206,8 +206,8 @@ RESOURCES = [
         ("Reproducibility checklist", "assets/presentations/ReproducibilityChecklist.pdf", "by Joelle Pineau"),
     ]),
     ("rss", "Elsewhere", [
-        ("Medium", "https://medium.com/@siddhartha.gairola18", "occasional posts on research and life"),
-        ("Personal page", "personal.html", "music, motorcycles, paradoxes and more"),
+        ("Medium", "https://medium.com/@siddhartha.gairola18", "occasional posts on research, general thoughts, and personal things"),
+        ("Personal page", "personal.html", "some personal, impersonal, and random stuff"),
     ]),
 ]
 
@@ -241,6 +241,12 @@ ICONS = {
     "chalk": f'<svg {_S}><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M7 20h10M12 16v4M7 8h6M7 11h4"/></svg>',
     "video": f'<svg {_S}><rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3z"/></svg>',
     "slides": f'<svg {_S}><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8 20h8M3 8h18"/></svg>',
+    "football": f'<svg {_S}><circle cx="12" cy="12" r="9"/><path d="m12 7.5 3.8 2.8-1.5 4.4h-4.6L8.2 10.3z"/><path d="M12 7.5V3.2M15.8 10.3l4.1-1.4M14.3 14.7l2.6 3.5M9.7 14.7l-2.6 3.5M8.2 10.3 4.1 8.9"/></svg>',
+    "quote": f'<svg {_S}><path d="M4 16c0-4.4 2.2-7.4 6-9v3c-2 1-3.2 2.6-3.4 4H10v6H4z"/><path d="M14 16c0-4.4 2.2-7.4 6-9v3c-2 1-3.2 2.6-3.4 4H20v6h-6z"/></svg>',
+    "dumbbell": f'<svg {_S}><rect x="4" y="7.5" width="3" height="9" rx="1"/><rect x="17" y="7.5" width="3" height="9" rx="1"/><path d="M7 12h10M2 10v4M22 10v4"/></svg>',
+    "globe": f'<svg {_S}><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13.5 13.5 0 0 1 0 18M12 3a13.5 13.5 0 0 0 0 18"/></svg>',
+    "toolbox": f'<svg {_S}><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18M10 13v2M14 13v2"/></svg>',
+    "help": f'<svg {_S}><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7M12 17h.01"/></svg>',
     "briefcase": f'<svg {_S}><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 12h18"/></svg>',
     "cap": f'<svg {_S}><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5M22 9v6"/></svg>',
     "copy": f'<svg {_S}><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>',
