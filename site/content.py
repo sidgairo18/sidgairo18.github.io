@@ -17,6 +17,7 @@ ME = "Siddhartha Gairola"
 EMAIL = "sgairola@mpi-inf.mpg.de"
 SITE_URL = "https://sidgairo18.github.io"
 UPDATED = "October 2026"
+GA_ID = "UA-120374008-1"          # Google Analytics property, emitted first in every page head
 IMG = "images/"
 
 TAGLINE = "PhD student in computer vision &amp; machine learning · MPI for Informatics &amp; ISTA"

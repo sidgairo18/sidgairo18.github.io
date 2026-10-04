@@ -231,10 +231,22 @@ def card(p):
 # ---------------------------------------------------------------------------
 # Page pieces
 # ---------------------------------------------------------------------------
+# Google Analytics, placed first in <head> as Google recommends; identical on every page.
+ANALYTICS = f"""<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', '{GA_ID}');
+</script>"""
+
+
 def head(title, description, extra=""):
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
+{ANALYTICS}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title}</title>
@@ -249,8 +261,6 @@ def head(title, description, extra=""):
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">{extra}
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120374008-1"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','UA-120374008-1');</script>
 </head>'''
 
 
