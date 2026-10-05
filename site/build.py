@@ -198,24 +198,28 @@ def build_pubs():
     return pubs
 
 
-def pub_row(p):
+def pub_row(p, more=False, thumb=False, blurb=False):
     tags = f'<span class="tag{" soft" if p["badge"] == "Preprint" else ""}">{p["badge"]}</span>'
     if p["spotlight"]:
         tags += f'<span class="tag spot">{STAR} Spotlight</span>'
     notes = "".join(f'<p class="nt">{n}</p>' for n in p["notes"])
-    return (f'<li class="pub" id="{p["key"]}" data-tags="{" ".join(p.get("tags", []))}"><div class="bd"><div class="t">{p["title"]}</div>'
-            f'<div class="au">{p["authors_html"]}</div><div class="vn">{tags}<span>{p["venue"]}</span></div>'
+    th = f'<div class="mini"><img src="{IMG}{p["img"]}" alt=""><img class="hov" src="{IMG}{p["img2"]}" alt=""></div>' if thumb else ""
+    ab = f'<p class="ab">{p["blurb"]}</p>' if blurb and p.get("blurb") else ""
+    return (f'<li class="pub" id="{p["key"]}" data-tags="{" ".join(p.get("tags", []))}"{" data-more" if more else ""}>{th}<div class="bd"><div class="t">{p["title"]}</div>'
+            f'<div class="au">{p["authors_html"]}</div><div class="vn">{tags}<span>{p["venue"]}</span></div>{ab}'
             f'<div class="lk">{links_html(p["links"], p["soon"], p["key"])}</div>{notes}{bibpanel(p["key"], p["bibtex"])}</div></li>')
 
 
-def pubs_by_year(pubs):
+def pubs_by_year(pubs, visible=None, thumbs=False, blurbs=False):
+    """visible: set of keys shown before 'Show all' (None = everything visible)."""
     years = sorted({p["year"] for p in pubs}, reverse=True)
     out = []
     for y in years:
-        rows = "".join(pub_row(p) for p in pubs if p["year"] == y)
+        rows = "".join(pub_row(p, more=(visible is not None and p["key"] not in visible), thumb=thumbs, blurb=blurbs and p["featured"]) for p in pubs if p["year"] == y)
         out.append(f'<div class="yr"><div class="y">{y}</div><ul class="plist">{rows}</ul></div>')
     th = THESIS
-    out.append(f'<div class="yr"><div class="y">Thesis</div><ul class="plist"><li class="pub" data-tags="{" ".join(th.get("tags", []))}"><div class="bd"><div class="t">{th["title"]}</div>'
+    more = " data-more" if visible is not None else ""
+    out.append(f'<div class="yr"><div class="y">Thesis</div><ul class="plist"><li class="pub" data-tags="{" ".join(th.get("tags", []))}"{more}><div class="bd"><div class="t">{th["title"]}</div>'
                f'<div class="au"><span class="me">{ME}</span></div><div class="vn"><span class="tag soft">{th["badge"]}</span><span>{th["venue"]}, {th["year"]}</span></div>'
                f'<div class="lk">{links_html(th["links"])}</div></div></li></ul></div>')
     return "".join(out)
@@ -275,15 +279,21 @@ var inCard=!!a.closest('.card');if(inCard){p.hidden=false;document.getElementByI
 document.querySelectorAll('.copybib').forEach(function(b){b.addEventListener('click',function(){var panel=b.closest('.bibpanel'),txt=panel.querySelector('pre').textContent,ok=panel.querySelector('.ok');
 function done(){ok.textContent='Copied';setTimeout(function(){ok.textContent='';},1600);}
 if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done);}else{var r=document.createRange();r.selectNodeContents(panel.querySelector('pre'));var s=window.getSelection();s.removeAllRanges();s.addRange(r);try{document.execCommand('copy');done();}catch(e){}s.removeAllRanges();}});});
-var fb=document.querySelectorAll('.filters button');fb.forEach(function(b){b.addEventListener('click',function(){var t=b.getAttribute('data-tag');fb.forEach(function(x){x.classList.toggle('on',x===b);});
-document.querySelectorAll('.pub[data-tags]').forEach(function(li){li.hidden=!(t==='all'||(' '+li.getAttribute('data-tags')+' ').indexOf(' '+t+' ')>=0);});
-document.querySelectorAll('.yr').forEach(function(y){y.hidden=!y.querySelector('.pub:not([hidden])');});});});
+var sec=document.getElementById('publications'),fb=document.querySelectorAll('.filters button'),tb=document.getElementById('pubs-toggle'),tag='all',expanded=!tb;
+function apply(){if(!sec)return;sec.querySelectorAll('.pub[data-tags]').forEach(function(li){var mt=(tag==='all'||(' '+li.getAttribute('data-tags')+' ').indexOf(' '+tag+' ')>=0);li.hidden=!(mt&&(expanded||!li.hasAttribute('data-more')));});
+sec.querySelectorAll('.yr').forEach(function(y){y.hidden=!y.querySelector('.pub:not([hidden])');});if(tb){tb.textContent=expanded?'Show fewer ↑':tb.getAttribute('data-label');var ttl=document.getElementById('pubs-title'),fl=sec.querySelector('.filters');if(ttl)ttl.textContent=expanded?'Publications':'Selected publications';if(fl)fl.hidden=!expanded;}}
+fb.forEach(function(b){b.addEventListener('click',function(){tag=b.getAttribute('data-tag');fb.forEach(function(x){x.classList.toggle('on',x===b);});if(tag!=='all')expanded=true;apply();});});
+if(tb){tb.addEventListener('click',function(){expanded=!expanded;if(!expanded){tag='all';fb.forEach(function(x){x.classList.toggle('on',x.getAttribute('data-tag')==='all');});}apply();if(!expanded)sec.scrollIntoView({behavior:'smooth',block:'start'});});}
+if(location.hash){var tgt=document.getElementById(location.hash.replace(/^#(bib-)?/,''));if(tgt&&tgt.hasAttribute('data-more')){expanded=true;}}
+apply();
 if(location.hash&&location.hash.indexOf('#bib-')===0){var p=document.getElementById(location.hash.slice(1));if(p)p.hidden=false;}
 })();
 </script>"""
 
 
-def build_index(pubs):
+def build_index(pubs, mode="all"):
+    """mode: "all" (cards + full list), "latest" (cards + first LATEST_N in list, rest behind Show all),
+    "selected" (no cards; list shows featured papers with thumbnails, rest behind Show all)."""
     icons = "".join((f'<a class="pri" href="{h}" title="{l}">{I(ic)}<span>{l}</span></a>' if l == "CV"
                      else f'<a href="{h}" title="{l}" aria-label="{l}">{I(ic)}</a>') for l, ic, h in TOPLINKS)
     # news
@@ -317,7 +327,17 @@ def build_index(pubs):
                + blk("code", "Open source", oss) + blk("heart", "Volunteering", vol) + '</div>')
     resources = "".join(blk(ic, title, '<ul class="res">' + "".join(f'<li><a href="{h}">{t}</a><span>{d}</span></li>' for t, h, d in items) + '</ul>') for ic, title, items in RESOURCES)
     sel = [p for p in pubs if p["featured"]]
-    filters = ('<div class="filters" role="group" aria-label="Filter publications by topic"><span class="flabel">Show</span>'
+    selected_section = f'<section id="selected"><h2>Selected work<a href="#publications">all {len(pubs)} papers ↓</a></h2><div class="cards">{"".join(card(p) for p in sel)}</div></section>' if mode != "selected" else ""
+    if mode == "latest":
+        visible = {p["key"] for p in pubs[:LATEST_N]}
+        publist = pubs_by_year(pubs, visible)
+    elif mode == "selected":
+        visible = {p["key"] for p in sel}
+        publist = pubs_by_year(pubs, visible, thumbs=True, blurbs=True)
+    else:
+        visible, publist = None, pubs_by_year(pubs)
+    showall = (f'<div class="showall"><button type="button" id="pubs-toggle" data-label="Show all {len(pubs)} papers ↓">Show all {len(pubs)} papers ↓</button></div>' if visible is not None else "")
+    filters = (f'<div class="filters" role="group" aria-label="Filter publications by topic"{" hidden" if visible is not None else ""}><span class="flabel">Filter by topic</span>'
                '<button type="button" data-tag="all" class="on">All</button>'
                + "".join(f'<button type="button" data-tag="{t}">{l}</button>' for t, l in TAGS) + '</div>')
     desc = f"{ME} — ELLIS PhD student at the Max Planck Institute for Informatics and ISTA. Computer vision, representation learning, interpretability."
@@ -327,8 +347,8 @@ def build_index(pubs):
 <header class="hdr"><img src="{IMG}sid_beard_profile_paris.jpg" alt="{ME}"><div><h1>{ME}</h1><p class="sub">{TAGLINE}</p><nav class="icons" aria-label="Links">{icons}</nav></div></header>
 <section class="bio" id="about">{"".join(f"<p>{p}</p>" for p in BIO)}<p class="off">{OFFHOURS}</p></section>
 <section id="news"><h2>News</h2>{news}</section>
-<section id="selected"><h2>Selected work<a href="#publications">all {len(pubs)} papers ↓</a></h2><div class="cards">{"".join(card(p) for p in sel)}</div></section>
-<section id="publications"><h2>Publications<a href="{SCHOLAR}">Google Scholar ↗</a></h2>{filters}{pubs_by_year(pubs)}<p class="eqnote"><sup>*</sup>equal contribution · click <em>bibtex</em> on an entry to copy or download its citation</p></section>
+{selected_section}
+<section id="publications"><h2><span id="pubs-title">{"Selected publications" if visible is not None else "Publications"}</span><a href="{SCHOLAR}">Google Scholar ↗</a></h2>{filters}{publist}{showall}<p class="eqnote"><sup>*</sup>equal contribution · click <em>bibtex</em> on an entry to copy or download its citation</p></section>
 <section id="background"><h2>Background<a href="{CV_PDF}">full CV (PDF) ↗</a></h2>{background}</section>
 <section id="service"><h2>Academic service &amp; more</h2>{service}</section>
 <section id="resources"><h2>Writing &amp; resources</h2><div class="rgroups">{resources}</div></section>
@@ -370,7 +390,10 @@ def build_page(slug, bibs=None):
 
 def main():
     pubs = build_pubs()
-    open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8").write(build_index(pubs))
+    open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8").write(build_index(pubs, PUB_MODE))
+    if "--variants" in sys.argv:   # side-by-side previews of the publication-section modes
+        for m in ("all", "latest", "selected"):
+            open(os.path.join(ROOT, f"index_{m}.html"), "w", encoding="utf-8").write(build_index(pubs, m))
     bibs = {p["key"]: p["bibtex"] for p in pubs}
     for slug in PAGES:
         open(os.path.join(ROOT, slug + ".html"), "w", encoding="utf-8").write(build_page(slug, bibs))

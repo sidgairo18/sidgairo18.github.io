@@ -77,6 +77,12 @@ OFFHOURS = ('When not working on my research, I like to play the piano 🎹 and 
 
 # (date, venue tag or "", html).  Newest first; the first NEWS_SHOWN are visible, the rest fold away.
 NEWS_SHOWN = 4
+
+# Publication section layout: "all" = selected-work cards + full list;
+# "latest" = cards + only the newest LATEST_N in the list, rest behind "Show all";
+# "selected" = no cards, list shows featured papers (with thumbnails), rest behind "Show all".
+PUB_MODE = "selected"
+LATEST_N = 5
 NEWS = [
     ("Sep 2026", "NeurIPS", '<em>Stranger Things</em> accepted at NeurIPS 2026.'),
     ("May 2026", "ICML", '<em>DAVE</em> accepted at ICML 2026 as a <b>Spotlight</b> (top 2.2%).'),
@@ -93,7 +99,7 @@ NEWS = [
 # ---------------------------------------------------------------------------
 # Publications: website extras keyed by BibTeX key (see docstring).
 #   badge        short venue label shown as a tag
-#   featured     True -> appears in the "Selected work" cards
+#   featured     True -> shown before "Show all" (and in the cards, in the card modes)
 #   img / img2   figure shown normally / on hover (use two different files)
 #   links        [(label, href or None)]; None renders as a greyed placeholder
 #   soon         True -> "(coming soon)" after the links
@@ -104,7 +110,7 @@ NEWS = [
 #                lists S. Gairola first for equal-contribution papers)
 # ---------------------------------------------------------------------------
 PUBS = [
-    dict(key="gairola2026disparq", tags=['interp', 'repr'], badge="Preprint", img="dpq_1.jpg", img2="dpq_2.jpg",
+    dict(key="gairola2026disparq", tags=['interp', 'repr'], badge="Preprint", featured=True, img="dpq_1.jpg", img2="dpq_2.jpg",
          links=[("arxiv", None), ("code", None)], soon=True,
          authors=["Adam Pardyl", "Siddhartha Gairola", "Sukrut Rao", "Adam Wróbel", "Bartosz Zieliński", "Bernt Schiele", "Dawid Rymarczyk"]),
     dict(key="gairola2026stranger", tags=['understanding', 'repr'], badge="NeurIPS", featured=True, img="sb_1.jpg", img2="sb_2.jpg",

@@ -160,9 +160,13 @@ var inCard=!!a.closest('.card');if(inCard){p.hidden=false;document.getElementByI
 document.querySelectorAll('.copybib').forEach(function(b){b.addEventListener('click',function(){var panel=b.closest('.bibpanel'),txt=panel.querySelector('pre').textContent,ok=panel.querySelector('.ok');
 function done(){ok.textContent='Copied';setTimeout(function(){ok.textContent='';},1600);}
 if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done);}else{var r=document.createRange();r.selectNodeContents(panel.querySelector('pre'));var s=window.getSelection();s.removeAllRanges();s.addRange(r);try{document.execCommand('copy');done();}catch(e){}s.removeAllRanges();}});});
-var fb=document.querySelectorAll('.filters button');fb.forEach(function(b){b.addEventListener('click',function(){var t=b.getAttribute('data-tag');fb.forEach(function(x){x.classList.toggle('on',x===b);});
-document.querySelectorAll('.pub[data-tags]').forEach(function(li){li.hidden=!(t==='all'||(' '+li.getAttribute('data-tags')+' ').indexOf(' '+t+' ')>=0);});
-document.querySelectorAll('.yr').forEach(function(y){y.hidden=!y.querySelector('.pub:not([hidden])');});});});
+var sec=document.getElementById('publications'),fb=document.querySelectorAll('.filters button'),tb=document.getElementById('pubs-toggle'),tag='all',expanded=!tb;
+function apply(){if(!sec)return;sec.querySelectorAll('.pub[data-tags]').forEach(function(li){var mt=(tag==='all'||(' '+li.getAttribute('data-tags')+' ').indexOf(' '+tag+' ')>=0);li.hidden=!(mt&&(expanded||!li.hasAttribute('data-more')));});
+sec.querySelectorAll('.yr').forEach(function(y){y.hidden=!y.querySelector('.pub:not([hidden])');});if(tb){tb.textContent=expanded?'Show fewer ↑':tb.getAttribute('data-label');var ttl=document.getElementById('pubs-title'),fl=sec.querySelector('.filters');if(ttl)ttl.textContent=expanded?'Publications':'Selected publications';if(fl)fl.hidden=!expanded;}}
+fb.forEach(function(b){b.addEventListener('click',function(){tag=b.getAttribute('data-tag');fb.forEach(function(x){x.classList.toggle('on',x===b);});if(tag!=='all')expanded=true;apply();});});
+if(tb){tb.addEventListener('click',function(){expanded=!expanded;if(!expanded){tag='all';fb.forEach(function(x){x.classList.toggle('on',x.getAttribute('data-tag')==='all');});}apply();if(!expanded)sec.scrollIntoView({behavior:'smooth',block:'start'});});}
+if(location.hash){var tgt=document.getElementById(location.hash.replace(/^#(bib-)?/,''));if(tgt&&tgt.hasAttribute('data-more')){expanded=true;}}
+apply();
 if(location.hash&&location.hash.indexOf('#bib-')===0){var p=document.getElementById(location.hash.slice(1));if(p)p.hidden=false;}
 })();
 </script></body></html>

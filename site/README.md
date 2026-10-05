@@ -19,11 +19,16 @@ build, commit the generated files together with the source.
 **Add a paper.** Add the entry at the top of `publications.bib` (the CV prints file
 order). Then add a `dict(key=..., badge=..., img=..., img2=..., links=[...])` to `PUBS`
 in `content.py` with the same key. Use two different figure files for `img`/`img2`
-to get the hover swap; set `featured=True` and a `blurb` to show it in the
-"Selected work" cards. If the real author order differs from the CV's (the CV lists
+to get the hover swap; set `featured=True` (and a one-line `blurb`) to show it before
+"Show all" in the Selected publications view. If the real author order differs from the CV's (the CV lists
 S. Gairola first for equal-contribution papers), give the true order in `authors`.
 The build writes a clean `assets/bib/<key>.bib` for every paper and embeds the same
 text in the page's copy/download panel.
+
+**Publication section layout.** `PUB_MODE` in `content.py`: `selected` (default; the list
+opens on featured papers under "Selected publications" with a "Show all" button, and the
+topic filters appear once expanded), `latest` (newest `LATEST_N` first), or `all`.
+`python3 site/build.py --variants` writes `index_<mode>.html` previews for comparison.
 
 **Add news.** Prepend a `(date, venue tag or "", html)` tuple to `NEWS`. The first
 `NEWS_SHOWN` items are visible; the rest fold behind "Older news".

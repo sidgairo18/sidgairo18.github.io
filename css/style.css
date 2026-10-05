@@ -177,12 +177,19 @@ h2 a:hover{color:var(--fg)}
 @media (max-width:560px){.wrap{padding:20px 18px 64px}.hdr{margin-top:-36px}.hdr>img{width:80px;height:80px}.hdr h1{font-size:28px}.cards{grid-template-columns:1fr 1fr;gap:10px}.card .bd{padding:10px}.card .t{font-size:13.5px}.blocks.two-up{grid-template-columns:1fr}.revlist{grid-template-columns:1fr}.revlist li:nth-last-child(-n+2){border-bottom:1px solid var(--line)}.revlist li:last-child{border-bottom:0}.rows li{grid-template-columns:1fr}.rows .r{text-align:left;white-space:normal}.rows.withlogo li{grid-template-columns:34px 1fr}.rows.withlogo .r{grid-column:2}.rows.withlogo li.teach{grid-template-areas:"lg l" "lg r" "lg c"}.courses li span:last-child{text-align:left}.lg{width:34px;height:34px}.courses{grid-template-columns:1fr}.courses li span:last-child{white-space:normal;margin-bottom:4px}.res li{grid-template-columns:1fr}}
 
 /* ===== Publication filter row ===== */
-.filters{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 14px;margin:-8px 0 18px;font-size:12.5px}
-.filters .flabel{font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-right:2px}
-.filters button{font:inherit;font-size:12.5px;background:none;border:0;padding:2px 0;color:var(--mute);cursor:pointer;border-bottom:1px solid transparent}
-.filters button:hover{color:var(--fg)}
-.filters button.on{color:var(--fg);border-bottom-color:var(--fg)}
+.filters{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:-6px 0 20px}
+.filters[hidden]{display:none}
+.filters .flabel{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-right:6px}
+.filters button{font:inherit;font-size:12.5px;font-weight:600;line-height:1.3;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px 11px;color:var(--mute);cursor:pointer;transition:border-color .15s,color .15s,background .15s}
+.filters button:hover{color:var(--fg);border-color:var(--fg)}
+.filters button.on{background:var(--accent-soft);color:var(--accent);border-color:transparent}
 .yr[hidden],.pub[hidden]{display:none}
+
+.showall{margin-top:16px;font-size:13.5px}
+.showall button{font:inherit;font-size:13.5px;font-weight:600;background:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;color:var(--fg);cursor:pointer}
+.showall button:hover{border-color:var(--fg)}
+.pub .ab{font-size:13.5px;color:var(--mute);margin-top:5px;line-height:1.5}
+.pub .mini{flex-basis:110px}
 
 /* ===== BibTeX panels ===== */
 .bibpanel{margin-top:10px;border:1px solid var(--line);border-radius:10px;background:var(--card);overflow:hidden}
