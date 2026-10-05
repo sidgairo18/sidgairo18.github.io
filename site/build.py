@@ -337,12 +337,20 @@ def build_index(pubs):
 '''
 
 
-def build_page(slug):
+def build_page(slug, bibs=None):
     frag = open(os.path.join(ROOT, "site/pages", slug + ".html"), encoding="utf-8").read()
     meta = dict(re.findall(r"<!--\s*(\w+):\s*(.*?)\s*-->", frag))
     body = re.sub(r"^(<!--.*?-->\s*)+", "", frag, flags=re.S)
     body = re.sub(r'<(h[23])([^>]*?)\s+data-icon="(\w+)"([^>]*)>', lambda m: f'<{m.group(1)}{m.group(2)}{m.group(4)} class="hi">{I(m.group(3))}', body)
     body = re.sub(r'<i data-icon="(\w+)"></i>', lambda m: f'<i class="ico inl">{ICONS[m.group(1)]}</i>', body)
+    # Links to files hosted on the site render as download pills, site-wide.
+    def pill(m):
+        attrs, label = m.group(1), m.group(2)
+        attrs = re.sub(r'\s*class="[^"]*"', '', attrs)
+        return f'<a class="dl file"{attrs} download>{I("download")}{label}</a>'
+    body = re.sub(r'<a((?:(?!href=)[^>])*?href="(?:\./)?(?:assets|grad_school_resources)/[^"]+\.(?:pdf|zip|pptx|key|bib)"[^>]*)>(.*?)</a>', pill, body, flags=re.S)
+    if bibs:
+        body = re.sub(r'<!--\s*bibtex:\s*(\S+)\s*-->', lambda m: bibpanel(m.group(1), bibs[m.group(1)]).replace(' hidden>', '>', 1), body)
     title = meta["title"]
     back_href, back_label = [x.strip() for x in meta["back"].split("|")]
     wide = meta.get("wide") == "true"
@@ -363,8 +371,9 @@ def build_page(slug):
 def main():
     pubs = build_pubs()
     open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8").write(build_index(pubs))
+    bibs = {p["key"]: p["bibtex"] for p in pubs}
     for slug in PAGES:
-        open(os.path.join(ROOT, slug + ".html"), "w", encoding="utf-8").write(build_page(slug))
+        open(os.path.join(ROOT, slug + ".html"), "w", encoding="utf-8").write(build_page(slug, bibs))
     print(f"built index.html, {len(PAGES)} pages, {len(pubs)} bib files")
 
 

@@ -3,43 +3,34 @@
 <!-- wide: true -->
 <!-- notitle: true -->
 <!-- Hero -->
-  <div class="project-hero">
-    <h1>Unsupervised Image Style Embeddings for Retrieval and Recognition Tasks</h1>
-    <p class="project-authors">
-      <a href="https://sidgairo18.github.io/">Siddhartha Gairola</a>&nbsp;&nbsp;&nbsp;
-      <a href="https://cvit.iiit.ac.in/people/phd/phd-students/rajvi-shah">Rajvi Shah</a>&nbsp;&nbsp;&nbsp;
-      <a href="https://faculty.iiit.ac.in/~pjn/">PJ Narayanan</a>
-    </p>
-    <p class="project-venue"><a href="https://iiit.ac.in/">IIIT Hyderabad</a></p>
-    <p class="project-venue">WACV 2020 (Poster and Oral)</p>
-    <p class="project-links">
-      <a href="https://openaccess.thecvf.com/content_WACV_2020/papers/Gairola_Unsupervised_Image_Style_Embeddings_for_Retrieval_and_Recognition_Tasks_WACV_2020_paper.pdf">Paper</a> | <a href="https://github.com/sidgairo18/unsupervised-style-learning">Code</a>
-    </p>
-    <img src="style_images/style_meanings.png" alt="Style meanings">
-  </div>
+<header class="project-hero">
+  <h1>Unsupervised Image Style Embeddings for Retrieval and Recognition Tasks</h1>
+  <p class="project-authors"><a href="https://sidgairo18.github.io/">Siddhartha Gairola</a><span class="sep">·</span><a href="https://cvit.iiit.ac.in/people/phd/phd-students/rajvi-shah">Rajvi Shah</a><span class="sep">·</span><a href="https://faculty.iiit.ac.in/~pjn/">PJ Narayanan</a></p>
+  <p class="project-venue"><a href="https://iiit.ac.in/">IIIT Hyderabad</a> · WACV 2020 (Poster and Oral)</p>
+  <p class="project-links"><a class="dl" href="https://openaccess.thecvf.com/content_WACV_2020/papers/Gairola_Unsupervised_Image_Style_Embeddings_for_Retrieval_and_Recognition_Tasks_WACV_2020_paper.pdf">Paper</a><a class="dl" href="https://github.com/sidgairo18/unsupervised-style-learning">Code</a><a href="assets/papers/style_supp.pdf">Supplementary (PDF)</a><a href="assets/bib/gairola2020style.bib">BibTeX</a></p>
+  <figure><img src="style_images/style_meanings.png" alt="Style meanings"></figure>
+</header>
 
   <!-- Abstract -->
-  <div class="project-section">
+  <section class="project-section">
     <h2>Abstract</h2>
     <p>We propose an unsupervised protocol for learning a neural embedding of visual style of images. Style similarity is an important measure for many applications such as style transfer, fashion search, art exploration, etc. However, computational modeling of style is a difficult task owing to its vague and subjective nature. Most methods for style based retrieval use supervised training with pre-defined categorization of images according to style. While this paradigm is suitable for applications where style categories are well-defined and curating large datasets according to such a categorization is feasible, in several other cases such a categorization is either ill-defined or does not exist. Our protocol for learning style based representations does not leverage categorical labels but a proxy measure for forming triplets of anchor, similar, and dissimilar images. Using these triplets, we learn a compact style embedding that is useful for style-based search and retrieval. The learned embeddings outperform other unsupervised representations for style-based image retrieval task on six datasets that capture different meanings of style. We also show that by fine-tuning the learned features with dataset-specific style labels, we obtain best results for image style recognition task on five of the six datasets.</p>
-  </div>
+  </section>
 
   <!-- Paper & Citation -->
-  <div class="project-section" style="overflow: hidden;">
-    <div class="paper-thumb">
-      <a href="https://openaccess.thecvf.com/content_WACV_2020/papers/Gairola_Unsupervised_Image_Style_Embeddings_for_Retrieval_and_Recognition_Tasks_WACV_2020_paper.pdf"><img src="style_images/paper_thumbnail.png" alt="Paper thumbnail"></a>
-    </div>
+  <section class="project-section paperbox">
+    <div class="paper-thumb"><a href="https://openaccess.thecvf.com/content_WACV_2020/papers/Gairola_Unsupervised_Image_Style_Embeddings_for_Retrieval_and_Recognition_Tasks_WACV_2020_paper.pdf"><img src="style_images/paper_thumbnail.png" alt="Paper thumbnail"></a></div>
     <h3>Paper</h3>
     <p><a href="https://openaccess.thecvf.com/content_WACV_2020/papers/Gairola_Unsupervised_Image_Style_Embeddings_for_Retrieval_and_Recognition_Tasks_WACV_2020_paper.pdf">WACV 2020 open access</a>.</p>
     <h3>Citation</h3>
-    <p>Siddhartha Gairola, Rajvi Shah and P.J. Narayanan.<br>"Unsupervised Image Style Embeddings for Retrieval and Recognition Tasks", in WACV, 2020.
-    <a href="assets/bib/gairola2020style.bib">Bibtex</a></p>
+    <p>Siddhartha Gairola, Rajvi Shah and P.J. Narayanan.<br>"Unsupervised Image Style Embeddings for Retrieval and Recognition Tasks", in WACV, 2020.</p>
+    <!-- bibtex: gairola2020style -->
     <h3>Code</h3>
-    <p><a href="https://github.com/sidgairo18/unsupervised-style-learning">PyTorch</a></p>
-  </div>
+    <p><a class="dl" href="https://github.com/sidgairo18/unsupervised-style-learning">PyTorch</a></p>
+  </section>
 
   <!-- Method -->
-  <div class="project-section">
+  <section class="project-section">
     <h2>Brief Description of the Method and Motivation</h2>
     <div class="method-grid">
       <div class="method-cell">
@@ -52,71 +43,71 @@
       </div>
     </div>
     <p>One of the key motivations of this paper is to investigate the quality of understanding of style that can be achieved by an unsupervised approach which does not rely on categorical labels of style. To this effect, we evaluate state-of-the-art representations and their variants for style-based retrieval. We further propose a protocol for unsupervised learning of style representation by leveraging a proxy measure that provides a loose grouping of images. Our proxy measure is based on Gram matrix features popularized by style transfer methods. These features capture the <em>look and feel</em> of an image by measuring the correlation among feature maps produced by different convolutional layers of a CNN and hence are a good choice for discerning different visual styles. We train a Siamese CNN for learning a style embedding that is useful for style based search and retrieval. However, instead of leveraging the style class labels specified for a dataset, we do this in an unsupervised fashion for many datasets. We first divide a dataset into <em>K</em> clusters using Gram matrix features and then use the cluster labels for learning the embedding by (i) directly minimizing a cross-entropy loss for cluster label classification, and (ii) minimizing a triplet loss for maximizing the distances between stylistically (look and feel wise) similar and dissimilar samples. The training with a triplet loss further reinforces the stylistic similarity which is depicted in the figure above. This is of large interest as the unsupervised protocol can be used on unlabelled (no supervision) data for learning stylistically useful representations and help understand a highly subjective concept like style (look and feel) better.</p>
-  </div>
+  </section>
 
   <!-- Results -->
-  <div class="project-section">
+  <section class="project-section">
     <h2>Qualitative Results on Different Datasets</h2>
     <p>Figures below show results of nearest neighbor retrieval for example queries from each dataset with triplet loss based representation <em>B-Tri</em> (refer paper for more details). Since style labels are often contextual and convey a limited meaning of style, a low precision score does not necessarily imply poor quality of visual similarity. The retrieved results that are highlighted by a black bounding box don't have the same style label as the query, despite obvious visual similarity.</p>
-  </div>
+  </section>
 
-  <div class="project-section">
+  <section class="project-section">
     <h2>BAM (Behance Artistic Media) Dataset Images</h2>
     <img src="style_images/bam.png" alt="BAM dataset results">
     <p>Nearest Neighbour retrieval results for select queries from BAM subset test split. Notice that for rows 1 and 2, the queries and neighbours are very similar looking but the labels do not match. This indicates the lower mAP scores for retrieval using unsupervised methods. 'Oil Paint' and 'Water Colour' are hard to differentiate, similarly 'Gloomy' and 'Peaceful'.</p>
-  </div>
+  </section>
 
-  <div class="project-section">
+  <section class="project-section">
     <h2>Flickr Dataset Images</h2>
     <img src="style_images/flickr.png" alt="Flickr dataset results">
     <p class="img-caption">Retrieval Results for Query and Top Neighbours Flickr Test Set.</p>
-  </div>
+  </section>
 
-  <div class="project-section">
+  <section class="project-section">
     <h2>Wikipaintings Dataset Images</h2>
     <img src="style_images/wiki.png" alt="Wikipaintings dataset results">
     <p>Retrieval Results for Query and Top Neighbours Wikipaintings Subset dataset. It is interesting to see the retrieved results and their relevance with respect to the query image. Notice row 7 where, 'Abstract Expressionism' labelled query retrieves 'Ukiyo-e', 'Cubism' and 'Pop Art' paintings.</p>
-  </div>
+  </section>
 
-  <div class="project-section">
+  <section class="project-section">
     <h2>Ava Style Dataset Images</h2>
     <img src="style_images/ava.png" alt="Ava Style dataset results">
     <p class="img-caption">Retrieval Results for Query and Top Neighbours Ava Style Test Set.</p>
-  </div>
+  </section>
 
-  <div class="project-section">
+  <section class="project-section">
     <h2>Deviant Art Dataset Images</h2>
     <img src="style_images/deviant.png" alt="Deviant Art dataset results">
     <p class="img-caption">Retrieval Results for Query and Top Neighbours Deviant Art Test Set.</p>
-  </div>
+  </section>
 
-  <div class="project-section">
+  <section class="project-section">
     <h2>Wall Art Dataset Images</h2>
     <img src="style_images/wallart.png" alt="Wall Art dataset results">
     <p class="img-caption">Retrieval Results for Query and Top Neighbours Wall Art Test Set.</p>
-  </div>
+  </section>
 
-  <div class="project-section">
+  <section class="project-section">
     <h2>Code and Trained Models</h2>
-    <p style="text-align: center;">Please visit our <a href="https://github.com/sidgairo18/unsupervised-style-learning">Github Repo</a>.</p>
-  </div>
+    <p>Please visit our <a href="https://github.com/sidgairo18/unsupervised-style-learning">Github Repo</a>.</p>
+  </section>
 
-  <div class="project-section">
+  <section class="project-section">
     <h2>Visualizer</h2>
-    <p style="text-align: center;">A visualizer to explore the learned representations for the different datasets coming here soon!</p>
-  </div>
+    <p>A visualizer to explore the learned representations for the different datasets coming here soon!</p>
+  </section>
 
-  <div class="project-section">
+  <section class="project-section">
     <h2>Datasets</h2>
-    <p style="text-align: center;">The links to the datasets used and introduced in the paper shall be released after the conference. We appreciate your patience.</p>
-  </div>
+    <p>The links to the datasets used and introduced in the paper shall be released after the conference. We appreciate your patience.</p>
+  </section>
 
-  <div class="project-section">
+  <section class="project-section">
     <h2>Acknowledgement</h2>
     <p>We thank Kshitij Gupta, Subramanyam Makkam and Mohsin Mustafa for their help in the project and building the visualizer tool. We are also grateful to Parikshit Sakurikar, Pritish Mohapatra, Saurabh Saini and Aniket for the discussions and insight provided during the course of the entire project work.</p>
-  </div>
+  </section>
 
-  <div class="project-section">
+  <section class="project-section">
     <h2>Related Work</h2>
     <ol class="related-work">
       <li>Sergey Karayev, Matthew Trentacoste, Helen Han, Aseem Agarwala, Trevor Darrell, Aaron Hertzmann, and Holger Winnemoeller. <strong>Recognizing image style.</strong> <em>In Proceedings of the British Machine Vision Conference.</em> BMVA Press, 2014.</li>
@@ -125,4 +116,4 @@
       <li>J. Collomosse, T. Bui, M. Wilber, C. Fang, and H. Jin. <strong>Sketching with style: Visual search with sketches and aesthetic context.</strong> <em>In 2017 IEEE International Conference on Computer Vision (ICCV)</em>, 2017.</li>
       <li>W. Chu and Y. Wu. <strong>Image style classification based on learnt deep correlation features.</strong> <em>IEEE Transactions on Multimedia,</em> 20(9), 2018.</li>
     </ol>
-  </div>
+  </section>
