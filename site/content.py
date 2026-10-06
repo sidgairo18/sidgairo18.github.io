@@ -24,7 +24,7 @@ TAGLINE = "PhD student in computer vision &amp; machine learning · MPI for Info
 
 # Links used in the icon row.  (label, icon, href)
 LINKEDIN = "https://www.linkedin.com/in/siddharthagairola"
-SCHOLAR = "https://scholar.google.co.in/citations?user=4tInxbgAAAAJ&hl=en"
+SCHOLAR = "https://scholar.google.co.in/citations?user=4tInxbgAAAAJ&amp;hl=en"
 CV_PDF = "assets/cv/SiddharthaGairola_CV.pdf"
 TOPLINKS = [
     ("CV", "cv", CV_PDF),
@@ -128,21 +128,21 @@ PUBS = [
     dict(key="gairola2025probe", tags=['interp', 'repr'], badge="ICLR", featured=True, img="probe_1.jpg", img2="probe_2.jpg",
          links=[("openreview", "https://openreview.net/forum?id=57NfyYxh5f"), ("arxiv", "https://arxiv.org/pdf/2503.00641"), ("code", "https://github.com/sidgairo18/how-to-probe")],
          blurb="How the final layer is trained (&lt;10% of parameters) shapes post-hoc explanations; simple fixes improve them markedly."),
-    dict(key="ganatra2025smartkcpp", tags=['misc'], badge="WACV", img="smartkc_plusplus.png", img2="smartkc_plusplus.png",
+    dict(key="ganatra2025smartkcpp", tags=['misc'], badge="WACV", img="smartkc_plusplus.jpg", img2="smartkc_plusplus.jpg",
          links=[("paper", "https://openaccess.thecvf.com/content/WACV2025/html/Ganatra_SmartKC_Improving_Performance_of_Smartphone-Based_Corneal_Topographers_WACV_2025_paper.html"), ("code", "https://github.com/microsoft/SmartKC-A-Smartphone-based-Corneal-Topographer")]),
-    dict(key="gairola2022keratoconus", tags=['misc'], badge="EMBC", img="device_and_setup.png", img2="device_and_setup.png",
+    dict(key="gairola2022keratoconus", tags=['misc'], badge="EMBC", img="device_and_setup.jpg", img2="device_and_setup.jpg",
          links=[("arxiv", "https://arxiv.org/abs/2205.03702"), ("pdf", "https://arxiv.org/pdf/2205.03702.pdf")]),
     dict(key="aggarwal2022retinoscopy", tags=['misc'], badge="IMWUT", img="auto_retinoscopy.jpeg", img2="auto_retinoscopy.jpeg",
          links=[("pdf", "https://arxiv.org/pdf/2208.05552.pdf"), ("code", "https://github.com/microsoft/Auto-retinoscopy"), ("project page", "https://www.microsoft.com/en-us/research/project/auto-retinoscopy-automating-retinoscopy-for-refractive-error-diagnosis/")]),
-    dict(key="gairola2021smartkc", tags=['misc'], badge="IMWUT", img="corneal_topographer.png", img2="corneal_topographer.png",
+    dict(key="gairola2021smartkc", tags=['misc'], badge="IMWUT", img="corneal_topographer.jpg", img2="corneal_topographer.jpg",
          links=[("pdf", "assets/papers/smartkc.pdf"), ("code", "https://github.com/microsoft/SmartKC-A-Smartphone-based-Corneal-Topographer"), ("project page", "https://www.microsoft.com/en-us/research/project/smartkc-a-smartphone-based-corneal-topographer/"), ("video", "https://www.youtube.com/watch?v=rp4uyzf6e2Q")]),
-    dict(key="gairola2021respirenet", tags=['misc'], badge="EMBC", img="respirenet.png", img2="respirenet.png",
+    dict(key="gairola2021respirenet", tags=['misc'], badge="EMBC", img="respirenet.jpg", img2="respirenet.jpg",
          links=[("arxiv", "https://arxiv.org/abs/2011.00196"), ("pdf", "assets/papers/respirenet.pdf"), ("code", "https://github.com/microsoft/RespireNet")]),
-    dict(key="gairola2020simpropnet", tags=['understanding'], badge="IJCAI", img="fss.png", img2="fss.png",
+    dict(key="gairola2020simpropnet", tags=['understanding'], badge="IJCAI", img="fss.jpg", img2="fss.jpg",
          links=[("proceedings", "https://www.ijcai.org/Proceedings/2020/80"), ("pdf", "https://www.ijcai.org/Proceedings/2020/0080.pdf")]),
-    dict(key="gairola2020style", tags=['repr'], badge="WACV", img="gram.png", img2="b-tri.png",
+    dict(key="gairola2020style", tags=['repr'], badge="WACV", img="gram.jpg", img2="b-tri.jpg",
          links=[("paper", "https://openaccess.thecvf.com/content_WACV_2020/html/Gairola_Unsupervised_Image_Style_Embeddings_for_Retrieval_and_Recognition_Tasks_WACV_2020_paper.html"), ("code", "https://github.com/sidgairo18/unsupervised-style-learning"), ("project page", "style.html"), ("supplementary", "assets/papers/style_supp.pdf")]),
-    dict(key="kumar2018clickbait", tags=['vlm', 'misc'], badge="SIGIR", img="clickbait_before.png", img2="clickbait_after.png",
+    dict(key="kumar2018clickbait", tags=['vlm', 'misc'], badge="SIGIR", img="clickbait_before.jpg", img2="clickbait_after.jpg",
          links=[("arxiv", "https://arxiv.org/abs/1710.01507"), ("acm", "https://dl.acm.org/citation.cfm?id=3210144"), ("code", "https://github.com/vaibhav4595/Clickbait_Detection")]),
     dict(key="rawat2018sky", tags=['misc'], badge="MMM", img="sky_before.png", img2="sky_after.png",
          links=[("project page", "https://cvit.iiit.ac.in/research/projects/cvit-projects/findmeasky"), ("pdf", "assets/papers/sky.pdf"), ("springer", "https://link.springer.com/chapter/10.1007/978-3-319-73603-7_18")]),
@@ -181,7 +181,7 @@ TALKS = [  # (title, venue html, when, (link kind, href))
     ("Intriguing Applications and Overlooked Pitfalls of XAI in Visual Models", '<a href="https://gmum.net/">GMUM Workshop</a>, Jagiellonian University · invited talk', "Oct 2024", ("slides", "assets/presentations/GMUM_Talk_Sharing.pptx")),
     ("RespireNet: Detecting Abnormal Lung Sounds in Limited Data Settings", "EMBC 2021 · paper talk", "2021", ("video", "https://www.youtube.com/watch?v=XoAF3fCAqq4")),
     ("SimPropNet: Improved Similarity Propagation for Few-shot Segmentation", "IJCAI 2020 · paper talk", "2020", ("video", "https://www.ijcai.org/proceedings/2020/video/24830")),
-    ("Unsupervised Image Style Embeddings for Retrieval and Recognition Tasks", "WACV 2020 · paper talk", "2020", ("video", "https://www.youtube.com/watch?v=EbUOg1gVcFw&t=909s")),
+    ("Unsupervised Image Style Embeddings for Retrieval and Recognition Tasks", "WACV 2020 · paper talk", "2020", ("video", "https://www.youtube.com/watch?v=EbUOg1gVcFw&amp;t=909s")),
 ]
 TEACHING = [  # (institution, href, role, period, [(course, terms)], logo)
     ("Saarland University", "https://www.uni-saarland.de/en/home.html", "Teaching assistant", "2023 &ndash; 2026",
@@ -218,7 +218,7 @@ RESOURCES = [
 ]
 
 # Secondary pages: slug -> fragment in site/pages/<slug>.html (title/back link in the fragment header).
-PAGES = ["personal", "grad_school_resources", "how_to_review_scientific_papers",
+PAGES = ["404", "personal", "grad_school_resources", "how_to_review_scientific_papers",
          "how_to_write_academic_papers", "notes_and_resources_on_how_to_do_research", "style"]
 # Links in the slim top bar of secondary pages.
 SUBNAV = [("Home", "index.html"), ("Publications", "index.html#publications"), ("Resources", "index.html#resources")]

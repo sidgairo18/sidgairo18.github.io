@@ -246,7 +246,8 @@ ANALYTICS = f"""<!-- Google Analytics -->
 </script>"""
 
 
-def head(title, description, extra=""):
+def head(title, description, extra="", url=None):
+    url = url or SITE_URL + "/"
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -258,12 +259,13 @@ def head(title, description, extra=""):
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{description}">
 <meta property="og:image" content="{SITE_URL}/images/sid_beard_profile_paris.jpg">
-<meta property="og:url" content="{SITE_URL}/">
+<meta property="og:url" content="{url}">
+<link rel="canonical" href="{url}">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧙</text></svg>">
 <script>try{{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}}catch(e){{}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">{extra}
 </head>'''
 
@@ -341,7 +343,10 @@ def build_index(pubs, mode="all"):
                '<button type="button" data-tag="all" class="on">All</button>'
                + "".join(f'<button type="button" data-tag="{t}">{l}</button>' for t, l in TAGS) + '</div>')
     desc = f"{ME} — ELLIS PhD student at the Max Planck Institute for Informatics and ISTA. Computer vision, representation learning, interpretability."
-    return f'''{head(ME, desc)}
+    jsonld = ('<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"' + ME + '","url":"' + SITE_URL + '/",'
+              '"jobTitle":"PhD student","affiliation":[{"@type":"Organization","name":"Max Planck Institute for Informatics"},{"@type":"Organization","name":"Institute of Science and Technology Austria"}],'
+              '"sameAs":["' + SCHOLAR.replace("&amp;", "&") + '","https://github.com/sidgairo18","' + LINKEDIN + '","https://twitter.com/sidgairo18"]}</script>')
+    return f'''{head(ME, desc, extra=jsonld, url=SITE_URL + "/")}
 <body>{THEME_BTN}<div class="wrap">
 <figure class="cover"><img src="{IMG}aspen_snowmass.jpeg" alt="Snowmass Mountain, Colorado"><figcaption>Snowmass, CO · March 2020</figcaption></figure>
 <header class="hdr"><img src="{IMG}sid_beard_profile_paris.jpg" alt="{ME}"><div><h1>{ME}</h1><p class="sub">{TAGLINE}</p><nav class="icons" aria-label="Links">{icons}</nav></div></header>
@@ -376,14 +381,15 @@ def build_page(slug, bibs=None):
     wide = meta.get("wide") == "true"
     h1 = "" if meta.get("notitle") == "true" else f"<h1>{title}</h1>"
     nav = "".join(f'<a href="{h}">{l}</a>' for l, h in SUBNAV)
-    return f'''{head(f"{title} · {ME}", f"{title} — {ME}")}
+    extra = f'<base href="{SITE_URL}/">' if meta.get("base") == "true" else ""
+    return f'''{head(f"{title} · {ME}", f"{title} — {ME}", extra=extra, url=f"{SITE_URL}/{slug}.html")}
 <body>
 <div class="topbar"><div class="in"><a class="nm" href="index.html">{ME}</a><nav>{nav}{THEME_BTN}</nav></div></div>
 <main class="page{" wide" if wide else ""}"><a class="back" href="{back_href}">← {back_label}</a>{h1}
 <div class="prose">
 {body.strip()}
 </div>
-<footer style="margin-top:56px"><span>© 2026 {ME}</span><span>Updated {UPDATED}</span></footer>
+<footer style="margin-top:56px"><span>© 2026 {ME}</span><span><a href="index.html">sidgairo18.github.io</a></span></footer>
 </main>{SCRIPTS}</body></html>
 '''
 
@@ -397,7 +403,12 @@ def main():
     bibs = {p["key"]: p["bibtex"] for p in pubs}
     for slug in PAGES:
         open(os.path.join(ROOT, slug + ".html"), "w", encoding="utf-8").write(build_page(slug, bibs))
-    print(f"built index.html, {len(PAGES)} pages, {len(pubs)} bib files")
+    urls = [SITE_URL + "/"] + [f"{SITE_URL}/{p}.html" for p in PAGES if p != "404"]
+    open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(
+        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls) + "</urlset>\n")
+    open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8").write(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n")
+    print(f"built index.html, {len(PAGES)} pages, {len(pubs)} bib files, sitemap.xml, robots.txt")
 
 
 if __name__ == "__main__":

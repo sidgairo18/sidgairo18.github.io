@@ -13,6 +13,7 @@ build, commit the generated files together with the source.
 | Secondary pages (personal, guides, project page) | `site/pages/<slug>.html` (body only; title and back link in the header comments) |
 | Styles | `css/style.css` (hand-maintained, not generated) |
 | Templates / HTML assembly | `site/build.py` |
+| Generated on build | `index.html`, the secondary pages, `404.html`, `assets/bib/*.bib`, `sitemap.xml`, `robots.txt` |
 
 ## Common edits
 
@@ -45,6 +46,9 @@ CSS masks so they recolour in dark mode; set their colours in `.lg.<name>` rules
 `css/style.css`.
 
 ## Notes
+
+* Figures in `images/` are served as JPEGs at most 1000–1200 px wide (full-resolution originals
+  live in `archive/images/originals/`). When adding a figure, downscale it similarly.
 
 * Fonts: Geist from Google Fonts, with system sans fallbacks.
 * Dark mode follows the system and can be toggled; the choice is stored in
