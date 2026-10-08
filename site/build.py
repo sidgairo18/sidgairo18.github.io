@@ -292,6 +292,7 @@ function apply(){if(!sec)return;sec.querySelectorAll('.pub[data-tags]').forEach(
 sec.querySelectorAll('.yr').forEach(function(y){y.hidden=!y.querySelector('.pub:not([hidden])');});if(tb){tb.textContent=expanded?'Show fewer ↑':tb.getAttribute('data-label');var ttl=document.getElementById('pubs-title'),fl=sec.querySelector('.filters');if(ttl)ttl.textContent=expanded?'Publications':'Selected publications';if(fl)fl.hidden=!expanded;}}
 fb.forEach(function(b){b.addEventListener('click',function(){tag=b.getAttribute('data-tag');fb.forEach(function(x){x.classList.toggle('on',x===b);});if(tag!=='all')expanded=true;apply();});});
 if(tb){tb.addEventListener('click',function(){expanded=!expanded;if(!expanded){tag='all';fb.forEach(function(x){x.classList.toggle('on',x.getAttribute('data-tag')==='all');});}apply();if(!expanded)sec.scrollIntoView({behavior:'smooth',block:'start'});});}
+var nm=document.getElementById('news-more'),nt=document.getElementById('news-toggle');if(nm&&nt){nt.addEventListener('click',function(){nm.hidden=!nm.hidden;nt.textContent=nm.hidden?nt.getAttribute('data-open'):nt.getAttribute('data-close');});}
 if(location.hash){var tgt=document.getElementById(location.hash.replace(/^#(bib-)?/,''));if(tgt&&tgt.hasAttribute('data-more')){expanded=true;}}
 apply();
 if(location.hash&&location.hash.indexOf('#bib-')===0){var p=document.getElementById(location.hash.slice(1));if(p)p.hidden=false;}
@@ -309,7 +310,8 @@ def build_index(pubs, mode="all"):
         t = t.replace("<b>Spotlight</b>", f'<b class="gs" style="font-size:inherit;letter-spacing:0;text-transform:none;margin:0">{STAR} Spotlight</b>')
         return f'<li><time>{d}</time><span>{f"<b>{b}</b>" if b else ""}{t}</span></li>'
     news = (f'<ul class="news">{"".join(nitem(*n) for n in NEWS[:NEWS_SHOWN])}</ul>'
-            f'<details class="more"><summary>Older news</summary><ul class="news">{"".join(nitem(*n) for n in NEWS[NEWS_SHOWN:])}</ul></details>')
+            f'<ul class="news" id="news-more" hidden>{"".join(nitem(*n) for n in NEWS[NEWS_SHOWN:])}</ul>'
+            f'<div class="showall"><button type="button" id="news-toggle" data-open="Older news ↓" data-close="Show fewer ↑">Older news ↓</button></div>')
     # background
     exp = "".join(f'<li>{logo(lg, c)}<div class="l"><b>{c}</b><span>{r}</span></div><div class="r">{d}</div></li>' for c, r, d, lg in EXPERIENCE)
     edu = "".join(f'<li>{logo(lg, n)}<div class="l"><b><a href="{h}">{n}</a></b>{"".join(f"<span>{x}</span>" for x in degs)}</div><div class="r">{d}</div></li>' for n, h, degs, d, lg in EDUCATION)

@@ -21,10 +21,7 @@ p a:hover,.au a:hover,dd a:hover,.res a:hover,.rows a:hover{border-color:var(--a
 .news time{font-size:13px;color:var(--mute);padding-top:1px;font-variant-numeric:tabular-nums}
 .news b{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-right:7px}
 .news b.gs{color:var(--gold)}
-details.more summary{cursor:pointer;list-style:none;color:var(--mute);font-size:13.5px;margin-top:8px}
-details.more summary::-webkit-details-marker{display:none}
-details.more summary:hover{color:var(--fg)}
-details.more[open] summary{display:none}
+#news-more[hidden]{display:none}
 .res{list-style:none}
 .res li{padding:5px 0;font-size:14.5px}
 .res li a{font-weight:600}
