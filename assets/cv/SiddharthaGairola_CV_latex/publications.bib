@@ -8,16 +8,21 @@
 %    (one spec per author index, separated by ";")
 %  * url   -> the title becomes a hyperlink (omit for no link).
 %  * addendum -> short highlighted note after the venue (e.g. Spotlight).
-%  * Use @unpublished with note={Under submission} for papers in review.
+%  * Use @unpublished with note={Under submission} for papers in review, and
+%    @misc with note={arXiv preprint arXiv:ID} (+ eprint/eprinttype/eprintclass) for preprints.
 % ======================================================================
 
-@unpublished{gairola2026disparq,
+@misc{gairola2026disparq,
   author    = {Siddhartha Gairola and Adam Pardyl and Sukrut Rao and Adam Wr{\'o}bel and Bartosz Zieli{\'n}ski and Bernt Schiele and Dawid Rymarczyk},
   author+an = {1=me},
   author+an:eq = {1=eq;2=eq},
   title     = {DisParQ: Self-Supervised Part Concepts for Interpretable Vision Foundation Models},
-  note      = {Under submission},
+  note      = {arXiv preprint arXiv:2610.09802},
+  eprint    = {2610.09802},
+  eprinttype = {arxiv},
+  eprintclass = {cs.CV},
   year      = {2026},
+  url       = {https://arxiv.org/abs/2610.09802},
 }
 
 @inproceedings{gairola2026stranger,

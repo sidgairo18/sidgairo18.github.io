@@ -12,14 +12,12 @@ p a,.au a,dd a,.res a,.rows a{border-bottom:1px solid var(--line)}
 p a:hover,.au a:hover,dd a:hover,.res a:hover,.rows a:hover{border-color:var(--accent);color:var(--accent)}
 .au a{border:0}
 .rows{list-style:none}
-.rows li{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:9px 0;border-bottom:1px solid var(--line)}
-.rows li:last-child{border-bottom:0}
+.rows li{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:7px 0}
 .rows .l b{font-weight:600}
 .rows .l span{display:block;font-size:13.5px;color:var(--mute)}
 .rows .r{font-size:12.5px;color:var(--mute);white-space:nowrap;padding-top:3px;font-variant-numeric:tabular-nums}
 .news{list-style:none}
-.news li{display:grid;grid-template-columns:82px 1fr;gap:14px;padding:7px 0;border-bottom:1px solid var(--line);font-size:14.5px}
-.news li:last-child{border-bottom:0}
+.news li{display:grid;grid-template-columns:82px 1fr;gap:14px;padding:6px 0;font-size:14.5px}
 .news time{font-size:13px;color:var(--mute);padding-top:1px;font-variant-numeric:tabular-nums}
 .news b{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-right:7px}
 .news b.gs{color:var(--gold)}
@@ -28,8 +26,7 @@ details.more summary::-webkit-details-marker{display:none}
 details.more summary:hover{color:var(--fg)}
 details.more[open] summary{display:none}
 .res{list-style:none}
-.res li{padding:7px 0;border-bottom:1px solid var(--line);font-size:14.5px}
-.res li:last-child{border-bottom:0}
+.res li{padding:5px 0;font-size:14.5px}
 .res li a{font-weight:600}
 .res li span{color:var(--mute)}
 .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;padding:1px 6px;border-radius:4px;background:var(--accent-soft);color:var(--accent);text-transform:uppercase;vertical-align:1px}
@@ -53,8 +50,8 @@ details.more[open] summary{display:none}
 .soon{color:var(--mute)}
 .soon-note{color:var(--mute);font-style:italic}
 .pub .nt{font-size:12.5px;color:var(--mute);margin-top:4px}
-.mini{flex:0 0 96px;aspect-ratio:4/3;border-radius:6px;overflow:hidden;background:var(--soft);border:1px solid var(--line);position:relative;align-self:start}
-.mini img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:2px;transition:opacity .25s}
+.mini{flex:0 0 120px;aspect-ratio:3/2;position:relative;align-self:start}
+.mini img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center top;transition:opacity .25s}
 .mini img.hov{opacity:0}
 .pub:hover .mini img.hov{opacity:1}
 .pub:hover .mini img:not(.hov){opacity:0}
@@ -150,7 +147,6 @@ h2 a:hover{color:var(--fg)}
 .blk h3{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
 .blk h3 .ico{width:16px;height:16px;color:var(--accent)}
 .blk h3 small{font-weight:500;letter-spacing:0;text-transform:none;color:var(--mute);margin-left:auto;font-size:12px}
-.rows li{padding:8px 0}
 .rows .l .k{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-right:6px}
 .rows .l .lnk{display:inline-flex;align-items:center;gap:4px;font-size:12.5px;color:var(--fg);border:0}
 .rows .l .lnk .ico{width:13px;height:13px;color:var(--mute)}
@@ -179,7 +175,6 @@ h2 a:hover{color:var(--fg)}
 .showall button{font:inherit;font-size:13.5px;font-weight:600;background:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;color:var(--fg);cursor:pointer}
 .showall button:hover{border-color:var(--fg)}
 .pub .ab{font-size:13.5px;color:var(--mute);margin-top:5px;line-height:1.5}
-.pub .mini{flex-basis:110px}
 
 /* ===== BibTeX panels ===== */
 .bibpanel{margin-top:10px;border:1px solid var(--line);border-radius:10px;background:var(--card);overflow:hidden}
@@ -229,8 +224,7 @@ h2 a:hover{color:var(--fg)}
 .prose .toc a:hover{color:var(--accent)}
 .prose .toc a::before{content:"→ ";color:var(--line)}
 .prose .sops{list-style:none;margin:0 0 10px}
-.prose .sops li{display:grid;grid-template-columns:1fr auto auto;gap:6px 12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
-.prose .sops li:last-child{border-bottom:0}
+.prose .sops li{display:grid;grid-template-columns:1fr auto auto;gap:6px 12px;align-items:center;padding:7px 0}
 .prose .sops .who a{font-weight:600;border:0}
 .prose .sops a.dl{justify-self:start}
 .prose .sops .status{justify-self:end}

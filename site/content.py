@@ -20,7 +20,7 @@ UPDATED = "October 2026"
 GA_ID = "UA-120374008-1"          # Google Analytics property, emitted first in every page head
 IMG = "images/"
 
-TAGLINE = "PhD student in computer vision &amp; machine learning · MPI for Informatics &amp; ISTA"
+TAGLINE = "PhD Researcher in computer vision &amp; machine learning · MPI for Informatics &amp; ISTA"
 
 # Links used in the icon row.  (label, icon, href)
 LINKEDIN = "https://www.linkedin.com/in/siddharthagairola"
@@ -84,6 +84,7 @@ NEWS_SHOWN = 4
 PUB_MODE = "selected"
 LATEST_N = 5
 NEWS = [
+    ("Oct 2026", "arXiv", '<em>DisParQ</em>, self-supervised part concepts for interpretable vision foundation models, is on <a href="https://arxiv.org/abs/2610.09802">arXiv</a>.'),
     ("Sep 2026", "NeurIPS", '<em>Stranger Things</em> accepted at NeurIPS 2026.'),
     ("May 2026", "ICML", '<em>DAVE</em> accepted at ICML 2026 as a <b>Spotlight</b> (top 2.2%).'),
     ("Feb 2026", "CVPR", '<em>ALOE</em> accepted at CVPR 2026.'),
@@ -110,8 +111,9 @@ NEWS = [
 #                lists S. Gairola first for equal-contribution papers)
 # ---------------------------------------------------------------------------
 PUBS = [
-    dict(key="gairola2026disparq", tags=['interp', 'repr'], badge="Preprint", featured=True, img="dpq_1.jpg", img2="dpq_2.jpg",
-         links=[("arxiv", None), ("code", None)], soon=True,
+    dict(key="gairola2026disparq", tags=['interp', 'repr'], badge="arXiv", featured=True, img="dpq_1.jpg", img2="dpq_2.jpg",
+         links=[("arxiv", "https://arxiv.org/abs/2610.09802"), ("code", None)], soon=True,
+         blurb="Discrete, spatially grounded part concepts with quantized attributes, learned from a frozen self-supervised backbone with no labels or language.",
          authors=["Adam Pardyl", "Siddhartha Gairola", "Sukrut Rao", "Adam Wróbel", "Bartosz Zieliński", "Bernt Schiele", "Dawid Rymarczyk"]),
     dict(key="gairola2026stranger", tags=['understanding', 'repr'], badge="NeurIPS", featured=True, img="sb_1.jpg", img2="sb_2.jpg",
          links=[("arxiv", None), ("code", None), ("dataset", None)], soon=True,

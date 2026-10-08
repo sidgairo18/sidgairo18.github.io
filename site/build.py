@@ -94,7 +94,13 @@ def clean_bibtex(entry, authors):
         if f.get("number"): rows.append(("number", f["number"]))
     elif etype == "unpublished":
         rows.append(("note", f.get("note", "Under submission")))
+    elif etype == "misc":
+        if f.get("note"): rows.append(("howpublished", f["note"]))
     rows.append(("year", f["year"]))
+    if f.get("eprint"):
+        rows.append(("eprint", f["eprint"]))
+        rows.append(("archiveprefix", {"arxiv": "arXiv"}.get(f.get("eprinttype", "").lower(), f.get("eprinttype", ""))))
+        if f.get("eprintclass"): rows.append(("primaryclass", f["eprintclass"]))
     if f.get("url"): rows.append(("url", f["url"]))
     w = max(len(k) for k, _ in rows)
     body = ",\n".join(f"  {k.ljust(w)} = {{{v}}}" for k, v in rows)
@@ -190,7 +196,7 @@ def build_pubs():
                  authors_html=", ".join(author_html(a, a in eq_names) for a in authors),
                  spotlight=addendum.lower().startswith("spotlight"),
                  bibtex=clean_bibtex(e, bib_authors_tex(e, authors)),
-                 venue_short=f"{ex['badge']} {f['year']}" if ex["badge"] != "Preprint" else "Preprint")
+                 venue_short=f"{ex['badge']} {f['year']}")
         p.setdefault("featured", False); p.setdefault("notes", []); p.setdefault("soon", False)
         p["short"] = p["title"].split(":")[0]
         open(os.path.join(BIB_OUT, f"{p['key']}.bib"), "w", encoding="utf-8").write(p["bibtex"])
@@ -199,14 +205,14 @@ def build_pubs():
 
 
 def pub_row(p, more=False, thumb=False, blurb=False):
-    tags = f'<span class="tag{" soft" if p["badge"] == "Preprint" else ""}">{p["badge"]}</span>'
+    tags = f'<span class="tag{" soft" if p["badge"] in ("Preprint", "arXiv") else ""}">{p["badge"]}</span>'
     if p["spotlight"]:
         tags += f'<span class="tag spot">{STAR} Spotlight</span>'
     notes = "".join(f'<p class="nt">{n}</p>' for n in p["notes"])
     th = f'<div class="mini"><img src="{IMG}{p["img"]}" alt=""><img class="hov" src="{IMG}{p["img2"]}" alt=""></div>' if thumb else ""
     ab = f'<p class="ab">{p["blurb"]}</p>' if blurb and p.get("blurb") else ""
     return (f'<li class="pub" id="{p["key"]}" data-tags="{" ".join(p.get("tags", []))}"{" data-more" if more else ""}>{th}<div class="bd"><div class="t">{p["title"]}</div>'
-            f'<div class="au">{p["authors_html"]}</div><div class="vn">{tags}<span>{p["venue"]}</span></div>{ab}'
+            f'<div class="au">{p["authors_html"]}</div><div class="vn">{tags}<span>{p["venue"]}, {p["year"]}</span></div>{ab}'
             f'<div class="lk">{links_html(p["links"], p["soon"], p["key"])}</div>{notes}{bibpanel(p["key"], p["bibtex"])}</div></li>')
 
 
