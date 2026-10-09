@@ -252,6 +252,10 @@ ANALYTICS = f"""<!-- Google Analytics -->
 </script>"""
 
 
+import hashlib
+CSS_HASH = hashlib.sha1(open(os.path.join(ROOT, "css/style.css"), "rb").read()).hexdigest()[:8]  # cache-busting query on every page
+
+
 def head(title, description, extra="", url=None):
     url = url or SITE_URL + "/"
     return f'''<!DOCTYPE html>
@@ -272,7 +276,7 @@ def head(title, description, extra="", url=None):
 <script>try{{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}}catch(e){{}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">{extra}
+<link rel="stylesheet" href="css/style.css?v={CSS_HASH}">{extra}
 </head>'''
 
 
@@ -294,7 +298,7 @@ fb.forEach(function(b){b.addEventListener('click',function(){tag=b.getAttribute(
 if(tb){tb.addEventListener('click',function(){expanded=!expanded;if(!expanded){tag='all';fb.forEach(function(x){x.classList.toggle('on',x.getAttribute('data-tag')==='all');});}apply();if(!expanded)sec.scrollIntoView({behavior:'smooth',block:'start'});});}
 (function(){var c=document.getElementById('cover');if(!c)return;var s=[].slice.call(c.querySelectorAll('.slide')),cap=c.querySelector('figcaption'),i=0,n=s.length,t=null,iv=+c.getAttribute('data-interval')||7000,rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function load(k){var im=s[(k+n)%n];if(im.getAttribute('data-src')){im.src=im.getAttribute('data-src');im.removeAttribute('data-src');}}
-function go(k){i=(k+n)%n;load(i);load(i+1);s.forEach(function(im,j){im.classList.toggle('on',j===i);});cap.textContent=s[i].getAttribute('data-caption');}
+function go(k){i=(k+n)%n;load(i);load(i+1);s.forEach(function(im,j){im.classList.toggle('on',j===i);im.setAttribute('aria-hidden',j===i?'false':'true');});cap.textContent=s[i].getAttribute('data-caption');}
 function start(){if(rm||n<2)return;stop();t=setInterval(function(){go(i+1);},iv);}function stop(){if(t){clearInterval(t);t=null;}}
 c.querySelector('.prev').addEventListener('click',function(){go(i-1);start();});c.querySelector('.next').addEventListener('click',function(){go(i+1);start();});
 c.addEventListener('mouseenter',stop);c.addEventListener('mouseleave',start);c.addEventListener('focusin',stop);c.addEventListener('focusout',start);

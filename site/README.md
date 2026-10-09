@@ -55,6 +55,8 @@ CSS masks so they recolour in dark mode; set their colours in `.lg.<name>` rules
 * Figures in `images/` are served as JPEGs at most 1000–1200 px wide (full-resolution originals
   live in `archive/images/originals/`). When adding a figure, downscale it similarly.
 
+* The stylesheet link carries a content hash (`style.css?v=…`), so after editing
+  `css/style.css` run the build again to update every page's link.
 * Fonts: Geist from Google Fonts, with system sans fallbacks.
 * Dark mode follows the system and can be toggled; the choice is stored in
   `localStorage`.
