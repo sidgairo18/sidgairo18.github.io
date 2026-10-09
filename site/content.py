@@ -20,6 +20,37 @@ UPDATED = "October 2026"
 GA_ID = "UA-120374008-1"          # Google Analytics property, emitted first in every page head
 IMG = "images/"
 
+# Cover carousel: (file under images/, caption).  First slide is shown on load; the rest
+# load lazily.  Optional third item = CSS object-position for the crop (default "center").
+COVER_INTERVAL_MS = 7000
+COVER = [
+    ("aspen_snowmass.jpeg", "Snowmass, CO · March 2020"),
+    ("travel_images/zuers_2_jan_2026.jpeg", "Zürs, Austria · January 2026"),
+    ("travel_images/moab2_june_2026.jpeg", "Delicate Arch, Moab · June 2026"),
+    ("travel_images/porto_july_2025.jpeg", "Porto · July 2025"),
+    ("travel_images/saarbruecken_2025.jpeg", "Saarbrücken · 2025"),
+    ("travel_images/lake_tahoe_usa_june_2026.jpeg", "Lake Tahoe · June 2026"),
+    ("travel_images/krakow2_oct_2025.jpeg", "Wawel, Kraków · October 2025"),
+    ("travel_images/finland_2023.jpeg", "Northern lights, Finland · 2023"),
+    ("travel_images/heidelberg_2025.jpeg", "Heidelberg · 2025"),
+    ("travel_images/san_francisco_dec_2025.jpeg", "San Francisco · December 2025"),
+    ("travel_images/seoul_july_2026.jpeg", "Seoul · July 2026"),
+    ("travel_images/tuebingen_oct_2026.jpeg", "Tübingen · October 2026"),
+    ("travel_images/moab_3_june_2026.jpeg", "Moab, Utah · June 2026"),
+    ("travel_images/singapore_april_2025.jpeg", "Singapore · April 2025"),
+    ("travel_images/klosterneuburg_2024.jpeg", "Klosterneuburg · 2024"),
+    ("travel_images/saarbruecken_3_2026.jpeg", "Saarbrücken · 2026"),
+    ("travel_images/along_the_moselle_2026.jpeg", "Along the Moselle · 2026"),
+    ("travel_images/zuers_june_2024.jpeg", "Zürs, Austria · June 2024"),
+    ("travel_images/krakow_oct_2024.jpeg", "Kraków · October 2024"),
+    ("travel_images/san_diego_dec_2025.jpeg", "San Diego · December 2025"),
+    ("travel_images/france_oct_2026.jpeg", "France · October 2026"),
+    ("travel_images/moab_4_june_2026.jpeg", "Moab, Utah · June 2026"),
+    ("travel_images/saarbruecken_2_2025.jpeg", "Saarbrücken · 2025"),
+    ("travel_images/saarbruecken_4_2025.jpeg", "Saarbrücken · 2025"),
+    ("travel_images/saarbruecken_2026.jpeg", "Saarbrücken · 2026"),
+]
+
 TAGLINE = "PhD Researcher in computer vision &amp; machine learning · MPI for Informatics &amp; ISTA"
 
 # Links used in the icon row.  (label, icon, href)
@@ -257,6 +288,8 @@ ICONS = {
     "help": f'<svg {_S}><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7M12 17h.01"/></svg>',
     "briefcase": f'<svg {_S}><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 12h18"/></svg>',
     "cap": f'<svg {_S}><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5M22 9v6"/></svg>',
+    "chevron-left": f'<svg {_S}><path d="m15 5-7 7 7 7"/></svg>',
+    "chevron-right": f'<svg {_S}><path d="m9 5 7 7-7 7"/></svg>',
     "copy": f'<svg {_S}><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>',
     "download": f'<svg {_S}><path d="M12 3v12M6 11l6 6 6-6M4 21h16"/></svg>',
     "github": '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>',

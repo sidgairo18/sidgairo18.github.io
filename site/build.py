@@ -292,6 +292,15 @@ function apply(){if(!sec)return;sec.querySelectorAll('.pub[data-tags]').forEach(
 sec.querySelectorAll('.yr').forEach(function(y){y.hidden=!y.querySelector('.pub:not([hidden])');});if(tb){tb.textContent=expanded?'Show fewer ↑':tb.getAttribute('data-label');var ttl=document.getElementById('pubs-title'),fl=sec.querySelector('.filters');if(ttl)ttl.textContent=expanded?'Publications':'Selected publications';if(fl)fl.hidden=!expanded;}}
 fb.forEach(function(b){b.addEventListener('click',function(){tag=b.getAttribute('data-tag');fb.forEach(function(x){x.classList.toggle('on',x===b);});if(tag!=='all')expanded=true;apply();});});
 if(tb){tb.addEventListener('click',function(){expanded=!expanded;if(!expanded){tag='all';fb.forEach(function(x){x.classList.toggle('on',x.getAttribute('data-tag')==='all');});}apply();if(!expanded)sec.scrollIntoView({behavior:'smooth',block:'start'});});}
+(function(){var c=document.getElementById('cover');if(!c)return;var s=[].slice.call(c.querySelectorAll('.slide')),cap=c.querySelector('figcaption'),i=0,n=s.length,t=null,iv=+c.getAttribute('data-interval')||7000,rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function load(k){var im=s[(k+n)%n];if(im.getAttribute('data-src')){im.src=im.getAttribute('data-src');im.removeAttribute('data-src');}}
+function go(k){i=(k+n)%n;load(i);load(i+1);s.forEach(function(im,j){im.classList.toggle('on',j===i);});cap.textContent=s[i].getAttribute('data-caption');}
+function start(){if(rm||n<2)return;stop();t=setInterval(function(){go(i+1);},iv);}function stop(){if(t){clearInterval(t);t=null;}}
+c.querySelector('.prev').addEventListener('click',function(){go(i-1);start();});c.querySelector('.next').addEventListener('click',function(){go(i+1);start();});
+c.addEventListener('mouseenter',stop);c.addEventListener('mouseleave',start);c.addEventListener('focusin',stop);c.addEventListener('focusout',start);
+c.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){go(i-1);}else if(e.key==='ArrowRight'){go(i+1);}});
+document.addEventListener('visibilitychange',function(){document.hidden?stop():start();});
+c.classList.add('init');go(Math.floor(Math.random()*n));var f=s[i];function ready(){requestAnimationFrame(function(){requestAnimationFrame(function(){c.classList.remove('init');});});}if(f.complete&&f.naturalWidth){ready();}else{f.addEventListener('load',ready,{once:true});f.addEventListener('error',ready,{once:true});}start();})();
 var nm=document.getElementById('news-more'),nt=document.getElementById('news-toggle');if(nm&&nt){nt.addEventListener('click',function(){nm.hidden=!nm.hidden;nt.textContent=nm.hidden?nt.getAttribute('data-open'):nt.getAttribute('data-close');});}
 if(location.hash){var tgt=document.getElementById(location.hash.replace(/^#(bib-)?/,''));if(tgt&&tgt.hasAttribute('data-more')){expanded=true;}}
 apply();
@@ -336,6 +345,15 @@ def build_index(pubs, mode="all"):
                + blk("mic", "Talks", talks, f"{len(TALKS)} talks") + blk("chalk", "Teaching", teaching, f"teaching assistant · {ncourses} courses")
                + blk("code", "Open source", oss) + blk("heart", "Volunteering", vol) + '</div>')
     resources = "".join(blk(ic, title, '<ul class="res">' + "".join(f'<li><a href="{h}">{t}</a><span>{d}</span></li>' for t, h, d in items) + '</ul>') for ic, title, items in RESOURCES)
+    def slide(i, s):
+        f, cap = s[0], s[1]
+        pos = f' style="object-position:{s[2]}"' if len(s) > 2 else ""
+        return f'<img class="slide" data-src="{IMG}{f}" alt="{cap}" data-caption="{cap}"{pos}>'
+    cover = (f'<figure class="cover" id="cover" tabindex="0" aria-label="Travel photos" data-interval="{COVER_INTERVAL_MS}">'
+             + "".join(slide(i, s) for i, s in enumerate(COVER))
+             + f'<button type="button" class="cnav prev" aria-label="Previous photo">{I("chevron-left")}</button>'
+             + f'<button type="button" class="cnav next" aria-label="Next photo">{I("chevron-right")}</button>'
+             + f'<figcaption aria-live="polite"></figcaption><noscript><img class="slide on" src="{IMG}{COVER[0][0]}" alt="{COVER[0][1]}"></noscript></figure>')
     sel = [p for p in pubs if p["featured"]]
     selected_section = f'<section id="selected"><h2>Selected work<a href="#publications">all {len(pubs)} papers ↓</a></h2><div class="cards">{"".join(card(p) for p in sel)}</div></section>' if mode != "selected" else ""
     if mode == "latest":
@@ -356,7 +374,7 @@ def build_index(pubs, mode="all"):
               '"sameAs":["' + SCHOLAR.replace("&amp;", "&") + '","https://github.com/sidgairo18","' + LINKEDIN + '","https://twitter.com/sidgairo18"]}</script>')
     return f'''{head(ME, desc, extra=jsonld, url=SITE_URL + "/")}
 <body>{THEME_BTN}<div class="wrap">
-<figure class="cover"><img src="{IMG}aspen_snowmass.jpeg" alt="Snowmass Mountain, Colorado"><figcaption>Snowmass, CO · March 2020</figcaption></figure>
+{cover}
 <header class="hdr"><img src="{IMG}sid_beard_profile_paris.jpg" alt="{ME}"><div><h1>{ME}</h1><p class="sub">{TAGLINE}</p><nav class="icons" aria-label="Links">{icons}</nav></div></header>
 <section class="bio" id="about">{"".join(f"<p>{p}</p>" for p in BIO)}<p class="off">{OFFHOURS}</p></section>
 <section id="news"><h2>News</h2>{news}</section>

@@ -31,6 +31,11 @@ opens on featured papers under "Selected publications" with a "Show all" button,
 topic filters appear once expanded), `latest` (newest `LATEST_N` first), or `all`.
 `python3 site/build.py --variants` writes `index_<mode>.html` previews for comparison.
 
+**Cover photos.** `COVER` in `content.py` is a list of `(file, caption)` under `images/`;
+a random one is shown on each visit and the rest load lazily, one slide ahead. Add an optional third item such as
+`"center 30%"` to shift the crop. Photos are shown as a 3:1 banner, so landscape shots
+with the subject near the middle work best.
+
 **Add news.** Prepend a `(date, venue tag or "", html)` tuple to `NEWS`. The first
 `NEWS_SHOWN` items are visible; the rest fold behind "Older news".
 
