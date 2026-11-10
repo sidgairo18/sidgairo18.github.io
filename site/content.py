@@ -19,6 +19,7 @@ SITE_URL = "https://sidgairo18.github.io"
 UPDATED = "October 2026"
 GA_ID = "UA-120374008-1"          # Google Analytics property, emitted first in every page head
 IMG = "images/"
+AVATAR = "sid_saar.jpeg"          # square crop under images/; full photo in archive/images/originals/images/
 
 # Cover carousel: (file under images/, caption).  First slide is shown on load; the rest
 # load lazily.  Optional third item = CSS object-position for the crop (default "center").

@@ -268,7 +268,7 @@ def head(title, description, extra="", url=None):
 <meta name="description" content="{description}">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{description}">
-<meta property="og:image" content="{SITE_URL}/images/sid_beard_profile_paris.jpg">
+<meta property="og:image" content="{SITE_URL}/images/{AVATAR}">
 <meta property="og:url" content="{url}">
 <link rel="canonical" href="{url}">
 <meta name="twitter:card" content="summary">
@@ -379,7 +379,7 @@ def build_index(pubs, mode="all"):
     return f'''{head(ME, desc, extra=jsonld, url=SITE_URL + "/")}
 <body>{THEME_BTN}<div class="wrap">
 {cover}
-<header class="hdr"><img src="{IMG}sid_beard_profile_paris.jpg" alt="{ME}"><div><h1>{ME}</h1><p class="sub">{TAGLINE}</p><nav class="icons" aria-label="Links">{icons}</nav></div></header>
+<header class="hdr"><img src="{IMG}{AVATAR}" alt="{ME}"><div><h1>{ME}</h1><p class="sub">{TAGLINE}</p><nav class="icons" aria-label="Links">{icons}</nav></div></header>
 <section class="bio" id="about">{"".join(f"<p>{p}</p>" for p in BIO)}<p class="off">{OFFHOURS}</p></section>
 <section id="news"><h2>News</h2>{news}</section>
 {selected_section}

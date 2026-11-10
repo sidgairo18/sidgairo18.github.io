@@ -31,6 +31,8 @@ opens on featured papers under "Selected publications" with a "Show all" button,
 topic filters appear once expanded), `latest` (newest `LATEST_N` first), or `all`.
 `python3 site/build.py --variants` writes `index_<mode>.html` previews for comparison.
 
+**Profile photo.** `AVATAR` in `content.py` names a square JPEG under `images/` (shown as a 96 px circle, also used as `og:image`); keep the full photo in `archive/images/originals/images/`.
+
 **Cover photos.** `COVER` in `content.py` is a list of `(file, caption)` under `images/`;
 a random one is shown on each visit and the rest load lazily, one slide ahead. Add an optional third item such as
 `"center 30%"` to shift the crop. Photos are shown as a 3:1 banner, so landscape shots
