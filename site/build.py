@@ -380,13 +380,14 @@ def build_index(pubs, mode="all"):
 <body>{THEME_BTN}<div class="wrap">
 {cover}
 <header class="hdr"><img src="{IMG}{AVATAR}" alt="{ME}"><div><h1>{ME}</h1><p class="sub">{TAGLINE}</p><nav class="icons" aria-label="Links">{icons}</nav></div></header>
-<section class="bio" id="about">{"".join(f"<p>{p}</p>" for p in BIO)}<p class="off">{OFFHOURS}</p></section>
+<section class="bio" id="about">{"".join(f"<p>{p}</p>" for p in BIO)}</section>
 <section id="news"><h2>News</h2>{news}</section>
 {selected_section}
 <section id="publications"><h2><span id="pubs-title">{"Selected publications" if visible is not None else "Publications"}</span><a href="{SCHOLAR}">Google Scholar ↗</a></h2>{filters}{publist}{showall}<p class="eqnote"><sup>*</sup>equal contribution · click <em>bibtex</em> on an entry to copy or download its citation</p></section>
 <section id="background"><h2>Background<a href="{CV_PDF}">full CV (PDF) ↗</a></h2>{background}</section>
 <section id="service"><h2>Academic service &amp; more</h2>{service}</section>
 <section id="resources"><h2>Writing &amp; resources</h2><div class="rgroups">{resources}</div></section>
+<section id="offhours" class="offhours"><p class="off">{OFFHOURS}</p></section>
 <footer style="margin-top:56px"><span>© 2026 {ME}</span><span>Updated {UPDATED}</span></footer>
 </div>{SCRIPTS}</body></html>
 '''

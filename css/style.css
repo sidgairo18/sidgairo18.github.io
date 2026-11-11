@@ -100,6 +100,7 @@ h2 a:hover{color:var(--fg)}
 .bio p{margin-bottom:12px}
 .off{color:var(--mute);font-size:14px;margin-top:14px;line-height:1.7}
 .off a{color:var(--fg)}
+.offhours .off{margin-top:0}
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 .card{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:border-color .15s,transform .15s}
 .card:hover{border-color:var(--mute);transform:translateY(-1px)}
